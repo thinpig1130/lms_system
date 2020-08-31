@@ -1,0 +1,12 @@
+package com.itperson.service;
+
+import org.apache.ibatis.session.SqlSession;
+
+public class MemberLoginService {
+	private SqlSession sqlSession;
+	
+	public MemberLoginService(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+
+}

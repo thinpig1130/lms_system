@@ -1,0 +1,23 @@
+package com.itperson.service;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.ui.Model;
+
+import com.itperson.dto.Member;
+
+public class MemberJoinService implements Service{
+
+	@Override
+	public void execute(Model model) {
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		Member vo = new Member();
+		vo.setId(request.getParameter("id"));
+		vo.setEmail(request.getParameter("email"));
+		vo.setPassword(request.getParameter("password"));	
+	}
+
+}

@@ -1,0 +1,64 @@
+package com.itperson.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.itperson.service.MemberJoinService;
+import com.itperson.service.MemberLoginService;
+
+@Controller
+@RequestMapping(value = "/member")
+public class MemberController {
+	
+	@Autowired
+	private SqlSession sqlSession;	
+	
+	@RequestMapping(value = "/join",  method = RequestMethod.POST)
+	public String memberJoin( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		MemberJoinService service = new MemberJoinService(sqlSession);
+		service.execute(model);
+		
+		model.addAllAttributes("page_name", "가입 완료");
+		return "member/join_complete";
+	}
+	
+	@RequestMapping(value = "/login",  method = RequestMethod.POST)
+	public String memberLogin( Model model, HttpServletRequest request, HttpSession session) {
+		model.addAttribute("request", request);
+		
+		MemberLoginService service = new MemberLoginService(sqlSession);
+		service.execute(model);
+		
+		String id = (String) model.asMap().get("id");
+		
+		if(id==null) {
+			model.addAttribute("page_name", "로그인 오류");
+			return "member/error_login";
+		}else {
+			session.setAttribute("id", id);
+			return "redirect:/home";
+		}
+	}
+	
+	@RequestMapping(value = "/loginform")
+	public String memberLoginForm( Model model) {
+		model.addAttribute("page_name", "로그인");
+		
+		return "member/login_form";
+	}
+	
+	@RequestMapping(value = "/joinform")
+	public String memberJoinForm( Model model) {
+		model.addAttribute("page_name", "회원가입");
+		return "member/join_form";
+	}
+
+}

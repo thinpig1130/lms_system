@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itperson.dao.MemDao">
+	<resultMap id ="result" type="com.kwonpro.www.dto.Member"> 
+		<result property = "id" column = "ID"/> 
+		<result property = "password" column = "PASSWORD"/> 
+		<result property = "name" column = "NAME"/> 
+		<result property = "sex" column = "SEX"/> 
+		<result property = "birthday" column = "BIRTHDAY"/>
+		<result property = "phone" column = "PHONE"/> 
+		<result property = "email" column = "EMAIL"/>
+	</resultMap>
+
+	
+	<select id = "isId" parameterType="String" resultType="String">
+		<![CDATA[
+		SELECT ID
+		FROM MEMBER
+		WHERE ID=#{id}
+		]]>
+	</select>
+	
+	<select id = "checkPw" parameterType="map" resultType="String">
+		<![CDATA[
+		SELECT ID
+		FROM MEMBER 
+		WHERE ID=#{id} AND PASSWORD=#{pwd}
+		]]>
+	</select>
+	
+	<insert id="memberJoin" parameterType="com.kwonpro.www.dto.Member">
+		<![CDATA[
+		INSERT INTO MEMBER (ID, PASSWORD, NAME, SEX, BIRTHDAY, PHONE, EMAIL)
+		VALUES (#{id}, #{password}, #{name}, #{sex}, #{birthday}, #{phone} ,#{email})
+		]]>
+	</insert>
+	
+	<update id="updateInfo" parameterType="com.kwonpro.www.dto.Member">
+		<![CDATA[
+		UPDATE NOTICE SET TITLE=#{title}, CONTENT=#{content}, FILES=#{files} 
+		WHERE ID=#{id}
+		]]>
+	</update>
+	
+	
+</mapper>

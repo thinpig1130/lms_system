@@ -1,0 +1,6 @@
+package com.itperson.dao;
+
+public interface MemberDao {
+	public String isId(String id);
+	public String checkPw(@Param("id") String id, @Param("pwd") String pw);
+}
