@@ -1,0 +1,8 @@
+package com.itperson.dto;
+
+public class Course {
+	private String code;
+	private String name;
+	
+
+}

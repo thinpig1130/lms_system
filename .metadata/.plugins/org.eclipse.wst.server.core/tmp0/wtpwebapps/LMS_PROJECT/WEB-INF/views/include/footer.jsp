@@ -21,7 +21,7 @@
                 </a>
               </li>
               <li>
-                <a href="">
+                <a href="/admin">
                   Manager
                 </a>
               </li>

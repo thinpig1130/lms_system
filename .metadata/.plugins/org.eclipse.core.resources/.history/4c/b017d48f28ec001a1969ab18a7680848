@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itperson.dao.CategoryDao">
+	<resultMap id ="result" type="com.itperson.dto.Category">
+		<result property = "code" column = "CODE"/> 
+		<result property = "name" column="NAME"/>
+		<result property = "coCode" column="CO_CODE"/>
+	</resultMap>
+	
+	<insert id="registCategory" parameterType="com.itperson.dto.Category">
+		<![CDATA[
+		INSERT INTO CATEGORY (CODE, NAME, CO_CODE)
+		VALUES (#{code}, #{name}, #{coCode})
+		]]>
+	</insert>
+	
+	<select id="CategoryList" parameterType="String" resultMap="result">
+		<![CDATA[
+		SELECT CODE, NAME
+		FROM CATEGORY
+		WHERE CO_CODE=#{value}
+		]]>
+	</select>
+	
+	<select id="serchCategoryName" parameterType="String" resultType="String">
+		<![CDATA[
+		SELECT NAME
+		FROM CATEGORY
+		WHERE CODE=#{value}
+		]]>
+	</select>
+</mapper>

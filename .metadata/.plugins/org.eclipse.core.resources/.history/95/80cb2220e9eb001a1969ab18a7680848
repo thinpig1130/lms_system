@@ -1,0 +1,29 @@
+package com.itperson.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.itperson.service.MemberJoinService;
+
+@Controller
+@RequestMapping(value = "/admin")
+public class AdminController {
+	
+	@Autowired
+	private SqlSession sqlSession;
+	
+	@RequestMapping(value = "/")
+	public String AdminEnter( Model model, HttpServletRequest request) {
+//		model.addAttribute("request", request);
+		
+		model.addAttribute("page_name", "관리자로그인");
+		return "admin/enter";
+	}
+
+}

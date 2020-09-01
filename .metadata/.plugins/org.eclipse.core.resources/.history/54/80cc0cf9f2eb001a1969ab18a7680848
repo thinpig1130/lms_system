@@ -1,0 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
+<html>
+<%@ include file="../include/head.jsp" %>
+<body class="dark-edition">
+ <div class="wrapper ">
+    ${page_name}
+  </div>
+<%@ include file="../include/corejs.jsp" %>
+</body>
+</html>
