@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.itperson.service.CoursesViewService"/>
+<fullyQualifiedTypeName name="com.itperson.dto.Category"/>
+<fullyQualifiedTypeName name="com.itperson.dao.SubCategoryDao"/>
+</qualifiedTypeNameHistroy>
