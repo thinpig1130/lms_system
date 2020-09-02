@@ -5,7 +5,42 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2020-08-28T21:37:53Z</updated>
+  <updated>2020-09-02T00:14:47Z</updated>
+  <entry>
+    <title>This Week in Spring (SpringOne 2020 Edition) - September 1st, 2020</title>
+    <link rel="alternate" href="https://spring.io/blog/2020/09/02/this-week-in-spring-springone-2020-edition-september-1st-2020" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2020-09-02:4183</id>
+    <updated>2020-09-02T00:14:47Z</updated>
+    <content type="html">&lt;p&gt;Hi, Spring fans! Welcome to another action-packed installment of &lt;em&gt;This Week in Spring&lt;/em&gt;. Normally, I spend my time in these blogs looking at the week that was but I confess, as much as I love all the interesting stuff that&amp;rsquo;s come out in the last week, my heart&amp;rsquo;s just not in it! My mind instead is &lt;a href="http://springone.io"&gt;&lt;strong&gt;SpringOne 2020&lt;/strong&gt;&lt;/a&gt;, which starts Wednesday, tomorrow, at 6 AM PST. There&amp;rsquo;s going to be &lt;em&gt;so&lt;/em&gt; much good stuff, my friends. Obviously, there&amp;rsquo;s no better place to tackle the goings-on of the Spring community. But this show doesn&amp;rsquo;t stop there! There&amp;rsquo;s also going to be content around diversity and social justice. There will be content on operations, Cloud Foundry, and Kubernetes. There&amp;rsquo;s content directed at CTOs and technology leaders. There&amp;rsquo;s something for everybody. I. Can&amp;rsquo;t. Wait! &lt;/p&gt;
+&lt;p&gt;I wish, of course, that it was virtual, and that we could all interact in real life, but the SpringOne team has done a lot to compensate. First, VMware (the primary company that sponsors the Spring team and SpringOne) is giving out $25 Uber Eats credits, so no need to suffer through conference buffet lines! Second, the conference itself is free and virtual, so you can watch it in your pajamas and nobody will think anything of it. Third, there&amp;rsquo;s going to be opportunities for you to talk to &lt;a href="https://springone.io/2020/speakers?utm_campaign=Global_TS_SpringOne_2020&amp;utm_source=twitter&amp;utm_medium=social"&gt;the speakers&lt;/a&gt; after their respective talks, albeit virtually, replacing the &amp;ldquo;hallway&amp;rdquo; track at a non-virtual conference. And if all that weren&amp;rsquo;t enough, there&amp;rsquo;s a ton of cool stuff in the &lt;em&gt;social&lt;/em&gt; track, too. There&amp;rsquo;s a cooking class, an art class, a pet-parade, and more. &lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s been a busy week since we last spoke! We&amp;rsquo;ve got a ton of stuff to cover so let&amp;rsquo;s get to it. &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/08/27/a-bootiful-podcast-soby-chacko-and-dave-turanski-on-messaging-in-spring-spring-cloud-stream-app-starters-and-more"&gt;A Bootiful Podcast: Soby Chacko and Dave Turanski on Messaging in Spring, Spring Cloud Stream App Starters and More&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/springcentral/status/1298709812453052419"&gt;A friendly reminder that the Spring guides are a &lt;em&gt;fantastic&lt;/em&gt; resource for getting started with Spring.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/VMwareTanzu/status/1298784362599780352"&gt;Are you attending SpringOne but miss out on conference food? We&amp;rsquo;re giving away $25 in Uber Eats credits!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/VMwareTanzu/status/1298715520196214793"&gt;Check out this blog detailing some of the goodness in Kubernetes 1.19!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/VMwareTanzu/status/1298405649039204353"&gt;Did you miss the inaugural episode of our VMware Tanzu Twitch stream? I kicked things off while spending a few hours on the stream working over examples for my upcoming book &lt;a href="http://ReactiveSpring.io"&gt;&lt;em&gt;Reactive Spring&lt;/em&gt;&lt;/a&gt;. You can watch that and all subsequent streams on &lt;a href="http://twitch.tv/vmwaretanzu"&gt;our Twitch channel&lt;/a&gt;!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/SpringData/status/1299353439978295302"&gt;Don&amp;rsquo;t miss this Cassandra talk at SpringOne 2020, brought to you by DataStax&amp;rsquo;s Alexandre Dutra and Spring Data project lead Mark Paluch.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/SpringData/status/1300715982852427777"&gt;Don&amp;rsquo;t miss this Neo4j talk at SpringOne 2020, brought to you by Neo4j&amp;rsquo;s Michael Simons and Gerrit Meier&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/springone/status/1300812091859914752?s=12"&gt;Get to know some of the SpringOne speakers now&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/java/status/1298667300183146496"&gt;Huzzah! Good news everyone! Jackson will support Java 14 records (a preview feature at the moment..)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://inside.java/2020/08/26/heap-snapshotting/"&gt;Interesting post over on the Inside Java blog: Heap Snapshotting&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://youtrack.jetbrains.com/issue/IDEABKL-708#focus=Comments-27-4365766.0-0"&gt;It&amp;rsquo;s finally here! Collaborative development for IntelliJ, after &lt;em&gt;years&lt;/em&gt; of people asking for it!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://cloud.google.com/run/docs/tips/java#appcds"&gt;Optimizing Java applications for Cloud Run ?|? Cloud Run Documentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://tanzu.vmware.com/developer/tv/code/0001/"&gt;Orchestration for Reactive Spring with Josh Long | Tanzu.TV | VMware Tanzu Developer&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2020/08/28/spring-cloud-hoxton-sr8-has-been-released"&gt;Spring Cloud Hoxton.SR8 has been released&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://tanzu.vmware.com/content/blog/the-state-of-spring-2020-report-is-now-available-learn-how-your-java-development-compares"&gt;The State of Spring 2020 Report Is Now Available?Learn How Your Java Development Compares&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/VMwareTanzu/status/1298717862173974530"&gt;The new Cloud Service Broker for Cloud Foundry offers a new way to CF users to consume public cloud services. Read our blog for a technical deep dive.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/springcloud/status/1300874401576034304"&gt;The state of Spring report is now available! Check it out.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.cloudfoundry.org/usn-4436-2/"&gt;USN-4436-2: librsvg regression&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://www.twitch.tv/vmwaretanzu"&gt;You should subscribe to VMwareTanzu!&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>Spring Cloud Hoxton.SR8 has been released</title>
     <link rel="alternate" href="https://spring.io/blog/2020/08/28/spring-cloud-hoxton-sr8-has-been-released" />
@@ -1906,23 +1941,6 @@ Artem&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
 &lt;p&gt;&lt;a href="http://projects.spring.io/spring-integration/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-integration/issues"&gt;GitHub Issues&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-integration/blob/master/CONTRIBUTING.adoc"&gt;Contributing&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-integration"&gt;Help&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-integration"&gt;Chat&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Security 5.3.4, 5.2.6, 5.1.12, 5.0.18, 4.2.18 Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2020/08/12/spring-security-5-3-4-5-2-6-5-1-12-5-0-18-4-2-18-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Eleftheria Stein-Kousathana</name>
-    </author>
-    <id>tag:spring.io,2020-08-11:4160</id>
-    <updated>2020-08-12T17:30:18Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;On behalf of the community, I&amp;#8217;m pleased to announce the release of Spring Security 5.3.4 (&lt;a href="https://github.com/spring-projects/spring-security/releases/tag/5.3.4.RELEASE"&gt;release notes&lt;/a&gt;),  5.2.6 (&lt;a href="https://github.com/spring-projects/spring-security/releases/tag/5.2.6.RELEASE"&gt;release notes&lt;/a&gt;), 5.1.12 (&lt;a href="https://github.com/spring-projects/spring-security/releases/tag/5.1.12.RELEASE"&gt;release notes&lt;/a&gt;) , 5.0.18 (&lt;a href="https://github.com/spring-projects/spring-security/releases/tag/5.0.18.RELEASE"&gt;release notes&lt;/a&gt;), 4.2.18 (&lt;a href="https://github.com/spring-projects/spring-security/releases/tag/4.2.18.RELEASE"&gt;release notes&lt;/a&gt;). These releases deliver bug fixes along with some minor improvements. Users are encouraged to update to the latest patch release.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-security/"&gt;Project Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/"&gt;Reference&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-security"&gt;Help&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>

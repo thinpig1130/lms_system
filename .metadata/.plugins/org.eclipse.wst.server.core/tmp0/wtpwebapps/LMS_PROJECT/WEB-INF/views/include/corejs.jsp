@@ -1,5 +1,5 @@
 <!--   Core JS Files   -->
-  <script src="/resources/assets/js/core/jquery.min.js"></script>
+
   <script src="/resources/assets/js/core/popper.min.js"></script>
   <script src="/resources/assets/js/core/bootstrap-material-design.min.js"></script>
   <script src="https://unpkg.com/default-passive-events"></script>

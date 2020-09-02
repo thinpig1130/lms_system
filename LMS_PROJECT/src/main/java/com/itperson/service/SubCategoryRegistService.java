@@ -33,6 +33,7 @@ public class SubCategoryRegistService implements Service {
 		
 		model.addAttribute("category", vo.getCaCode());
 		model.addAttribute("course", request.getParameter("cocode"));
+		model.addAttribute("subcategory", vo.getCode());
 
 	}
 

@@ -24,7 +24,6 @@ public class AdminController {
 	@RequestMapping(value = {"/enter",""})
 	public String AdminEnter( Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
-		
 		model.addAttribute("page_name", "관리자로그인");
 		return "admin/enter";
 	}
@@ -72,6 +71,9 @@ public class AdminController {
 	
 	@RequestMapping(value = "/contents")
 	public String AdminContents( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		CategoryViewService service = new CategoryViewService(sqlSession);
+		service.execute(model);
 		
 		model.addAttribute("page_name", "학습내용등록");
 		return "admin/contents";
@@ -88,15 +90,14 @@ public class AdminController {
 		model.addAttribute("page_name", "사용자관리");
 		return "admin/manage_users";
 	}
+	
 	@RequestMapping(value = "/manage/answers")
 	public String ManageAnswers( Model model, HttpServletRequest request) {
 		
 		model.addAttribute("page_name", "관리자답변");
 		return "admin/manage_answers";
 	}
-	
-	
-	
+
 	
 	
 }
