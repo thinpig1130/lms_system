@@ -11,9 +11,9 @@
     <div class="main-panel">
       <%@ include file="../include/m_topbar.jsp" %>
       <div class="content">
-        <div class="container-fluid">
+        <div class="row container-fluid">
           <!-- your content here -->
-          	<form action="/admin/regist_course" method="post">
+          	<form class="col-md-12" action="/admin/regist_course" method="post">
           		<div class="form-group">
                		<label class="bmd-label-floating">과정코드 / ex) COS01234</label>
                    	<input type="text" class="form-control" name="code">
@@ -26,7 +26,7 @@
           	</form>
         </div>
         <div class="row">
-        	<div class="col-md-10">
+        	<div class="col-md-12">
             	<div class="card">
                 	<div class="card-header card-header-primary">
                   		<h4 class="card-title ">과정 전체 보기</h4>
@@ -72,5 +72,6 @@
     </div>
   </div>
 <%@ include file="../include/corejs.jsp" %>
+</div>
 </body>
 </html>

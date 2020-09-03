@@ -22,7 +22,7 @@
           <li class="nav-item ">
             <a class="nav-link" href="/admin/contents">
               <i class="material-icons">rate_review</i>
-              <p>학습내용등록</p>
+              <p>학습관리</p>
             </a>
           </li>
           <li class="nav-item ">

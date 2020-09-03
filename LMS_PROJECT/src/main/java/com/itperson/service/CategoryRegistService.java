@@ -31,7 +31,6 @@ public class CategoryRegistService implements Service {
 		
 		model.addAttribute("course", vo.getCoCode());
 		model.addAttribute("category", vo.getCode());
-
 	}
 
 }

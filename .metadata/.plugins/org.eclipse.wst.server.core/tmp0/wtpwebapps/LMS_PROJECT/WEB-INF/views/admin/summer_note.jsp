@@ -1,23 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
-  	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	
-	<!--     Fonts and icons     -->
-	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-	
-	<!-- include libraries(jQuery, bootstrap) -->
-	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 
-	<!-- Material Kit CSS -->
-  	<link href="/resources/assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+
+	<%@ include file="../include/head.jsp" %>
+	<%@ include file="../include/corejs_summernote.jsp" %>
+	
+	
+	
+	<!--   Core JS Files   -->
+
+   <script src="/resources/assets/js/core/popper.min.js"></script>
+   <script src="/resources/assets/js/core/bootstrap-material-design.min.js"></script>
+   <script src="https://unpkg.com/default-passive-events"></script>
+   <script src="/resources/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+   <!-- Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--  Google Maps Plugin    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <!-- Chartist JS -->
+  <script src="/resources/assets/js/plugins/chartist.min.js"></script>
+ 
+	<!--  Notifications Plugin    -->
+  <script src="/resources/assets/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="/resources/assets/js/material-dashboard.js?v=2.1.0"></script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	<!-- 썸머노트 헤더 -->
 	<script src="/resources/assets/js/summernote-lite.js"></script>
@@ -45,9 +64,8 @@
 <body>
 	<!-- form 안에 에디터를 사용하는 경우 (보통 이경우를 많이 사용하는듯)-->
 	<form method="post">
-	  <textarea id="summernote" name="editordata"></textarea>
+		<input type="text" name="title" placeholder="제목입력">
+	  	<textarea id="summernote" name="editordata"></textarea>
 	</form>	
-	
-
 </body>
 </html>

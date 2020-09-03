@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itperson.dao.StudyContentsDao">
+	<resultMap id ="result" type="com.itperson.dto.StudyContents">
+		<result property = "code" column = "CODE"/> 
+		<result property = "importance" column="IMPORTANCE"/>
+		<result property = "title" column="TITLE"/>
+		<result property = "contents" column="CONTENTS"/>
+		<result property = "regDate" column="REG_DATE"/>
+		<result property = "subCode" column="SUB_CODE"/>
+	</resultMap>
+	
+	<insert id="registStudyContents" parameterType="com.itperson.dto.StudyContents">
+		<![CDATA[
+		INSERT INTO STUDY_CONTENTS (CODE, IMPORTANCE, TITLE, CONTENTS, REG_DATE, SUB_CODE)
+		VALUES (#{code}, #{importance}, #{title}, #{contents}, SYSDATE, #{subCode})
+		]]>
+	</insert>
+	
+	<select id="studyContentsList" resultMap="result">
+		<![CDATA[
+		SELECT CODE, IMPORTANCE, TITLE, CONTENTS, REG_DATE, SUB_CODE
+		FROM STUDY_CONTENTS
+		]]>
+	</select>
+	
+	<select id="serchStudyContents" parameterType="String" resultMap="result">
+		<![CDATA[
+		SELECT CODE, IMPORTANCE, TITLE, CONTENTS, REG_DATE, SUB_CODE
+		FROM STUDY_CONTENTS
+		WHERE CODE=#{value}
+		]]>
+	</select>
+	
+	<select id="maxCode" parameterType="String" resultType="String">
+		<![CDATA[
+		SELECT MAX(CODE)
+		FROM STUDY_CONTENTS
+		WHERE SUB_CODE=#{value}
+		]]>
+	</select>
+</mapper>

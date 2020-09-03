@@ -1,0 +1,13 @@
+package com.itperson.dao;
+
+import java.util.ArrayList;
+
+import com.itperson.dto.StudyContents;
+
+
+public interface StudyContentsDao {
+	public void registSubCategory(StudyContents vo);
+	public ArrayList<StudyContents> subCategoryList(String caCode);
+	public String serchStudyContents(String code);
+
+}

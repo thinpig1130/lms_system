@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.itperson.service.CategoryRegistService;
 import com.itperson.service.CategoryViewService;
+import com.itperson.service.ContentsRegistService;
+import com.itperson.service.ContentsViewService;
 import com.itperson.service.CourseRegistService;
 import com.itperson.service.CoursesViewService;
 import com.itperson.service.SubCategoryRegistService;
@@ -21,6 +23,7 @@ public class AdminController {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	/*----------------------------------- 관리자 로그인 -------------------------------------- */
 	@RequestMapping(value = {"/enter",""})
 	public String AdminEnter( Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -28,6 +31,7 @@ public class AdminController {
 		return "admin/enter";
 	}
 	
+	/*----------------------------------- 과정등록 tab-------------------------------------- */
 	@RequestMapping(value = "/courses")
 	public String AdminCourses( Model model, HttpServletRequest request) {
 		
@@ -39,12 +43,13 @@ public class AdminController {
 	}
 	@RequestMapping(value = "/regist_course")
 	public String AdminRegistCourse( Model model, HttpServletRequest request) {
-		
+		model.addAttribute("request", request);
 		CourseRegistService service = new CourseRegistService(sqlSession);
 		service.execute(model);
 		return "redirect:/admin/courses";
 	}
 	
+	/*----------------------------------- 분류등록 tab-------------------------------------- */
 	@RequestMapping(value = "/categorys")
 	public String AdminCategorys( Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -69,28 +74,58 @@ public class AdminController {
 		return "redirect:/admin/categorys";
 	}
 	
+	/*----------------------------------- 학습관리 tab-------------------------------------- */
 	@RequestMapping(value = "/contents")
 	public String AdminContents( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		ContentsViewService service = new ContentsViewService(sqlSession);		
+		service.execute(model);
+		model.addAttribute("page_name", "학습목록");
+		return "admin/contents";
+	}	
+	
+	@RequestMapping(value = "/contents_form")
+	public String AdminContent( Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
 		CategoryViewService service = new CategoryViewService(sqlSession);
 		service.execute(model);
 		
-		model.addAttribute("page_name", "학습내용등록");
-		return "admin/contents";
+		model.addAttribute("page_name", "학습내용");
+		return "admin/contents_form";
 	}
+	
+	@RequestMapping(value = "/contents/regist")
+	public String AdminRegistContent( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		ContentsRegistService service = new ContentsRegistService(sqlSession);
+		service.execute(model);
+		
+		return "redirect:/admin/contents";
+	}
+	
+	
+	
+	/*----------------------------------- 문제등록 tab-------------------------------------- */
 	@RequestMapping(value = "/questions")
 	public String AdminQuestions( Model model, HttpServletRequest request) {
-		
 		model.addAttribute("page_name", "문제등록");
 		return "admin/questions";
 	}
+	@RequestMapping(value = "/question_form")
+	public String AdminQuestionsForm( Model model, HttpServletRequest request) {
+		model.addAttribute("page_name", "문제등록");
+		return "admin/question_form";
+	}
+	
+	
+	/*----------------------------------- 사용자관리 tab-------------------------------------- */
 	@RequestMapping(value = "/manage/users")
 	public String ManageUsers( Model model, HttpServletRequest request) {
-		
 		model.addAttribute("page_name", "사용자관리");
 		return "admin/manage_users";
 	}
 	
+	/*----------------------------------- 관리자 답변 tab-------------------------------------- */
 	@RequestMapping(value = "/manage/answers")
 	public String ManageAnswers( Model model, HttpServletRequest request) {
 		
@@ -99,5 +134,12 @@ public class AdminController {
 	}
 
 	
+	/*----------------------------------- 관리자 답변 tab-------------------------------------- */
+	@RequestMapping(value = "/test")
+	public String ManageTest( Model model, HttpServletRequest request) {
+		
+		model.addAttribute("page_name", "테스트");
+		return "admin/summer_note";
+	}
 	
 }

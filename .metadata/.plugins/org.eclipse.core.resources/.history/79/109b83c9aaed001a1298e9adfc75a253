@@ -1,0 +1,63 @@
+package com.itperson.service;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
+
+import com.itperson.dao.Dao;
+import com.itperson.dao.StudyContentsDao;
+import com.itperson.dto.StudyContents;
+
+public class ContentsRegistService implements Service {
+	private SqlSession sqlSession;
+	public ContentsRegistService(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	@Override
+	public void execute(Model model) {
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		StudyContents studyContents = new StudyContents();
+		
+		String cocode = request.getParameter("cocode");
+		String cacode = request.getParameter("cacode");
+		
+		studyContents.setSubCode(request.getParameter("subcode"));
+		studyContents.setImportance(Integer.parseInt(request.getParameter("importance")));
+		studyContents.setTitle(request.getParameter("title"));
+		studyContents.setContents(request.getParameter("contents"));
+		
+		
+		StudyContentsDao studyContentsDao = sqlSession.getMapper(StudyContentsDao.class);
+		
+		
+		//코드 자동생성 모듈
+		String nxCode = this.nextCode(studyContents.getSubCode(), studyContentsDao);
+		
+
+	}
+	
+	public String nextCode(String partCode, Dao dao) {
+		
+		String maxCode = dao.maxCode(code);
+		
+		String[] strArr = maxCode.split("C");
+		int len = strArr[1].length();
+		int nextNum = Integer.parseInt(strArr[1])+1;
+		String strNextNum = nextNum+"";
+		
+		while(len <= strNextNum.length()) {
+			strNextNum = "0" + strNextNum; 
+		}
+		
+		String returnCode = strArr[0] + strNextNum;
+		
+		return returnCode;
+	}
+
+}

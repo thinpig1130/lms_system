@@ -12,6 +12,7 @@ import com.itperson.dao.CourseDao;
 import com.itperson.dao.SubCategoryDao;
 import com.itperson.dto.Category;
 import com.itperson.dto.Course;
+import com.itperson.dto.SubCategory;
 
 public class CategoryViewService implements Service {
 	
@@ -48,10 +49,16 @@ public class CategoryViewService implements Service {
 				
 				SubCategoryDao subCategoryDao = sqlSession.getMapper(SubCategoryDao.class);
 				model.addAttribute("sub_categorys", subCategoryDao.subCategoryList(curCategory.getCode()));
+				
+				if(request.getParameter("subcategory")!=null) {
+					SubCategory curSubcategory = new SubCategory();
+					curSubcategory.setCode(request.getParameter("subcategory"));
+					curSubcategory.setName(subCategoryDao.serchSubCategoryName(curSubcategory.getCode()));
+					curSubcategory.setCaCode(curCategory.getCode());
+					model.addAttribute("cur_subcategory", curSubcategory);
+				}
 			}
 		}
-		
-				
 			
 		model.addAttribute("courses", courseDao.courseList());
 		

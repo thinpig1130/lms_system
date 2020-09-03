@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!--   Core JS Files   -->
 
   <script src="/resources/assets/js/core/popper.min.js"></script>
@@ -12,8 +15,14 @@
   <script src="/resources/assets/js/plugins/chartist.min.js"></script>
   <!--  Notifications Plugin    -->
   <script src="/resources/assets/js/plugins/bootstrap-notify.js"></script>
-  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="/resources/assets/js/material-dashboard.js?v=2.1.0"></script>
+ 
+ 
+  <!-- 썸머노트와는 충돌 됨 ... -->
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc   -->
+  <script src="/resources/assets/js/material-dashboard.js?v=2.1.0"></script> 
+
+
+
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="/resources/assets/demo/demo.js"></script>
   <script>
