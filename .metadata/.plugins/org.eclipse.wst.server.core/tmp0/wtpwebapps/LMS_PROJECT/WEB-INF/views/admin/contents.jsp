@@ -13,15 +13,14 @@
 			});
 			
 			$('#select_category').on('change',function(){
-				let str = "/admin/contents?course=${cur_course.code}&category="+this.value;
+				let str = "/admin/contents?category="+this.value;
 				location.href=str;
 			});
 			
 			$('#select_subcategory').on('change',function(){
-				let str = "/admin/contents?course=${cur_course.code}&category=${cur_category.code}&subcategory="+this.value;
+				let str = "/admin/contents?subcategory="+this.value;
 				location.href=str;
 			});
-			
 		});
 	</script>
 </head>
@@ -33,11 +32,11 @@
 			<div class="content">
 				<div class="container-fluid">
 					<!-- your content here -->
-					<form method="post">
+					<form action="/admin/contents_form" method="post">
 						<div class="row container-fluid">
 							<div class="form-group col-md-3">
 								<label for="inputState">과정선택</label> <select id="select_course"
-									name="cocode" class="form-control">
+									name="course" class="form-control">
 									<option value="" selected disabled hidden>== 과정 선택 ==</option>
 									<c:forEach items="${courses}" var="course">
 										<option value="${course.code}"
@@ -48,7 +47,7 @@
 							</div>
 							<div class="form-group col-md-3">
 								<label for="inputState">대분류</label> <select id="select_category"
-									name="cacode" class="form-control">
+									name="category" class="form-control">
 									<option value="" selected disabled hidden>== 분류 선택 ==</option>
 									<c:forEach items="${categorys}" var="category">
 										<option value="${category.code}"
@@ -59,7 +58,7 @@
 							</div>
 							<div class="form-group col-md-3">
 								<label for="inputState">소분류</label> <select
-									id="select_subcategory" name=subcacode class="form-control">
+									id="select_subcategory" name="subcategory" class="form-control">
 									<option value="" selected disabled hidden>== 소분류 선택 ==</option>
 									<c:forEach items="${sub_categorys}" var="subcategory">
 										<option value="${subcategory.code}" ${cur_subcategory.code==subcategory.code?"selected":""}>
@@ -68,9 +67,9 @@
 								</select>
 							</div>
 							<div class="form-group col-md-2">
-								<a href="/admin/contents_form?course=${cur_course.code}&category=${cur_category.code}&subcategory=${cur_subcategory.code}" class="btn btn-primary pull-right">
+								<button type="submit" class="btn btn-primary pull-right">
 									새 학습 등록
-								</a>
+								</button>
 							</div>
 						</div>
 					</form>
@@ -100,14 +99,14 @@
 											<th>문제수</th>
 										</thead>
 										<tbody>
-											<c:forEach items="${contentsList}" var="contents">
+											<c:forEach items="${lists}" var="list">
 											<tr>
-												<td>정보처리기사</td>
-												<td>응용소프트웨어 엔지니어링</td>
-												<td>${contents.subCode}</td>
-												<td><a href="/admin/question_form"> ${contents.title} </a>
+												<td>${list.coName}</td>
+												<td>${list.caName}</td>
+												<td>${list.subName}</td>
+												<td><a href="/admin/question_form"> ${list.title} </a>
 												</td>
-												<td>4</td>
+												<td> ${list.qCount} </td>
 											</tr>
 											</c:forEach>
 										</tbody>
@@ -119,7 +118,7 @@
 					page ${page}
 
 					<div class="row container-fluid d-flex justify-content-center">
-						<a class="btn btn-primary btn-sm btn-round">1</a> <a
+						<a class="btn btn-primary btn-sm btn-round">page ${page}</a> <a
 							class="btn btn-primary btn-sm btn-link">2</a> <a
 							class="btn btn-primary btn-sm btn-link">3</a>
 					</div>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itperson.dao.ViewStudyContentsListDao">
+	<resultMap id ="result" type="com.itperson.dto.VeiwStudyContentsList">
+		<result property = "coCode" column = "CO_CODE"/> 
+		<result property = "coName" column="CO_NAME"/>
+		<result property = "caCode" column="CA_CODE"/>
+		<result property = "caName" column="CA_NAME"/>
+		<result property = "subCode" column="SUB_CODE"/>
+		<result property = "subName" column="SUB_NAME"/>
+		<result property = "code" column="CODE"/>
+		<result property = "title" column="TITLE"/>
+		<result property = "regDate" column="REG_DATE"/>
+		<result property = "qCount" column="Q_COUNT"/>
+	</resultMap>
+	
+	<select id="allList" resultMap="result">
+		<![CDATA[
+		SELECT *
+		FROM VW_STUDY_CONTENTS_LIST
+		]]>
+	</select>
+	
+	<select id="" parameterType="String" resultMap="result">
+		<![CDATA[
+		SELECT CODE, NAME
+		FROM SUB_CATEGORY
+		WHERE CA_CODE=#{value}
+		]]>
+	</select>
+</mapper>

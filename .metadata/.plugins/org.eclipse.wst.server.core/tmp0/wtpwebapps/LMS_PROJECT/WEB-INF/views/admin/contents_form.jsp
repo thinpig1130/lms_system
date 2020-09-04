@@ -31,16 +31,14 @@
 								.on(
 										'change',
 										function() {
-											location.href = "/admin/contents_form?course="
-													+ this.value;
+											location.href = "/admin/contents_form?course="+ this.value;
 										});
 
 						$('#select_category')
 								.on(
 										'change',
 										function() {
-											let str = "/admin/contents_form?course=${cur_course.code}&category="
-													+ this.value;
+											let str = "/admin/contents_form?category="+ this.value;
 											location.href = str;
 										});
 
@@ -48,8 +46,7 @@
 								.on(
 										'change',
 										function() {
-											let str = "/admin/contents_form?course=${cur_course.code}&category=${cur_category.code}&subcategory="
-													+ this.value;
+											let str = "/admin/contents_form?subcategory="+ this.value;
 											location.href = str;
 										});						
 					});

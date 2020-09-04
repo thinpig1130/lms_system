@@ -1,0 +1,27 @@
+package com.itperson.dao;
+
+import java.util.ArrayList;
+
+import com.itperson.dto.Field;
+import com.itperson.dto.ViewStudyContentsList;
+
+public interface FieldDao {
+	public ArrayList<Field> courseList();
+	public ArrayList<Field> categoryList();
+	public ArrayList<Field> subCategoryList();
+	public ArrayList<Field> partOfcategoryList(String coCode);
+	public ArrayList<Field> partOfsubCategoryList(String caCode);
+	public String serchCourseName(String coCode);
+	public String serchCategoryName(String caCode);
+	public String serchSubCategoryName(String subCode);
+	public ViewStudyContentsList subCategoryBelongs(String subCode);
+}
+
+
+<select id="subCategoryBelongs" parameterType="String" resultMap="result">
+<![CDATA[
+SELECT *
+FROM VW_STUDY_CONTENTS_LIST
+WHERE SUB_CODE=#{value}
+]]>
+</select>

@@ -5,18 +5,11 @@ CREATE TABLE "MEMBER" (
    "PASSWORD" VARCHAR2(50)
 );
 
-INSERT INTO MEMBER (ID, EMAIL, PASSWORD) VALUES ('tp1130', 'thinpig1130@gamail.com', 'qwer1234!!');
-
-
 -- CODE C99 과정은 99개까지 등록가능.
 CREATE TABLE "COURSE" (
    "CODE" CHAR(3) PRIMARY KEY, 
    "NAME" VARCHAR2(150) 
 );
-
-INSERT INTO Course (CODE, NAME)	VALUES ('C01', '정보처리기사 필기');
-INSERT INTO Course (CODE, NAME)	VALUES ('C02', '정보처리기사 실기');
-
 
 -- CODE 99C12 한 과정당 카테고리은 99개까지 등록가능.
 CREATE TABLE "CATEGORY" (
@@ -26,9 +19,6 @@ CREATE TABLE "CATEGORY" (
    FOREIGN KEY (CO_CODE) REFERENCES "COURSE"(CODE)
 );
 
-INSERT INTO CATEGORY (CODE, NAME, CO_CODE) VALUES ('01C01', '응용소프트웨어 엔지니어링', 'C01');
-
-
 -- CODE 9912C66 한 카테고리당 작은카테고리 99개까지 등록가능.
 CREATE TABLE "SUB_CATEGORY" (
    "CODE"    CHAR(7) PRIMARY KEY,
@@ -36,8 +26,6 @@ CREATE TABLE "SUB_CATEGORY" (
    "CA_CODE" CHAR(5) NOT NULL,
    FOREIGN KEY (CA_CODE) REFERENCES "CATEGORY"(CODE)
 );
-
-INSERT INTO SUB_CATEGORY (CODE, NAME, CA_CODE) VALUES ('0101C01', '응용소프트웨어 설계', '01C01');
 
 -- CODE 991266C456 한 작은카테고리당 999개의 학습 모듈 등록가능.
 CREATE TABLE "STUDY_CONTENTS" (
@@ -49,8 +37,6 @@ CREATE TABLE "STUDY_CONTENTS" (
    "SUB_CODE"   CHAR(7) NOT NULL,
    FOREIGN KEY (SUB_CODE) REFERENCES "SUB_CATEGORY"(CODE)
 );
-
---INSERT INTO STUDY_CONTENTS (CODE, IMPORTANCE, TITLE, CONTENTS, REG_DATE, SUB_CODE) VALUES (#{code}, #{importance}, #{title}, #{contents}, SYS_DATE, #{subCode})
 
 -- CODE 991266456C100 한 학습모듈 당 주관식/객관식 합 999문제 등록 가능.
 CREATE TABLE "M_QUESTION" (
@@ -78,6 +64,38 @@ CREATE TABLE "M_ANSWER" (
    FOREIGN KEY (Q_CODE) REFERENCES "M_QUESTION"(CODE)
 );
 
+--------------------------------------------뷰 생성 -------------------------------------
+--- QUESTION_LIST 뷰.
+CREATE OR REPLACE VIEW VW_QUESTION_LIST AS
+    SELECT CODE,STU_CODE
+    FROM M_QUESTION
+    UNION
+    SELECT CODE, STU_CODE
+    FROM S_QUESTION;
+
+--- STUDY_CONTNETS_LIST 뷰.
+CREATE OR REPLACE VIEW VW_STUDY_CONTENTS_LIST AS
+    SELECT cor.CODE AS CO_CODE, cor.NAME AS CO_NAME, cat.CODE AS CA_CODE, cat.NAME AS CA_NAME, 
+        sub.CODE AS SUB_CODE, sub.NAME AS SUB_NAME, stu.CODE, stu.TITLE, stu.REG_DATE, qcnt.Q_COUNT 
+    FROM STUDY_CONTENTS stu, (SELECT stu.code as STU_CODE, COUNT(vql.CODE) as Q_COUNT
+        FROM STUDY_CONTENTS stu LEFT OUTER JOIN VW_QUESTION_LIST vql ON stu.CODE = vql.STU_CODE
+        GROUP BY stu.code) qcnt, SUB_CATEGORY sub, CATEGORY cat, COURSE cor
+    WHERE stu.CODE = qcnt.STU_CODE
+        AND stu.SUB_CODE = sub.CODE
+        AND sub.CA_CODE = cat.CODE 
+        AND cat.CO_CODE = cor.CODE;
+        
+--- SEARCH_CATEGORY 뷰.
+CREATE OR REPLACE VIEW VW_SEARCH_CATEGORY AS
+    SELECT co.CODE AS CO_CODE, co.NAME AS CO_NAME, CA_CODE, CA_NAME, SUB_CODE, SUB_NAME
+    FROM COURSE co LEFT OUTER JOIN
+        ( SELECT ca.CO_CODE, ca.CODE AS CA_CODE, ca.NAME AS CA_NAME, sub.CODE AS SUB_CODE, sub.NAME AS SUB_NAME
+          FROM CATEGORY ca LEFT OUTER JOIN SUB_CATEGORY sub ON ca.CODE = sub.CA_CODE
+        )casub ON co.CODE = casub.CO_CODE ;
+
+
+------------------------------------------ 테이블 수정을 돕기 위한 삭제문 --------------------------------------------------  
+
 DROP TABLE MEMBER;
 DROP TABLE COURSE;
 DROP TABLE CATEGORY;
@@ -86,10 +104,18 @@ DROP TABLE STUDY_CONTENTS;
 DROP TABLE M_QUESTION;
 DROP TABLE S_QUESTION;
 DROP TABLE M_ANSWER;
+DROP VIEW VW_QUESTION_LIST;
+DROP VIEW VW_STUDY_CONTENTS_LIST;
+DROP VIEW VW_SEARCH_CATEGORY;
 
---- STUDY_CONTNETS 목록 전부 조회 // 추가 할 것 등록된 문제 수
-SELECT cor.CODE, cor.NAME, cat.CODE, cat.NAME, sub.CODE, sub.NAME, stu.CODE, stu.TITLE 
-FROM STUDY_CONTENTS stu, SUB_CATEGORY sub, CATEGORY cat, COURSE cor
-WHERE stu.SUB_CODE = sub.CODE AND sub.CA_CODE = cat.CODE AND cat.CO_CODE = cor.CODE ;
+-- --------------------------------------------------- 쿼리 조회 연습 -----------------------------------------------------
+-- 시간 출력
+SELECT TO_CHAR(REG_DATE, 'HH24:MI:SS')
+FROM STUDY_CONTENTS;   
 
+-- 아우터 조인   
+SELECT stu.code, COUNT(vql.CODE)
+FROM STUDY_CONTENTS stu LEFT OUTER JOIN VW_QUESTION_LIST vql ON stu.CODE = vql.STU_CODE
+GROUP BY stu.code;
 
+-- 내일 할일 ... ( 학습모듈목록에 페이지 네이션 적용, 샘플 데이터 생성 관리, 학습모듈 상세 페이지 및 문제등록 기능 구현 ) 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itperson.dao.FieldDao">
+	<resultMap id ="result" type="com.itperson.dto.Field">
+		<result property = "code" column = "CODE"/> 
+		<result property = "name" column="NAME"/>
+	</resultMap>
+
+	<select id="courseList" resultMap="result">
+		<![CDATA[
+		SELECT CODE, NAME
+		FROM VW_SEARCH_CATEGORY
+		]]>
+	</select>
+	
+	<select id="categoryList" resultMap="result">
+		<![CDATA[
+		SELECT CODE AS CODE, CA_NAME AS NAME
+		FROM VW_SEARCH_CATEGORY
+		]]>
+	</select>
+	<select id="subCategoryList" resultMap="result">
+		<![CDATA[
+		SELECT SUB_CODE AS CODE, SUB_NAME AS NAME
+		FROM VW_SEARCH_CATEGORY
+		]]>
+	</select>
+	
+	<select id="subCategoryList" parameterType="String" resultType="String">
+		<![CDATA[
+		SELECT NAME
+		FROM COURSE
+		WHERE CODE=#{value}
+		]]>
+	</select>
+	
+	<insert id="courseList" parameterType="com.itperson.dto.Course">
+		<![CDATA[
+		INSERT INTO Course (CODE, NAME)
+		VALUES (#{code}, #{name})
+		]]>
+	</insert>
+</mapper>

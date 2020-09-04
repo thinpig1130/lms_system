@@ -5,7 +5,36 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2020-09-02T12:00:00Z</updated>
+  <updated>2020-09-03T14:33:11Z</updated>
+  <entry>
+    <title>Spring Tools 4.7.2 released</title>
+    <link rel="alternate" href="https://spring.io/blog/2020/09/03/spring-tools-4-7-2-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Martin Lippert</name>
+    </author>
+    <id>tag:spring.io,2020-09-03:4189</id>
+    <updated>2020-09-03T14:33:11Z</updated>
+    <content type="html">&lt;p&gt;Dear Spring Community,&lt;/p&gt;
+&lt;p&gt;I am happy to announce the 4.7.2 release of the Spring Tools 4 for Eclipse, Visual Studio Code, and Theia.&lt;/p&gt;
+&lt;p&gt;Highlights from this release include:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;(Eclipse)&lt;/em&gt; new: this releases introduces a completely new wizard in Eclipse to add Spring Boot starter modules to existing projects. Take a look at the user guide section about it to learn all about this new and way more flexible way to add modules to your Spring Boot projects.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;(Eclipse)&lt;/em&gt; new: this releases introduces an experimental early version of support for the Spring Boot OCI image building support in combination with Docker. You can now use the Spring Boot Dashboard in Spring Tools 4 for Eclipse to create images and run them on docker, debug the app on Docker and use Spring Boot Devtools on Docker - and all this is just one click away. Check out the preliminary section about it in the user guide.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;(Eclipse)&lt;/em&gt; enhancement: Spring Tools 4 for Eclipse distributions now have the standard Eclipse tooling for Docker pre-installed&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;(Eclipse)&lt;/em&gt; fixed: wizard to grab Spring guide projects now shows errors that happen while downloading the projects in dialog title section&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;(Eclipse)&lt;/em&gt; fixed: live hover caused exceptions in certain situations, fix contributed to lsp4e project&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;(Eclipse)&lt;/em&gt; enhancement: deploy Java 11 based Spring apps to Cloud Foundry now easier via the boot dashboard&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To download the distribution for Eclipse and find links to the marketplace entries for Visual Studio Code and Theia, please go visit:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring Tools 4: &lt;a href="https://spring.io/tools/"&gt;https://spring.io/tools/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Detailed changes can be found here: &lt;a href="https://github.com/spring-projects/sts4/wiki/Changelog#2020-08-27-472-release-incl-language-servers-version-1210"&gt;https://github.com/spring-projects/sts4/wiki/Changelog#2020-08-27-472-release-incl-language-servers-version-1210&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Spring Tools 4.8.0 is scheduled to be released in late September 2020.&lt;/p&gt;
+&lt;p&gt;Enjoy!&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>Hello, Azure Spring Cloud</title>
     <link rel="alternate" href="https://spring.io/blog/2020/09/02/hello-azure-spring-cloud" />
@@ -1924,31 +1953,6 @@ Spring Security 5.4.0-RC1! You can find the complete details in the &lt;a href="
 &lt;p&gt;Spring Batch v4.3.0-M2 can be consumed with Spring Boot 2.4.0-M2, which is planned to be released soon. Stay tuned!&lt;/p&gt;&lt;h2&gt;&lt;a href="#feedback-and-contributions" class="anchor" name="feedback-and-contributions"&gt;&lt;/a&gt;Feedback and contributions&lt;/h2&gt;
 &lt;p&gt;I would like to thank all contributors who made this release possible! We look forward to your feedback on this milestone on &lt;a href="https://twitter.com/springbatch"&gt;Twitter&lt;/a&gt;, &lt;a href="https://stackoverflow.com/questions/tagged/spring-batch"&gt;StackOverflow&lt;/a&gt; or &lt;a href="https://github.com/spring-projects/spring-batch/issues/new/choose"&gt;Github&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://spring.io/projects/spring-batch"&gt;Spring Batch Home&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-batch"&gt;Source on GitHub&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-batch/docs/4.3.0-M2/reference/pdf/spring-batch-reference.pdf"&gt;Reference Documentation&lt;/a&gt;&lt;/p&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>Premiering: The RSocket Revolution</title>
-    <link rel="alternate" href="https://spring.io/blog/2020/08/13/premiering-the-rsocket-revolution" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2020-08-13:4167</id>
-    <updated>2020-08-13T08:53:28Z</updated>
-    <content type="html">&lt;p&gt;Hi, Spring fans! I have been developing a new talk and I finally got a chance to do a pre-recorded version of it for a keynote for a conference (in China) recently, and want to share the content with you all, so I&amp;rsquo;m premiering it here, too. This talk, &lt;strong&gt;The RSocket Revolution&lt;/strong&gt;, is about 38 minutes and looks at:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;some of the new features in Spring Boot 2.3x including GraalVM-capable native images&lt;/li&gt;
-  &lt;li&gt;the basics of RSocket&lt;/li&gt;
-  &lt;li&gt;fundamentals with RSocket &lt;code&gt;@Controller&lt;/code&gt;s in Spring Framework&lt;/li&gt;
-  &lt;li&gt;&lt;a href="http://twitter.com/making"&gt;Toshiaki Maki&amp;rsquo;s&lt;/a&gt; fantastic &lt;code&gt;rsc&lt;/code&gt; RSocket client&lt;/li&gt;
-  &lt;li&gt;Declarative, Feign-like clients with &lt;a href="http://github.com/spring-projects-experimental/spring-retrosocket"&gt;Spring Retrosocket&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;The &lt;code&gt;RSocketRequester&lt;/code&gt; to support making requests of RSocket services on the JVM&lt;/li&gt;
-  &lt;li&gt;Spring Integration&amp;rsquo;s reactive and RSocket support&lt;/li&gt;
-  &lt;li&gt;Bidirectional communication - where both client and service separately initiate the communication - using RSocket&lt;/li&gt;
-  &lt;li&gt;Securing RSocket endpoints with Spring Security and RSocket metadata&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;I hope you&amp;rsquo;re all healthy and doing well, and that you enjoy this roving tour of the RSocket Revolution! And, if you enjoy it (and even if you don&amp;rsquo;t!), then be sure to register for &lt;a href="https://springone.io/"&gt;&lt;strong&gt;SpringOne 2020&lt;/strong&gt;&lt;/a&gt;, happening in just a few short weeks - September 2-3: it&amp;rsquo;s virtual and it&amp;rsquo;s &lt;em&gt;free&lt;/em&gt;. There will be a ton more interesting things then - &lt;em&gt;do not miss it&lt;/em&gt;!&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/ipVfRdl5SP0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>

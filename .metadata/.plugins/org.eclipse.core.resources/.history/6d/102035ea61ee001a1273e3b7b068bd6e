@@ -1,0 +1,5 @@
+package com.itperson.dao;
+
+public interface FieldDao {
+
+}

@@ -14,6 +14,7 @@ import com.itperson.service.ContentsRegistService;
 import com.itperson.service.ContentsViewService;
 import com.itperson.service.CourseRegistService;
 import com.itperson.service.CoursesViewService;
+import com.itperson.service.Service;
 import com.itperson.service.SubCategoryRegistService;
 
 @Controller
@@ -78,8 +79,13 @@ public class AdminController {
 	@RequestMapping(value = "/contents")
 	public String AdminContents( Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
-		ContentsViewService service = new ContentsViewService(sqlSession);		
+		
+		Service service = new CategoryViewService(sqlSession);
 		service.execute(model);
+		
+		service = new ContentsViewService(sqlSession);		
+		service.execute(model);
+		
 		model.addAttribute("page_name", "학습목록");
 		return "admin/contents";
 	}	
@@ -106,11 +112,11 @@ public class AdminController {
 	
 	
 	/*----------------------------------- 문제등록 tab-------------------------------------- */
-	@RequestMapping(value = "/questions")
-	public String AdminQuestions( Model model, HttpServletRequest request) {
-		model.addAttribute("page_name", "문제등록");
-		return "admin/questions";
-	}
+//	@RequestMapping(value = "/questions")
+//	public String AdminQuestions( Model model, HttpServletRequest request) {
+//		model.addAttribute("page_name", "문제등록");
+//		return "admin/questions";
+//	}
 	@RequestMapping(value = "/question_form")
 	public String AdminQuestionsForm( Model model, HttpServletRequest request) {
 		model.addAttribute("page_name", "문제등록");

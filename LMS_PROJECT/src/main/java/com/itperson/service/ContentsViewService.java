@@ -7,13 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
-import com.itperson.dao.CategoryDao;
-import com.itperson.dao.CourseDao;
-import com.itperson.dao.StudyContentsDao;
-import com.itperson.dao.SubCategoryDao;
-import com.itperson.dto.Category;
-import com.itperson.dto.Course;
-import com.itperson.dto.SubCategory;
+import com.itperson.dao.ViewStudyContentsListDao;
+
 
 public class ContentsViewService implements Service {
 
@@ -25,76 +20,37 @@ public class ContentsViewService implements Service {
 	@Override
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();
-		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		CourseDao courseDao = sqlSession.getMapper(CourseDao.class);
+		HttpServletRequest request = (HttpServletRequest) map.get("request");		
+		
+		// request 파라미터 값 받음
+		String coCode = request.getParameter("course");
+		String caCode = request.getParameter("category");
+		String subCode = request.getParameter("subcategory");
+		String strPage = request.getParameter("page");
 		
 		int page;
-		if(request.getParameter("page")==null) {
-			page = 1; 
+		if(strPage==null) {
+			page = 1;
 		}else {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 		
+		ViewStudyContentsListDao stuDao = sqlSession.getMapper(ViewStudyContentsListDao.class);
 		
-		if(request.getParameter("subcategory")==null) {
-			if(request.getParameter("category")==null) {		
-				if(request.getParameter("course")==null) {
-					//// 전달된 파라미터 값이 없을 때
-					
-					
-					
-					
+		if(subCode==null) {
+			if(caCode==null) {		
+				if(coCode==null) {
+					model.addAttribute("lists", stuDao.allList());
 				}else {
-					
+					model.addAttribute("lists", stuDao.partOfListByCourse(coCode));
 				}
 			}else {
-				
-			}			
-		}else {
-			
-						
-		}
-		
-		
-		StudyContentsDao studyContentsDao =  sqlSession.getMapper(StudyContentsDao.class);
-		model.addAttribute("contentsList", studyContentsDao.studyContentsList());
-		model.addAttribute("page", page);
-		
-		
-		
-		//course가 선택 되었을 경우
-		if(request.getParameter("course")!=null) {
-			
-			Course curCourse = new Course();
-			curCourse.setCode(request.getParameter("course"));
-			curCourse.setName(courseDao.serchCourseName(curCourse.getCode()));
-			model.addAttribute("cur_course", curCourse);
-
-			CategoryDao categoryDao = sqlSession.getMapper(CategoryDao.class);
-			model.addAttribute("categorys", categoryDao.categoryList(curCourse.getCode()));
-			
-			//category가 선택 되었을 경우.
-			if(request.getParameter("category")!=null) {
-				Category curCategory = new Category();
-				curCategory.setCode(request.getParameter("category"));
-				curCategory.setName(categoryDao.serchCategoryName(curCategory.getCode()));
-				curCategory.setCoCode(curCourse.getCode());
-				model.addAttribute("cur_category", curCategory);
-				
-				SubCategoryDao subCategoryDao = sqlSession.getMapper(SubCategoryDao.class);
-				model.addAttribute("sub_categorys", subCategoryDao.subCategoryList(curCategory.getCode()));
-				
-				if(request.getParameter("subcategory")!=null) {
-					SubCategory curSubcategory = new SubCategory();
-					curSubcategory.setCode(request.getParameter("subcategory"));
-					curSubcategory.setName(subCategoryDao.serchSubCategoryName(curSubcategory.getCode()));
-					curSubcategory.setCaCode(curCategory.getCode());
-					model.addAttribute("cur_subcategory", curSubcategory);
-				}
+				model.addAttribute("lists", stuDao.partOfListByCategory(caCode));
 			}
+		}else {
+			model.addAttribute("lists", stuDao.partOfListBySubCategory(subCode));
 		}
-			
-		model.addAttribute("courses", courseDao.courseList());
+		model.addAttribute("page", page);
 	}
 
 }
