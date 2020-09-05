@@ -37,18 +37,22 @@ public class ContentsViewService implements Service {
 		
 		ViewStudyContentsListDao stuDao = sqlSession.getMapper(ViewStudyContentsListDao.class);
 		
-		if(subCode==null) {
-			if(caCode==null) {		
-				if(coCode==null) {
-					model.addAttribute("lists", stuDao.allList());
+		if(subCode==null || subCode.equals("")) {
+			if(caCode==null || caCode.equals("")) {		
+				if(coCode==null || coCode.equals("")) {
+					model.addAttribute("lists", stuDao.allList(page));
+					model.addAttribute("maxpage", stuDao.pageCnt());
 				}else {
-					model.addAttribute("lists", stuDao.partOfListByCourse(coCode));
+					model.addAttribute("lists", stuDao.partOfListByCourse(coCode, page));
+					model.addAttribute("maxpage", stuDao.coursePageCnt(coCode));
 				}
 			}else {
-				model.addAttribute("lists", stuDao.partOfListByCategory(caCode));
+				model.addAttribute("lists", stuDao.partOfListByCategory(caCode, page));
+				model.addAttribute("maxpage", stuDao.categoryPageCnt(caCode));
 			}
 		}else {
-			model.addAttribute("lists", stuDao.partOfListBySubCategory(subCode));
+			model.addAttribute("lists", stuDao.partOfListBySubCategory(subCode, page));
+			model.addAttribute("maxpage", stuDao.subCategoryPageCnt(subCode));
 		}
 		model.addAttribute("page", page);
 	}

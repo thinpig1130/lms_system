@@ -39,7 +39,6 @@ public class ContentsRegistService implements Service {
 		//코드 자동생성 모듈
 		String nxCode = this.nextCode(vo.getSubCode(), studyContentsDao);
 		vo.setCode(nxCode);
-		System.out.println(vo);
 
 		studyContentsDao.registStudyContents(vo);
 		
@@ -51,12 +50,14 @@ public class ContentsRegistService implements Service {
 	
 	public String nextCode(String partCode, Dao dao) {
 		
+		// 공통 사용 모듈로 리펙토링 필요.
+		
 		String maxCode = dao.maxCode(partCode);
 		
 		if(maxCode==null) {
 			String[] strCode = partCode.split("C");
 			maxCode = strCode[0] + strCode[1] + "C0";
-			System.out.println(maxCode + " maxCode");
+//			System.out.println(maxCode + " maxCode");
 		}
 		
 		String[] strArr = maxCode.split("C");
@@ -73,8 +74,8 @@ public class ContentsRegistService implements Service {
 		}
 		
 		String returnCode = strArr[0] + "C" + strNextNum;
-		
-		System.out.println(returnCode + " returnCode");
+//		
+//		System.out.println(returnCode + " returnCode");
 		return returnCode;
 	}
 

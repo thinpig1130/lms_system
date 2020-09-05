@@ -11,6 +11,7 @@ public class ViewStudyContentsList {
 	private String subName;
 	private String code;
 	private String title;
+	private int importance;
 	private Date regDate;
 	private int qCount;
 	public String getCoCode() {
@@ -72,6 +73,12 @@ public class ViewStudyContentsList {
 	}
 	public void setqCount(int qCount) {
 		this.qCount = qCount;
+	}
+	public int getImportance() {
+		return importance;
+	}
+	public void setImportance(int importance) {
+		this.importance = importance;
 	}
 	@Override
 	public String toString() {

@@ -13,39 +13,87 @@
 		<result property = "subName" column="SUB_NAME"/>
 		<result property = "code" column="CODE"/>
 		<result property = "title" column="TITLE"/>
+		<result property = "importance" column="IMPORTANCE"/>
 		<result property = "regDate" column="REG_DATE"/>
 		<result property = "qCount" column="Q_COUNT"/>
 	</resultMap>
 	
-	<select id="allList" resultMap="result">
+	<select id="allList" parameterType="int" resultMap="result">
 		<![CDATA[
 		SELECT *
-		FROM VW_STUDY_CONTENTS_LIST
+		FROM (
+		    SELECT ROW_NUMBER() OVER (ORDER BY REG_DATE DESC) NUM, ls.* 
+		    FROM VW_STUDY_CONTENTS_LIST ls
+		    )
+		WHERE NUM BETWEEN 1+((#{value}-1)*10) AND #{value}*10
 		]]>
 	</select>
 	
-	<select id="partOfListByCourse" parameterType="String" resultMap="result">
+	<select id="partOfListByCourse" parameterType="map" resultMap="result">
 		<![CDATA[
 		SELECT *
-		FROM VW_STUDY_CONTENTS_LIST
-		WHERE CO_CODE=#{value}
+		FROM (
+			SELECT ROW_NUMBER() OVER (ORDER BY REG_DATE DESC) NUM, ls.* 
+			FROM VW_STUDY_CONTENTS_LIST ls
+			WHERE CO_CODE=#{coCode}
+			)
+		WHERE NUM BETWEEN 1+((#{page}-1)*10) AND #{page}*10
 		]]>
 	</select>
 	
-	<select id="partOfListByCategory" parameterType="String" resultMap="result">
+	<select id="partOfListByCategory" parameterType="map" resultMap="result">
 		<![CDATA[
 		SELECT *
-		FROM VW_STUDY_CONTENTS_LIST
-		WHERE CA_CODE=#{value}
+		FROM (
+			SELECT ROW_NUMBER() OVER (ORDER BY REG_DATE DESC) NUM, ls.* 
+			FROM VW_STUDY_CONTENTS_LIST ls
+			WHERE CA_CODE=#{caCode}
+			)
+		WHERE NUM BETWEEN 1+((#{page}-1)*10) AND #{page}*10
 		]]>
 	</select>
 	
-	<select id="partOfListBySubCategory" parameterType="String" resultMap="result">
+	<select id="partOfListBySubCategory" parameterType="map" resultMap="result">
 		<![CDATA[
 		SELECT *
-		FROM VW_STUDY_CONTENTS_LIST
-		WHERE SUB_CODE=#{value}
+		FROM (
+			SELECT ROW_NUMBER() OVER (ORDER BY REG_DATE DESC) NUM, ls.* 
+			FROM VW_STUDY_CONTENTS_LIST ls
+			WHERE SUB_CODE=#{subCode}
+			)
+		WHERE NUM BETWEEN 1+((#{page}-1)*10) AND #{page}*10
 		]]>
 	</select>
 	
+	<select id ="pageCnt" resultType="int">
+		<![CDATA[
+			SELECT TRUNC((COUNT(*)-1)/10)+ 1 AS MAXPAGE
+			FROM VW_STUDY_CONTENTS_LIST
+		]]>
+	</select>
+	
+	<select id ="coursePageCnt" parameterType="String" resultType="int">
+		<![CDATA[
+			SELECT TRUNC((COUNT(*)-1)/10)+ 1 AS MAXPAGE
+			FROM VW_STUDY_CONTENTS_LIST
+			WHERE CO_CODE=#{value}
+		]]>
+	</select>
+	
+	<select id ="categoryPageCnt" parameterType="String" resultType="int">
+		<![CDATA[
+			SELECT TRUNC((COUNT(*)-1)/10)+ 1 AS MAXPAGE
+			FROM VW_STUDY_CONTENTS_LIST
+			WHERE CA_CODE=#{value}
+		]]>
+	</select>
+	
+	<select id ="subCategoryPageCnt" parameterType="String" resultType="int">
+		<![CDATA[
+			SELECT TRUNC((COUNT(*)-1)/10)+ 1 AS MAXPAGE
+			FROM VW_STUDY_CONTENTS_LIST
+			WHERE SUB_CODE=#{value}
+		]]>
+	</select>
+		
 </mapper>

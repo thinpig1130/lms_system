@@ -78,25 +78,37 @@
 						<div class="card card-plain">
 							<div class="card-header card-header-primary">
 								<div class="row container-fluid">
-									<h4 class="card-title mt-0">선택된과정(COR12345) &nbsp;&nbsp;>>
-										&nbsp;&nbsp;</h4>
-									<h4 class="card-title mt-0">선택된분류(CMS65789) &nbsp;&nbsp;>>
-										&nbsp;&nbsp;</h4>
-									<h4 class="card-title mt-0">선택된 소분류(SUB78788)</h4>
-								</div>
-								<div class="row container-fluid">
-									<p class="card-category">선택된 정보에 등록된 학습 목록을 보여줍니다.</p>
+									<c:if test="${empty cur_course.code}">
+										<p class="card-category"> 분류를 선택하세요! &nbsp;&nbsp;&nbsp;&nbsp; </p>
+										<p class="card-category"> >> &nbsp;&nbsp;&nbsp;&nbsp; 선택된 분류에 해당되는 목록을 보여줍니다. </p>
+									</c:if>
+									<c:if test="${not empty cur_course.code}">
+										<p class="card-category">&nbsp;&nbsp;${cur_course.name}(${cur_course.code})</p>
+									</c:if>
+									<c:if test="${not empty cur_category.code}">
+										<p class="card-category">
+											&nbsp;&nbsp;&nbsp;&nbsp;>>&nbsp;&nbsp;&nbsp;&nbsp;${cur_category.name}(${cur_category.code})
+										</p>
+									</c:if>
+									<c:if test="${not empty cur_subcategory.code}">
+										<p class="card-category">
+											&nbsp;&nbsp;&nbsp;&nbsp;>>&nbsp;&nbsp;&nbsp;&nbsp;${cur_subcategory.name}(${cur_subcategory.code})
+										</p>
+									</c:if>						
 								</div>
 							</div>
 							<div class="card-body">
 								<div class="table-responsive">
 									<table class="table table-hover">
 										<thead class="">
-											<th>과정명</th>
-											<th>분류명</th>
-											<th>소분류명</th>
-											<th>학습제목</th>
-											<th>문제수</th>
+											<tr>
+												<th>과정명</th>
+												<th>분류명</th>
+												<th>소분류명</th>
+												<th>학습제목</th>
+												<th class="text-center">중요도</th>
+												<th class="text-center">문제수</th>
+											</tr>
 										</thead>
 										<tbody>
 											<c:forEach items="${lists}" var="list">
@@ -104,9 +116,15 @@
 												<td>${list.coName}</td>
 												<td>${list.caName}</td>
 												<td>${list.subName}</td>
-												<td><a href="/admin/question_form"> ${list.title} </a>
+												<td><a href="/admin/question_form"> ${list.title} </a></td>
+												<td class="">
+													<div class="row d-flex justify-content-center">
+													<c:forEach var="i" begin="1" end="${4-list.importance}" step="1">
+														<span class="material-icons">star_rate</span>
+													</c:forEach>
+													</div>
 												</td>
-												<td> ${list.qCount} </td>
+												<td class="text-center"> ${list.qCount} </td>
 											</tr>
 											</c:forEach>
 										</tbody>
@@ -115,12 +133,13 @@
 							</div>
 						</div>
 					</div>
-					page ${page}
-
+	
 					<div class="row container-fluid d-flex justify-content-center">
-						<a class="btn btn-primary btn-sm btn-round">page ${page}</a> <a
-							class="btn btn-primary btn-sm btn-link">2</a> <a
-							class="btn btn-primary btn-sm btn-link">3</a>
+						<c:forEach var="i" begin="1" end="${maxpage}" step="1">
+							<a href="/admin/contents?page=${i}&course=${cur_course.code}
+								&category=${cur_category.code}&subcategory=${cur_subcategory.code}" 
+								class="btn btn-primary btn-sm ${i==page?'btn-round':'btn-link'}">${i}</a>
+						</c:forEach>
 					</div>
 
 				</div>

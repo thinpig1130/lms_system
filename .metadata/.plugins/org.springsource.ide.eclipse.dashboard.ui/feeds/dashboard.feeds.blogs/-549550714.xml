@@ -5,7 +5,20 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2020-09-03T14:33:11Z</updated>
+  <updated>2020-09-04T12:37:50Z</updated>
+  <entry>
+    <title>A Bootiful Podcast: SpringOne 2020, Josh's book "Reactive Spring," and Microsoft Java Architect and fellow Java Champion Jonathan Giles</title>
+    <link rel="alternate" href="https://spring.io/blog/2020/09/04/a-bootiful-podcast-springone-2020-josh-s-book-reactive-spring-and-microsoft-java-architect-and-fellow-java-champion-jonathan-giles" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2020-09-04:4190</id>
+    <updated>2020-09-04T12:37:50Z</updated>
+    <content type="html">&lt;p&gt;Hi, Spring fans! Welcome to another installment of a Bootiful Podcast! In this episode &lt;a href="http://twitter.com/starbuxman"&gt;Josh Long (@starbuxman)&lt;/a&gt; talks about the massive, virtual SpringOne 2020 event (tens of thousands of people in attendance!), his just-completed book &lt;a href="http://www.reactivespring.io"&gt;&amp;ldquo;Reactive Spring&amp;rdquo;&lt;/a&gt;, and then talks to Microsoft&amp;rsquo;s &lt;a href="https://twitter.com/jonathangiles"&gt;Jonathan Giles (@jonathangiles) &lt;/a&gt;. &lt;/p&gt;
+&lt;iframe title="SpringOne 2020, Azure Spring Cloud and fellow Java Champion and Microsoft Java architect Jonathan Giles" height="122" width="100%" style="border: none;" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/media/player/idya5-ea2839?from=pb6admin&amp;download=1&amp;version=1&amp;auto=0&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Helvetica&amp;skin=1&amp;pfauth=&amp;btn-skin=107"&gt;&lt;/iframe&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>Spring Tools 4.7.2 released</title>
     <link rel="alternate" href="https://spring.io/blog/2020/09/03/spring-tools-4-7-2-released" />
@@ -1925,34 +1938,6 @@ Spring Security 5.4.0-RC1! You can find the complete details in the &lt;a href="
 &lt;p&gt;This release includes &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v2.3.3.RELEASE"&gt;67 bug fixes, enhancements, documentation improvements, and dependency upgrades&lt;/a&gt;. Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;&lt;h3&gt;&lt;a href="#how-can-you-help" class="anchor" name="how-can-you-help"&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
 &lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href="http://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="http://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://spring.io/projects/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Batch 4.3.0-M2 is out!</title>
-    <link rel="alternate" href="https://spring.io/blog/2020/08/13/spring-batch-4-3-0-m2-is-out" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Mahmoud Ben Hassine</name>
-    </author>
-    <id>tag:spring.io,2020-08-13:4168</id>
-    <updated>2020-08-13T16:16:27Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the Spring Batch team, I am pleased to announce that Spring Batch 4.3.0-M2 is now available from our &lt;a href="https://repo.spring.io/milestone/"&gt;milestone repository&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#what-s-new" class="anchor" name="what-s-new"&gt;&lt;/a&gt;What¡¯s new?&lt;/h2&gt;
-&lt;p&gt;This release comes with a number of new features and enhancements that you can find in the &lt;a href="https://github.com/spring-projects/spring-batch/releases/tag/4.3.0-M2"&gt;release notes&lt;/a&gt;, but here are the major highlights:&lt;/p&gt;&lt;h4&gt;&lt;a href="#1-kafka-support-enhancements" class="anchor" name="1-kafka-support-enhancements"&gt;&lt;/a&gt;1. Kafka support enhancements&lt;/h4&gt;
-&lt;p&gt;By default, the &lt;code&gt;KafkaItemReader&lt;/code&gt; reads a topic from the beginning. When we initially introduced this reader in v4.2, it was not possible to configure it to read records from a custom offset. In this release, we added this feature. As a result of this addition, it is now possible to configure the reader to start from the offset stored in Kafka.&lt;/p&gt;&lt;h4&gt;&lt;a href="#2-micrometer-support-enhancements" class="anchor" name="2-micrometer-support-enhancements"&gt;&lt;/a&gt;2. Micrometer support enhancements&lt;/h4&gt;
-&lt;p&gt;Micrometer support has been introduced in v4.2 last year, and we got a lot of feedback since then. One of the requested features is the ability to know the currently active jobs. Spring Batch provides a metric called &lt;code&gt;spring.batch.job.active&lt;/code&gt; that gives the number of currently active jobs. However, until now, this metric did not let you know which specific jobs are currently active. In this release, we enriched the metric tags to make this possible.&lt;/p&gt;&lt;h4&gt;&lt;a href="#3-add-a-new-code-jobparametersincrementer-code-implementation" class="anchor" name="3-add-a-new-code-jobparametersincrementer-code-implementation"&gt;&lt;/a&gt;3. Add a new &lt;code&gt;JobParametersIncrementer&lt;/code&gt; implementation&lt;/h4&gt;
-&lt;p&gt;The &lt;code&gt;RunIdIncrementer&lt;/code&gt; serves its purpose well in most cases: It increments a job parameter called &lt;code&gt;run.id&lt;/code&gt;, which is typically used as job instance discriminator. However, in some circumstances (such as un-ordered database sequences, concurrent access to the incrementer, and others), this incrementer might generate non-unique values, which prevents new job instances from being launched.&lt;/p&gt;
-&lt;p&gt;In this release, we introduced a new &lt;code&gt;JobParametersIncrementer&lt;/code&gt; that is based on a &lt;a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/jdbc/support/incrementer/DataFieldMaxValueIncrementer.html"&gt;&lt;code&gt;DataFieldMaxValueIncrementer&lt;/code&gt;&lt;/a&gt; from Spring Framework. This incrementer provides stronger guarantees on the uniqueness of generated values compared to the &lt;code&gt;RunIdIncrementer&lt;/code&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#dependency-upgrades" class="anchor" name="dependency-upgrades"&gt;&lt;/a&gt;Dependency Upgrades&lt;/h2&gt;
-&lt;p&gt;This release upgrades Spring projects dependencies to the following versions:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Spring Framework 5.3.0-M2&lt;/li&gt;
-  &lt;li&gt;Spring Data 2020.0.0-M2&lt;/li&gt;
-  &lt;li&gt;Spring Integration 5.4.0-M2&lt;/li&gt;
-  &lt;li&gt;Spring AMQP 2.3.0-M2&lt;/li&gt;
-  &lt;li&gt;Spring for Apache Kafka 2.6.0-M1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Spring Batch v4.3.0-M2 can be consumed with Spring Boot 2.4.0-M2, which is planned to be released soon. Stay tuned!&lt;/p&gt;&lt;h2&gt;&lt;a href="#feedback-and-contributions" class="anchor" name="feedback-and-contributions"&gt;&lt;/a&gt;Feedback and contributions&lt;/h2&gt;
-&lt;p&gt;I would like to thank all contributors who made this release possible! We look forward to your feedback on this milestone on &lt;a href="https://twitter.com/springbatch"&gt;Twitter&lt;/a&gt;, &lt;a href="https://stackoverflow.com/questions/tagged/spring-batch"&gt;StackOverflow&lt;/a&gt; or &lt;a href="https://github.com/spring-projects/spring-batch/issues/new/choose"&gt;Github&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://spring.io/projects/spring-batch"&gt;Spring Batch Home&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-batch"&gt;Source on GitHub&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-batch/docs/4.3.0-M2/reference/pdf/spring-batch-reference.pdf"&gt;Reference Documentation&lt;/a&gt;&lt;/p&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itperson.dao.ViewStudyContentsListDao">
+	<resultMap id ="result" type="com.itperson.dto.ViewStudyContentsList">
+		<result property = "coCode" column = "CO_CODE"/> 
+		<result property = "coName" column="CO_NAME"/>
+		<result property = "caCode" column="CA_CODE"/>
+		<result property = "caName" column="CA_NAME"/>
+		<result property = "subCode" column="SUB_CODE"/>
+		<result property = "subName" column="SUB_NAME"/>
+		<result property = "code" column="CODE"/>
+		<result property = "title" column="TITLE"/>
+		<result property = "regDate" column="REG_DATE"/>
+		<result property = "qCount" column="Q_COUNT"/>
+	</resultMap>
+	
+	<select id="allList" parameterType="int" resultMap="result">
+		<![CDATA[
+		SELECT *
+		FROM (
+		    SELECT ROW_NUMBER() OVER (ORDER BY REG_DATE DESC) NUM, ls.* 
+		    FROM VW_STUDY_CONTENTS_LIST ls
+		    )
+		WHERE NUM BETWEEN 1+((#{value}-1)*10) AND #{value}*10
+		]]>
+	</select>
+	
+	<select id="partOfListByCourse" parameterType="map" resultMap="result">
+		<![CDATA[
+		SELECT *
+		FROM (
+			SELECT ROW_NUMBER() OVER (ORDER BY REG_DATE DESC) NUM, ls.* 
+			FROM VW_STUDY_CONTENTS_LIST ls
+			WHERE CO_CODE=#{coCode}
+			)
+		WHERE NUM BETWEEN 1+((#{page}-1)*10) AND #{page}*10
+		]]>
+	</select>
+	
+	<select id="partOfListByCategory" parameterType="map" resultMap="result">
+		<![CDATA[
+		SELECT *
+		FROM (
+			SELECT ROW_NUMBER() OVER (ORDER BY REG_DATE DESC) NUM, ls.* 
+			FROM VW_STUDY_CONTENTS_LIST ls
+			WHERE CA_CODE=#{value}
+			)
+		WHERE NUM BETWEEN 1+((#{page}-1)*10) AND #{page}*10
+		SELECT *
+		FROM VW_STUDY_CONTENTS_LIST
+		WHERE CA_CODE=#{value}
+		]]>
+	</select>
+	
+	<select id="partOfListBySubCategory" parameterType="map" resultMap="result">
+		<![CDATA[
+		SELECT *
+		FROM VW_STUDY_CONTENTS_LIST
+		WHERE SUB_CODE=#{value}
+		]]>
+	</select>
+	
+	<select id ="pageCnt" resultType="int">
+		<![CDATA[
+			SELECT TRUNC(COUNT(*)/10)+ 1 AS MAXPAGE
+			FROM VW_STUDY_CONTENTS_LIST
+		]]>
+	</select>
+	
+	<select id ="coursePageCnt" parameterType="String" resultType="int">
+		<![CDATA[
+			SELECT TRUNC(COUNT(*)/10)+ 1 AS MAXPAGE
+			FROM VW_STUDY_CONTENTS_LIST
+			WHERE CO_CODE=#{value}
+		]]>
+	</select>
+	
+	<select id ="categoryPageCnt" parameterType="String" resultType="int">
+		<![CDATA[
+			SELECT TRUNC(COUNT(*)/10)+ 1 AS MAXPAGE
+			FROM VW_STUDY_CONTENTS_LIST
+			WHERE CA_CODE=#{value}
+		]]>
+	</select>
+	
+	<select id ="subCategoryPageCnt" parameterType="String" resultType="int">
+		<![CDATA[
+			SELECT TRUNC(COUNT(*)/10)+ 1 AS MAXPAGE
+			FROM VW_STUDY_CONTENTS_LIST
+			WHERE SUB_CODE=#{value}
+		]]>
+	</select>
+		
+</mapper>

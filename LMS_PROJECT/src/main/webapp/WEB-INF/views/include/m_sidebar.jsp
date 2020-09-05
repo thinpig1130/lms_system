@@ -27,7 +27,7 @@
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="/admin/manage/users">
-              <i class="material-icons">support_agent</i>
+              <i class="material-icons">person_pin</i>
               <p>사용자관리</p>
             </a>
           </li>
