@@ -15,19 +15,4 @@
 		VALUES (#{code}, #{name})
 		]]>
 	</insert>
-	
-	<select id="courseList" resultMap="result">
-		<![CDATA[
-		SELECT CODE, NAME
-		FROM COURSE
-		]]>
-	</select>
-	
-	<select id="serchCourseName" parameterType="String" resultType="String">
-		<![CDATA[
-		SELECT NAME
-		FROM COURSE
-		WHERE CODE=#{value}
-		]]>
-	</select>
 </mapper>

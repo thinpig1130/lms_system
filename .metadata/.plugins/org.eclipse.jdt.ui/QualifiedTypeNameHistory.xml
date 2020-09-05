@@ -5,7 +5,9 @@
 <fullyQualifiedTypeName name="com.itperson.dao.SubCategoryDao"/>
 <fullyQualifiedTypeName name="java.sql.Date"/>
 <fullyQualifiedTypeName name="com.itperson.dto.ViewStudyContentsList"/>
-<fullyQualifiedTypeName name="com.itperson.dto.Field"/>
 <fullyQualifiedTypeName name="com.itperson.service.CategoryViewService"/>
 <fullyQualifiedTypeName name="com.itperson.service.Service"/>
+<fullyQualifiedTypeName name="com.itperson.dto.Field"/>
+<fullyQualifiedTypeName name="com.itperson.dto.Question"/>
+<fullyQualifiedTypeName name="com.itperson.dao.QuestionDao"/>
 </qualifiedTypeNameHistroy>

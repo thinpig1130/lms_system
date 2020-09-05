@@ -7,13 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.itperson.service.CategoryRegistService;
 import com.itperson.service.CategoryViewService;
+import com.itperson.service.ContentDetailsViewService;
 import com.itperson.service.ContentsRegistService;
 import com.itperson.service.ContentsViewService;
 import com.itperson.service.CourseRegistService;
 import com.itperson.service.CoursesViewService;
+import com.itperson.service.QuestionRegistService;
 import com.itperson.service.Service;
 import com.itperson.service.SubCategoryRegistService;
 
@@ -89,7 +92,6 @@ public class AdminController {
 		model.addAttribute("page_name", "학습목록");
 		return "admin/contents";
 	}	
-	
 	@RequestMapping(value = "/contents_form")
 	public String AdminContent( Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -99,7 +101,6 @@ public class AdminController {
 		model.addAttribute("page_name", "학습내용");
 		return "admin/contents_form";
 	}
-	
 	@RequestMapping(value = "/contents/regist")
 	public String AdminRegistContent( Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -109,19 +110,33 @@ public class AdminController {
 		return "redirect:/admin/contents";
 	}
 	
+	@RequestMapping(value = "/contents/details")
+	public String AdminQuestionsForm( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		
+		Service service = new ContentDetailsViewService(sqlSession);
+		service.execute(model);
+		
+		model.addAttribute("page_name", "학습모듈 상세 보기");
+		return "admin/content_details";
+	}
+	
 	
 	
 	/*----------------------------------- 문제등록 tab-------------------------------------- */
-//	@RequestMapping(value = "/questions")
-//	public String AdminQuestions( Model model, HttpServletRequest request) {
-//		model.addAttribute("page_name", "문제등록");
-//		return "admin/questions";
-//	}
-	@RequestMapping(value = "/question_form")
-	public String AdminQuestionsForm( Model model, HttpServletRequest request) {
-		model.addAttribute("page_name", "문제등록");
-		return "admin/question_form";
+	@RequestMapping(value = "/questions/regist", method = RequestMethod.POST)
+	public String AdminQuestions( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		Service service = new QuestionRegistService(sqlSession);
+		service.execute(model);
+		
+		return "redirect:/admin/contents/details";
 	}
+//	@RequestMapping(value = "/question_form")
+//	public String AdminQuestionsForm( Model model, HttpServletRequest request) {
+//		model.addAttribute("page_name", "문제등록");
+//		return "admin/question_form";
+//	}
 	
 	
 	/*----------------------------------- 사용자관리 tab-------------------------------------- */

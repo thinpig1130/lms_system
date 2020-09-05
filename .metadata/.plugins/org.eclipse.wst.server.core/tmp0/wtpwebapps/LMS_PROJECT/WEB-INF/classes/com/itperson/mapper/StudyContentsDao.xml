@@ -20,14 +20,7 @@
 		]]>
 	</insert>
 	
-	<select id="studyContentsList" resultMap="result">
-		<![CDATA[
-		SELECT CODE, IMPORTANCE, TITLE, REG_DATE, SUB_CODE
-		FROM STUDY_CONTENTS
-		]]>
-	</select>
-	
-	<select id="serchStudyContents" parameterType="String" resultMap="result">
+	<select id="searchStudyContents" parameterType="String" resultMap="result">
 		<![CDATA[
 		SELECT CODE, IMPORTANCE, TITLE, CONTENTS, REG_DATE, SUB_CODE
 		FROM STUDY_CONTENTS

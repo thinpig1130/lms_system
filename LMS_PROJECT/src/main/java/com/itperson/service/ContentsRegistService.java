@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
+import com.itperson.common.CommonModules;
 import com.itperson.dao.Dao;
 import com.itperson.dao.StudyContentsDao;
 import com.itperson.dto.StudyContents;
@@ -32,12 +33,10 @@ public class ContentsRegistService implements Service {
 		vo.setTitle(request.getParameter("title"));
 		vo.setContents(request.getParameter("contents"));
 		
-		
 		StudyContentsDao studyContentsDao = sqlSession.getMapper(StudyContentsDao.class);
 		
-		
-		//코드 자동생성 모듈
-		String nxCode = this.nextCode(vo.getSubCode(), studyContentsDao);
+		//코드 자동생성 모듈이용
+		String nxCode = CommonModules.nextCode(vo.getSubCode(), studyContentsDao);
 		vo.setCode(nxCode);
 
 		studyContentsDao.registStudyContents(vo);
@@ -46,37 +45,6 @@ public class ContentsRegistService implements Service {
 		model.addAttribute("category", cacode);
 		model.addAttribute("subcategory", vo.getSubCode());
 		
-	}
-	
-	public String nextCode(String partCode, Dao dao) {
-		
-		// 공통 사용 모듈로 리펙토링 필요.
-		
-		String maxCode = dao.maxCode(partCode);
-		
-		if(maxCode==null) {
-			String[] strCode = partCode.split("C");
-			maxCode = strCode[0] + strCode[1] + "C0";
-//			System.out.println(maxCode + " maxCode");
-		}
-		
-		String[] strArr = maxCode.split("C");
-		
-		int len = 3;
-		
-		int nextNum = Integer.parseInt(strArr[1])+1;
-		
-		String strNextNum = nextNum+"";
-		
-		
-		while(len > strNextNum.length()) {
-			strNextNum = "0" + strNextNum; 
-		}
-		
-		String returnCode = strArr[0] + "C" + strNextNum;
-//		
-//		System.out.println(returnCode + " returnCode");
-		return returnCode;
 	}
 
 }

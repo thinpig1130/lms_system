@@ -116,7 +116,7 @@
 												<td>${list.coName}</td>
 												<td>${list.caName}</td>
 												<td>${list.subName}</td>
-												<td><a href="/admin/question_form"> ${list.title} </a></td>
+												<td><a href="/admin//contents/details?code=${list.code}"> ${list.title} </a></td>
 												<td class="">
 													<div class="row d-flex justify-content-center">
 													<c:forEach var="i" begin="1" end="${4-list.importance}" step="1">

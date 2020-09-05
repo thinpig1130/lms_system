@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itperson.dao.QuestionDao">
+	<resultMap id ="question" type="com.itperson.dto.Question"> 
+		<result property = "code" column = "CODE"/> 
+		<result property = "question" column="QUESTION"/>
+		<result property = "stuCode" column = "STU_CODE"/>
+		<result property = "type" column = "TYPE"/>
+	</resultMap>
+	
+	<resultMap id ="mQuestion" type="com.itperson.dto.MQuestion"> 
+		<result property = "code" column = "CODE"/> 
+		<result property = "question" column="QUESTION"/>
+		<result property = "stuCode" column = "STU_CODE"/>
+		<result property = "type" column = "TYPE"/>
+	</resultMap>
+	
+	<resultMap id ="sQuestion" type="com.itperson.dto.MQuestion"> 
+		<result property = "code" column = "CODE"/> 
+		<result property = "question" column="QUESTION"/>
+		<result property = "stuCode" column = "STU_CODE"/>
+		<result property = "type" column = "TYPE"/>
+		<result property = "answer" column ="ANSWER"/>
+	</resultMap>
+	
+	<resultMap id ="mAnswer" type="com.itperson.dto.MAnswer"> 
+		<result property = "code" column = "CODE"/> 
+		<result property = "qCode" column="Q_CODE"/>
+		<result property = "answer" column = "ANSWER"/>
+		<result property = "correct" column = "CORRECT"/>
+	</resultMap>
+	
+	<insert id="registQuestion" parameterType="mQuestion">
+		<![CDATA[
+		INSERT INTO MEMBER (ID, EMAIL, PASSWORD)
+		VALUES (#{id}, #{email}, #{password})
+		]]>
+	</insert>
+	
+	<insert id="registQuestion" parameterType="sQuestion">
+		<![CDATA[
+		INSERT INTO MEMBER (ID, EMAIL, PASSWORD)
+		VALUES (#{id}, #{email}, #{password})
+		]]>
+	</insert>
+	
+	<select id = "memberLogin" parameterType="map" resultType="String">
+		<![CDATA[
+		SELECT ID
+		FROM MEMBER 
+		WHERE ID=#{id} AND PASSWORD=#{pwd}
+		]]>
+	</select>

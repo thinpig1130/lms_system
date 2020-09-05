@@ -16,20 +16,5 @@
 		VALUES (#{code}, #{name}, #{coCode})
 		]]>
 	</insert>
-	
-	<select id="categoryList" parameterType="String" resultMap="result">
-		<![CDATA[
-		SELECT CODE, NAME
-		FROM CATEGORY
-		WHERE CO_CODE=#{value}
-		]]>
-	</select>
-	
-	<select id="serchCategoryName" parameterType="String" resultType="String">
-		<![CDATA[
-		SELECT NAME
-		FROM CATEGORY
-		WHERE CODE=#{value}
-		]]>
-	</select>
+
 </mapper>

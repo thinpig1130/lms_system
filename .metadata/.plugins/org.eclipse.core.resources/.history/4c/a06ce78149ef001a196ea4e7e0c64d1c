@@ -1,0 +1,40 @@
+package com.itperson.service;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
+
+import com.itperson.dto.Question;
+import com.itperson.dto.SQuestion;
+
+public class QuestionRegistService implements Service {
+
+	private SqlSession sqlSession;
+	public QuestionRegistService(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	@Override
+	public void execute(Model model) {
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		String type = request.getParameter("type");
+		
+		if(type.equals("S")) {
+			SQuestion ques = new SQuestion();
+			ques.setAnswer(request.getParameter("answer"));
+			ques.setQuestion(request.getParameter("question"));
+			ques.setStuCode(request.getParameter("stucode"));
+			System.out.println(ques);
+		}else {
+			System.out.println(ques);
+		}		
+		
+		model.addAttribute("code", ques.getStuCode());
+	}
+
+}

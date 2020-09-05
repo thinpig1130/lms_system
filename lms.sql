@@ -67,10 +67,10 @@ CREATE TABLE "M_ANSWER" (
 --------------------------------------------뷰 생성 -------------------------------------
 --- QUESTION_LIST 뷰.
 CREATE OR REPLACE VIEW VW_QUESTION_LIST AS
-    SELECT CODE,STU_CODE
+    SELECT CODE, STU_CODE, QUESTION, 'M' AS TYPE
     FROM M_QUESTION
     UNION
-    SELECT CODE, STU_CODE
+    SELECT CODE, STU_CODE, QUESTION, 'S' AS TYPE
     FROM S_QUESTION;
 
 --- STUDY_CONTNETS_LIST 뷰.
@@ -118,40 +118,10 @@ SELECT stu.code, COUNT(vql.CODE)
 FROM STUDY_CONTENTS stu LEFT OUTER JOIN VW_QUESTION_LIST vql ON stu.CODE = vql.STU_CODE
 GROUP BY stu.code;
 
--- 내일 할일 ... ( 학습모듈목록에 페이지 네이션 적용, 샘플 데이터 생성 관리, 학습모듈 상세 페이지 및 문제등록 기능 구현 ) 
+-- 내일 할일 ... ( 개관식 문제등록 UI 완성 및 기능 구현, 사용자 관리 페이지 구현, 로그인 세션 관리 가능 하게 전체에 적용(로그인 후에만 이용할 수 있도록 함)) 
 
-    SELECT ROW_NUMBER() OVER (ORDER BY REG_DATE DESC) NUM, ls.* 
-    FROM VW_STUDY_CONTENTS_LIST ls;
-
-
-
-
-			SELECT ID, TITLE, WRITER_ID, CONTENT, REGDATE, HIT, FILES FROM(
-		    SELECT ROW_NUMBER() OVER (ORDER BY REGDATE DESC) NUM, NOTICE.* 
-		    FROM NOTICE
-			)WHERE NUM BETWEEN 1+((#{value}-1)*10) AND #{value}*10;
-            
-            
-SELECT *
-FROM VW_STUDY_CONTENTS_LIST;
-
-SELECT *
-FROM (
-    SELECT ROW_NUMBER() OVER (ORDER BY REG_DATE DESC) NUM, ls.* 
-    FROM VW_STUDY_CONTENTS_LIST ls
-    )
-WHERE NUM BETWEEN 1+((2-1)*10) AND 2*10;
-
-SELECT *
-		FROM (
-			SELECT ROW_NUMBER() OVER (ORDER BY REG_DATE DESC) NUM, ls.* 
-			FROM VW_STUDY_CONTENTS_LIST ls
-			WHERE CO_CODE='C01'
-			)
-		WHERE NUM BETWEEN 1+((2-1)*10) AND 2*10;
-
-
-
-
-
+-- 불필요한 DAO 메소드 삭제 
+-- 학습 상세페이지에 정보전달 하는 DB 완성
+-- 주관식 문제 등록 완성
+-- 공통 모듈 nextCode 메소드 분리
 

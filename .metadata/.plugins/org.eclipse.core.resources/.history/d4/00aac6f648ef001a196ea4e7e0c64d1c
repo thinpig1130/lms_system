@@ -1,0 +1,26 @@
+package com.itperson.dto;
+
+public class SQuestion extends Question{
+	private String answer;
+
+	public SQuestion() {};
+	public SQuestion(Question ques) {
+		this.setType(ques.getType());
+		this.setCode(ques.getCode());
+		this.setStuCode(ques.getStuCode());
+		this.setQuestion(ques.getQuestion());
+	}
+	
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+	@Override
+	public String toString() {
+		return "SQuestion [answer=" + answer + ", getCode()=" + getCode() + ", getQuestion()=" + getQuestion()
+				+ ", getStuCode()=" + getStuCode() + ", getType()=" + getType() + "]";
+	}
+
+}

@@ -1,0 +1,36 @@
+package com.itperson.dto;
+
+public class MAnswer {
+	private int code;
+	private String qCode;
+	private String answer;
+	private String correct;
+	public int getCode() {
+		return code;
+	}
+	public void setCode(int code) {
+		this.code = code;
+	}
+	public String getqCode() {
+		return qCode;
+	}
+	public void setqCode(String qConde) {
+		this.qCode = qConde;
+	}
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+	public String getCorrect() {
+		return correct;
+	}
+	public void setCorrect(String correct) {
+		this.correct = correct;
+	}
+	@Override
+	public String toString() {
+		return "MAnswer [code=" + code + ", qConde=" + qCode + ", answer=" + answer + ", correct=" + correct + "]";
+	}
+}

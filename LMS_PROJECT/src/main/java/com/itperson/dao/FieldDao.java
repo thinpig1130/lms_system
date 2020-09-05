@@ -15,6 +15,7 @@ public interface FieldDao {
 	public Field serchCourseSet(String coCode);
 	public Field serchCategorySet(String caCode);
 	public Field serchSubCategorySet(String subCode);
+	public Field studyContentsBelongs(String stuCode);
 	public Field subCategoryBelongs(String subCode);
 	public Field categoryBelongs(String caCode);
 }

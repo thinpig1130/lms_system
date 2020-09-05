@@ -1,0 +1,10 @@
+package com.itperson.common;
+
+import com.itperson.dao.Dao;
+
+public class CommonModules {
+	public static String nextCode(String code, Dao dao) {
+		return code;
+	};
+
+}
