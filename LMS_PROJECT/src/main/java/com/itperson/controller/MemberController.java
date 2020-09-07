@@ -48,6 +48,14 @@ public class MemberController {
 		}
 	}
 	
+	@RequestMapping(value = "/logout")
+	public String memberlogout( Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "redirect:/home";
+	}
+	
+	
 	@RequestMapping(value = "/loginform")
 	public String memberLoginForm( Model model) {
 		model.addAttribute("page_name", "로그인");

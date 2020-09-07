@@ -1,0 +1,7 @@
+package com.itperson.common;
+
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+public class AdminCheckInterceptor extends HandlerInterceptorAdapter {
+
+}

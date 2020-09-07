@@ -16,6 +16,9 @@ import com.itperson.service.ContentsRegistService;
 import com.itperson.service.ContentsViewService;
 import com.itperson.service.CourseRegistService;
 import com.itperson.service.CoursesViewService;
+import com.itperson.service.ManagerDeleteService;
+import com.itperson.service.ManagerResisterService;
+import com.itperson.service.MembersViewService;
 import com.itperson.service.QuestionRegistService;
 import com.itperson.service.Service;
 import com.itperson.service.SubCategoryRegistService;
@@ -30,9 +33,9 @@ public class AdminController {
 	/*----------------------------------- 관리자 로그인 -------------------------------------- */
 	@RequestMapping(value = {"/enter",""})
 	public String AdminEnter( Model model, HttpServletRequest request) {
-		model.addAttribute("request", request);
-		model.addAttribute("page_name", "관리자로그인");
-		return "admin/enter";
+//		model.addAttribute("request", request);
+//		model.addAttribute("page_name", "관리자로그인");
+		return "redirect:/admin/courses";
 	}
 	
 	/*----------------------------------- 과정등록 tab-------------------------------------- */
@@ -119,6 +122,9 @@ public class AdminController {
 		
 		model.addAttribute("page_name", "학습모듈 상세 보기");
 		return "admin/content_details";
+		
+		
+		// 학습모듈 상세와 함께 등록된 문제 List를 함께 보여주면 좋겠다.^^ ;; 나중에 기능 확장 !! 
 	}
 	
 	
@@ -132,18 +138,37 @@ public class AdminController {
 		
 		return "redirect:/admin/contents/details";
 	}
-//	@RequestMapping(value = "/question_form")
-//	public String AdminQuestionsForm( Model model, HttpServletRequest request) {
-//		model.addAttribute("page_name", "문제등록");
-//		return "admin/question_form";
-//	}
+	
+	//문제 상세조회 및 수정관련 페이지 추가 확정 예정
 	
 	
 	/*----------------------------------- 사용자관리 tab-------------------------------------- */
-	@RequestMapping(value = "/manage/users")
+	@RequestMapping(value = "/users")
 	public String ManageUsers( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		Service service = new MembersViewService(sqlSession);
+		service.execute(model);
+		
 		model.addAttribute("page_name", "사용자관리");
 		return "admin/manage_users";
+	}
+	
+	@RequestMapping(value = "/users/regist_manager")
+	public String RegistManager( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		Service service = new ManagerResisterService(sqlSession);
+		service.execute(model);
+		
+		return "redirect:/admin/users";
+	}	
+	
+	@RequestMapping(value = "/users/delete_manager")
+	public String DeleteManager( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		Service service = new ManagerDeleteService(sqlSession);
+		service.execute(model);
+		
+		return "redirect:/admin/users";
 	}
 	
 	/*----------------------------------- 관리자 답변 tab-------------------------------------- */
@@ -155,7 +180,7 @@ public class AdminController {
 	}
 
 	
-	/*----------------------------------- 관리자 답변 tab-------------------------------------- */
+	/*----------------------------------- Test 를 위한 URL / 개발 완료시 삭제 요망 -------------------------------------- */
 	@RequestMapping(value = "/test")
 	public String ManageTest( Model model, HttpServletRequest request) {
 		

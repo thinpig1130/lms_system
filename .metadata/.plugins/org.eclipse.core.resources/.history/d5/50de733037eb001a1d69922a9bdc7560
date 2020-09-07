@@ -1,9 +1,0 @@
-package com.itperson.dao;
-
-
-import com.itperson.dto.Member;
-
-public interface MemberDao {
-	public void memberJoin(Member vo);
-	public String checkPw(@Param("id") String id, @Param("pwd") String pw);
-}

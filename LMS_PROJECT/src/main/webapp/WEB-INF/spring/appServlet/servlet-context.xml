@@ -42,6 +42,25 @@
 	
 	<beans:bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<beans:property name="dataSource" ref="dataSource" />
-	</beans:bean>	
+	</beans:bean>
+	
+		
+	<beans:bean id="LoginCheckInterceptor" class="com.itperson.common.LoginCheckInterceptor"> </beans:bean>
+
+	<interceptors>
+		<interceptor>
+		<mapping path="/*"/>
+		<beans:ref bean="LoginCheckInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	<beans:bean id="AdminCheckInterceptor" class="com.itperson.common.AdminCheckInterceptor"> </beans:bean>
+
+	<interceptors>
+		<interceptor>
+		<mapping path="/admin/*"/>
+		<beans:ref bean="AdminCheckInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

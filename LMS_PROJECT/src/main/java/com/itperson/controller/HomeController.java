@@ -34,5 +34,14 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("page_name", "홈");
 		return "home";
-	}	
+	}
+	
+	@RequestMapping(value = "/error/enter")
+	public String EnterError(Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+//		model.addAttribute("serverTime", formattedDate );
+//		model.addAttribute("page_name", "홈");
+		return "error/enter_error";
+	}
 }

@@ -49,8 +49,8 @@
 	
 	<insert id="registAnswer" parameterType="com.itperson.dto.MAnswer">
 		<![CDATA[
-		INSERT INTO MEMBER (ID, EMAIL, PASSWORD)
-		VALUES (#{id}, #{email}, #{password})
+		INSERT INTO M_ANSWER (CODE, Q_CODE, ANSWER, CORRECT)
+		VALUES (#{code}, #{qCode}, #{answer}, #{correct})
 		]]>
 	</insert>
 	

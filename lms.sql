@@ -4,6 +4,12 @@ CREATE TABLE "MEMBER" (
    "EMAIL"    VARCHAR2(100),
    "PASSWORD" VARCHAR2(50)
 );
+-- MANAGER
+CREATE TABLE "MANAGER" (
+    "ID" VARCHAR2(50) PRIMARY KEY,
+    "EMAIL" VARCHAR2(100),
+    FOREIGN KEY (ID) REFERENCES "MEMBER"(ID)
+);
 
 -- CODE C99 과정은 99개까지 등록가능.
 CREATE TABLE "COURSE" (
@@ -55,14 +61,16 @@ CREATE TABLE "S_QUESTION" (
    FOREIGN KEY (STU_CODE) REFERENCES "STUDY_CONTENTS"(CODE)
 );
 
+
 CREATE TABLE "M_ANSWER" (
    "CODE"    NUMERIC,
-   "Q_CODE"  CHAR(8),
+   "Q_CODE"  CHAR(13),
    "ANSWER"  VARCHAR2(150),
-   "CORRECT" CHAR(1),
+   "CORRECT" CHAR(1),                                                       -- 'O' OR 'X'
    PRIMARY KEY (CODE,Q_CODE), 
    FOREIGN KEY (Q_CODE) REFERENCES "M_QUESTION"(CODE)
 );
+
 
 --------------------------------------------뷰 생성 -------------------------------------
 --- QUESTION_LIST 뷰.
@@ -97,6 +105,7 @@ CREATE OR REPLACE VIEW VW_SEARCH_CATEGORY AS
 ------------------------------------------ 테이블 수정을 돕기 위한 삭제문 --------------------------------------------------  
 
 DROP TABLE MEMBER;
+DROP TABLE MANAGER;
 DROP TABLE COURSE;
 DROP TABLE CATEGORY;
 DROP TABLE SUB_CATEGORY;
@@ -118,10 +127,11 @@ SELECT stu.code, COUNT(vql.CODE)
 FROM STUDY_CONTENTS stu LEFT OUTER JOIN VW_QUESTION_LIST vql ON stu.CODE = vql.STU_CODE
 GROUP BY stu.code;
 
--- 내일 할일 ... ( 개관식 문제등록 UI 완성 및 기능 구현, 사용자 관리 페이지 구현, 로그인 세션 관리 가능 하게 전체에 적용(로그인 후에만 이용할 수 있도록 함)) 
+-- 내일 할일 ... ( error 홈으로 이동 링크 / 사용자 관리 중. 자기 자신은 삭제 할 수 없도록 하는 기능 추가 )
 
--- 불필요한 DAO 메소드 삭제 
--- 학습 상세페이지에 정보전달 하는 DB 완성
--- 주관식 문제 등록 완성
--- 공통 모듈 nextCode 메소드 분리
+-- 문제관련 샘플 데이터 쿼리 생성
+-- 사용자 관리 페이지 UI 구현
+-- 사용자 관리 기능 구현
+-- 관리자만 페이지에 접속 할 수 있도록 interceptor 설정.
+
 

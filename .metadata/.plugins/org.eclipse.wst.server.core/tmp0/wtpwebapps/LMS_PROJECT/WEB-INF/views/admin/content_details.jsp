@@ -51,13 +51,11 @@
                       <li class="nav-item col-md-5">
                         <a class="nav-link active" href="#m_question" data-toggle="tab">
                           <i class="material-icons">bug_report</i> 객관식
-                          <div class="ripple-container"></div>
                         </a>
                       </li>
                       <li class="nav-item col-md-5">
                         <a class="nav-link" href="#s_question" data-toggle="tab">
                           <i class="material-icons">code</i> 주관식
-                          <div class="ripple-container"></div>
                         </a>
                       </li>
                     </ul>
@@ -66,8 +64,12 @@
               </div>
               <div class="card-body">
                 <div class="tab-content">
+                
+                
+                  <!-- 객관식  입력 폼 -->
                   <div class="tab-pane active" id="m_question">
                     <form action="/admin/questions/regist" method="POST">
+                      
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
@@ -80,51 +82,89 @@
                           </div>
                         </div>
                       </div>
+                      
+                      <!-- 보기입력 시작 -->
                       <div class="row">
                         <div class="col-md-12">
+                          
                           <div class="row container-fluid">
                             <div class="form-check form-check-radio form-check-inline">
                               <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="choice" value="0">
+                                <input class="form-check-input" type="radio" name="correct" value="1" checked>
                                 <span class="circle">
                                     <span class="check"></span>
                                 </span>
                               </label>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-10">
                               <div class="form-group">
                                 <label class="bmd-label-floating">보기입력</label>
-                                <input name="answer[]" type="text" class="form-control">
+                                <input name="answer1" type="text" class="form-control">
                               </div>
                             </div>
                           </div>
+                          
                           <div class="row container-fluid">
                             <div class="form-check form-check-radio form-check-inline">
                               <label class="form-check-label">
-                                <input name="answer[]" class="form-check-input" type="radio" name="choice" value="0">
+                                <input class="form-check-input" type="radio" name="correct" value="2">
                                 <span class="circle">
                                     <span class="check"></span>
                                 </span>
                               </label>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-10">
                               <div class="form-group">
                                 <label class="bmd-label-floating">보기입력</label>
-                                <input type="text" class="form-control">
+                                <input name="answer2" type="text" class="form-control">
                               </div>
                             </div>
-                            <div>
-                              <button type="button" rel="tooltip" title="Add" class="btn btn-white btn-link btn-sm">
-                                <i class="material-icons">add</i>
-                              </button>
+                          </div>
+                          
+                          <div class="row container-fluid">
+                            <div class="form-check form-check-radio form-check-inline">
+                              <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="correct" value="3">
+                                <span class="circle">
+                                    <span class="check"></span>
+                                </span>
+                              </label>
+                            </div>
+                            <div class="col-md-10">
+                              <div class="form-group">
+                                <label class="bmd-label-floating">보기입력</label>
+                                <input name="answer3" type="text" class="form-control">
+                              </div>
                             </div>
                           </div>
+                          
+                          <div class="row container-fluid">
+                            <div class="form-check form-check-radio form-check-inline">
+                              <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="correct" value="4">
+                                <span class="circle">
+                                    <span class="check"></span>
+                                </span>
+                              </label>
+                            </div>
+                            <div class="col-md-10">
+                              <div class="form-group">
+                                <label class="bmd-label-floating">보기입력</label>
+                                <input name="answer4" type="text" class="form-control">
+                              </div>
+                            </div>
+                          </div>
+                          
                         </div>
                       </div>
+                      
                       <button type="submit" class="btn btn-primary pull-right">등록</button>
-                      <div class="clearfix"></div>
+
                     </form>
                   </div>
+                  
+                  
+                  <!-- 주관식 입력 폼 -->
                   <div class="tab-pane" id="s_question">
                     <form action="/admin/questions/regist" method="POST">
                       <div class="row">
@@ -150,76 +190,6 @@
                       <button type="submit" class="btn btn-primary pull-right">등록</button>
                       <div class="clearfix"></div>
                     </form>
-                  </div>
-                  <div class="tab-pane" id="settings">
-                    <table class="table">
-                      <tbody>
-                        <tr>
-                          <td>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value="">
-                                <span class="form-check-sign">
-                                  <span class="check"></span>
-                                </span>
-                              </label>
-                            </div>
-                          </td>
-                          <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                          <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                              <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                              <i class="material-icons">close</i>
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value="" checked>
-                                <span class="form-check-sign">
-                                  <span class="check"></span>
-                                </span>
-                              </label>
-                            </div>
-                          </td>
-                          <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                          </td>
-                          <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                              <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                              <i class="material-icons">close</i>
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="form-check">
-                              <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value="" checked>
-                                <span class="form-check-sign">
-                                  <span class="check"></span>
-                                </span>
-                              </label>
-                            </div>
-                          </td>
-                          <td>Sign contract for "What are conference organizers afraid of?"</td>
-                          <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                              <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                              <i class="material-icons">close</i>
-                            </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
                   </div>
                 </div>
               </div>

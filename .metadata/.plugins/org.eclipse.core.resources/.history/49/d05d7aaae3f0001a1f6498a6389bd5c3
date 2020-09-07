@@ -1,0 +1,36 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
+<html>
+<head>
+	<%@ include file="../include/head.jsp" %>
+</head>
+<body class="dark-edition">
+ <div class="wrapper">
+    <div class="container-fluid">
+    	<div class="row">
+            <div class="col-lg-6 col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">접속 오류 !! </h4>
+                  <p class="card-category">New employees on 15th September, 2016</p>
+                </div>
+                <div class="card-body table-responsive">
+                                  접근 권한이 없는 페이지에 접속요청을 하셨습니다.
+                </div>
+              </div>
+            </div>
+       </div>
+
+       <div class="card">
+         <div class="card-header card-header-primary">
+           <h4 class="card-title">접속 오류!</h4>
+         </div>
+         <div class="card-body">
+         	접근 권한이 없는 페이지에 접속요청을 하셨습니다.
+         </div>
+     </div>
+  </div>
+<%@ include file="../include/corejs.jsp" %>
+</body>
+</html>

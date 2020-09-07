@@ -27,7 +27,7 @@ public class CommonModules {
 			}
 			returnCode = strArr[0] + "C" + strNextNum;	
 		}
-		System.out.println(returnCode + " returnCode");
+//		System.out.println(returnCode + " returnCode");
 		return returnCode;
 	};
 

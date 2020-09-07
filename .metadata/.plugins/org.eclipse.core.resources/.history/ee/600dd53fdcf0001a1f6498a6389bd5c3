@@ -1,0 +1,27 @@
+package com.itperson.common;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import com.itperson.dao.MemberDao;
+
+public class AdminCheckInterceptor extends HandlerInterceptorAdapter {
+	
+	@Autowired
+	private SqlSession sqlSession;
+	
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+    	String id = (String) request.getSession().getAttribute("id");
+    	modelAndView.addObject("id", id);
+    	
+    	MemberDao dao = sqlSession.getMapper(MemberDao.class);
+    	System.out.println(dao.checkManager(id));
+    	
+    }
+}

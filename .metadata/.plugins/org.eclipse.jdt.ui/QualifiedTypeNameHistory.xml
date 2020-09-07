@@ -10,4 +10,7 @@
 <fullyQualifiedTypeName name="com.itperson.dto.Field"/>
 <fullyQualifiedTypeName name="com.itperson.dto.Question"/>
 <fullyQualifiedTypeName name="com.itperson.dao.QuestionDao"/>
+<fullyQualifiedTypeName name="com.itperson.dao.MemberDao"/>
+<fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
+<fullyQualifiedTypeName name="com.itperson.dto.Member"/>
 </qualifiedTypeNameHistroy>

@@ -29,7 +29,7 @@
           </nav>
           <div class="copyright float-right" id="date">
             , made with <i class="material-icons">favorite</i> by
-            <a href="https://www.creative-tim.com" target="_blank">잇퍼슨</a> for a better learn.
+            <a href="https://www.creative-tim.com" target="_blank">잇플</a> for a better learn.
           </div>
         </div>
       </footer>

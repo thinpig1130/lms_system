@@ -5,6 +5,16 @@ public class MAnswer {
 	private String qCode;
 	private String answer;
 	private String correct;
+	
+	
+	public MAnswer() {};
+	public MAnswer(int code, String qCode, String answer, String correct) {
+		super();
+		this.code = code;
+		this.qCode = qCode;
+		this.answer = answer;
+		this.correct = correct;
+	}
 	public int getCode() {
 		return code;
 	}

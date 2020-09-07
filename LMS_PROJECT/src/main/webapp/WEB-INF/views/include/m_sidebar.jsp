@@ -3,7 +3,7 @@
 
   <div class="sidebar" data-color="purple" data-background-color="black" data-image="/resources/assets/img/sidebar-2.jpg">
       <div class="logo"><a href="/home" class="simple-text logo-normal">
-        	  사이트이름
+        	  ${ ad }
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
@@ -26,7 +26,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="/admin/manage/users">
+            <a class="nav-link" href="/admin/users">
               <i class="material-icons">person_pin</i>
               <p>사용자관리</p>
             </a>

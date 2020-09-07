@@ -1,0 +1,171 @@
+package com.itperson.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.itperson.service.CategoryRegistService;
+import com.itperson.service.CategoryViewService;
+import com.itperson.service.ContentDetailsViewService;
+import com.itperson.service.ContentsRegistService;
+import com.itperson.service.ContentsViewService;
+import com.itperson.service.CourseRegistService;
+import com.itperson.service.CoursesViewService;
+import com.itperson.service.MembersViewService;
+import com.itperson.service.QuestionRegistService;
+import com.itperson.service.Service;
+import com.itperson.service.SubCategoryRegistService;
+
+@Controller
+@RequestMapping(value = "/admin")
+public class AdminController {
+	
+	@Autowired
+	private SqlSession sqlSession;
+	
+	/*----------------------------------- 관리자 로그인 -------------------------------------- */
+	@RequestMapping(value = {"/enter",""})
+	public String AdminEnter( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		model.addAttribute("page_name", "관리자로그인");
+		return "admin/enter";
+	}
+	
+	/*----------------------------------- 과정등록 tab-------------------------------------- */
+	@RequestMapping(value = "/courses")
+	public String AdminCourses( Model model, HttpServletRequest request) {
+		
+		CoursesViewService service = new CoursesViewService(sqlSession);
+		service.execute(model);
+
+		model.addAttribute("page_name", "과정등록");
+		return "admin/courses";
+	}
+	@RequestMapping(value = "/regist_course")
+	public String AdminRegistCourse( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		CourseRegistService service = new CourseRegistService(sqlSession);
+		service.execute(model);
+		return "redirect:/admin/courses";
+	}
+	
+	/*----------------------------------- 분류등록 tab-------------------------------------- */
+	@RequestMapping(value = "/categorys")
+	public String AdminCategorys( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		CategoryViewService service = new CategoryViewService(sqlSession);
+		service.execute(model);
+		
+		model.addAttribute("page_name", "분류등록");
+		return "admin/categorys";
+	}
+	@RequestMapping(value = "/regist_category")
+	public String AdminRegistCategory( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		CategoryRegistService service = new CategoryRegistService(sqlSession);
+		service.execute(model);
+		return "redirect:/admin/categorys";
+	}
+	@RequestMapping(value = "/regist_subcategory")
+	public String AdminRegistSubCategory( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		SubCategoryRegistService service = new SubCategoryRegistService(sqlSession);
+		service.execute(model);
+		return "redirect:/admin/categorys";
+	}
+	
+	/*----------------------------------- 학습관리 tab-------------------------------------- */
+	@RequestMapping(value = "/contents")
+	public String AdminContents( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		
+		Service service = new CategoryViewService(sqlSession);
+		service.execute(model);
+		
+		service = new ContentsViewService(sqlSession);		
+		service.execute(model);
+		
+		model.addAttribute("page_name", "학습목록");
+		return "admin/contents";
+	}	
+	@RequestMapping(value = "/contents_form")
+	public String AdminContent( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		CategoryViewService service = new CategoryViewService(sqlSession);
+		service.execute(model);
+		
+		model.addAttribute("page_name", "학습내용");
+		return "admin/contents_form";
+	}
+	@RequestMapping(value = "/contents/regist")
+	public String AdminRegistContent( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		ContentsRegistService service = new ContentsRegistService(sqlSession);
+		service.execute(model);
+		
+		return "redirect:/admin/contents";
+	}
+	
+	@RequestMapping(value = "/contents/details")
+	public String AdminQuestionsForm( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		
+		Service service = new ContentDetailsViewService(sqlSession);
+		service.execute(model);
+		
+		model.addAttribute("page_name", "학습모듈 상세 보기");
+		return "admin/content_details";
+		
+		
+		// 학습모듈 상세와 함께 등록된 문제 List를 함께 보여주면 좋겠다.^^ ;; 나중에 기능 확장 !! 
+	}
+	
+	
+	
+	/*----------------------------------- 문제등록 tab-------------------------------------- */
+	@RequestMapping(value = "/questions/regist", method = RequestMethod.POST)
+	public String AdminQuestions( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		Service service = new QuestionRegistService(sqlSession);
+		service.execute(model);
+		
+		return "redirect:/admin/contents/details";
+	}
+	
+	//문제 상세조회 및 수정관련 페이지 추가 확정 예정
+	
+	
+	/*----------------------------------- 사용자관리 tab-------------------------------------- */
+	@RequestMapping(value = "/manage/users")
+	public String ManageUsers( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		Service service = new MembersViewService(sqlSession);
+		service.execute(model);
+		
+		model.addAttribute("page_name", "사용자관리");
+		return "admin/manage_users";
+	}
+	
+	/*----------------------------------- 관리자 답변 tab-------------------------------------- */
+	@RequestMapping(value = "/manage/answers")
+	public String ManageAnswers( Model model, HttpServletRequest request) {
+		
+		model.addAttribute("page_name", "관리자답변");
+		return "admin/manage_answers";
+	}
+
+	
+	/*----------------------------------- Test 를 위한 URL -------------------------------------- */
+	@RequestMapping(value = "/test")
+	public String ManageTest( Model model, HttpServletRequest request) {
+		
+		model.addAttribute("page_name", "테스트");
+		return "admin/summer_note";
+	}
+	
+}

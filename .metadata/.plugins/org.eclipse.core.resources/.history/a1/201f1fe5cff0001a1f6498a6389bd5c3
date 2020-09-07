@@ -1,0 +1,8 @@
+package com.itperson.common;
+
+public class Snippet {
+	<beans:bean id="interceptorForExam" class="com.exam.ExamInterceptor"> </beans:bean> <mvc:interceptors> <mvc:interceptor> <mvc:mapping path="/*"/> <mvc:exclude-mapping path="/login/**"/> <mvc:exclude-mapping path="/add/**"/> <beans:ref bean="interceptorForExam"/> </mvc:interceptor> </mvc:interceptors>
+	
+	출처: https://elfinlas.tistory.com/343 [MHLab Blog]
+}
+

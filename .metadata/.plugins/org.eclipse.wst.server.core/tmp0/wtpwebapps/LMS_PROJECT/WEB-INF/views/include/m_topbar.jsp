@@ -8,7 +8,7 @@
 	id="navigation-example">
 	<div class="container-fluid">
 		<div class="navbar-wrapper">
-			<a class="navbar-brand" href="javascript:void(0)">${page_name}</a>
+			<a class="navbar-brand" href="javascript:void(0)">${page_name} ${ id }</a>
 		</div>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			aria-controls="navigation-index" aria-expanded="false"

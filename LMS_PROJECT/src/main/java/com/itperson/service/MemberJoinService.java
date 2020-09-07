@@ -29,8 +29,6 @@ public class MemberJoinService implements Service{
 		vo.setEmail(request.getParameter("email"));
 		vo.setPassword(request.getParameter("password"));
 		
-		System.out.println(vo);
-		System.out.println(sqlSession);
 		MemberDao dao = sqlSession.getMapper(MemberDao.class);
 		dao.memberJoin(vo);
 	}

@@ -1,5 +1,6 @@
 package com.itperson.service;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 
 import com.itperson.common.CommonModules;
 import com.itperson.dao.QuestionDao;
+import com.itperson.dto.MAnswer;
 import com.itperson.dto.MQuestion;
 import com.itperson.dto.SQuestion;
 
@@ -42,15 +44,22 @@ public class QuestionRegistService implements Service {
 			vo.setType(type);
 			vo.setQuestion(request.getParameter("question"));
 			vo.setStuCode(request.getParameter("stucode"));
-			vo.setCode(CommonModules.nextCode(vo.getStuCode(), dao));
+			String qCode = CommonModules.nextCode(vo.getStuCode(), dao);
+			vo.setCode(qCode);
 			
-			System.out.println(vo);
+			String correct =  "answer"+request.getParameter("correct");
 			
+			vo.setAnswer(new ArrayList<MAnswer>());
+			for(int i=1 ; i<5 ; i++) {
+				vo.getAnswer().add(new MAnswer(i, qCode, request.getParameter("answer"+i), ("answer"+i).equals(correct)?"O":"X"));
+			}
 			
+			dao.registQuestionM(vo);
 			
-//			vo.setAnswer(null);
+			for(MAnswer ans : vo.getAnswer()) {
+				dao.registAnswer(ans);
+			}		
 			
-//			System.out.println(ques);
 			model.addAttribute("code", request.getParameter("stucode"));
 		}		
 		

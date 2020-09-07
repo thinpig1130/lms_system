@@ -1,0 +1,13 @@
+package com.itperson.common;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+public class LoginCheckIntercepter extends HandlerInterceptorAdapter {
+	public boolean proHandle(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		return true;
+	}
+
+}

@@ -3,7 +3,8 @@
 
   <div class="sidebar" data-color="purple" data-background-color="black" data-image="/resources/assets/img/sidebar-2.jpg">
       <div class="logo"><a href="/home" class="simple-text logo-normal">
-        	  사이트이름
+        	  <c:if test="${not empty id}"> '${id}' 님 안녕하세요! </c:if>
+        	  <c:if test="${empty id}"> Welcome Here!</c:if>
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">

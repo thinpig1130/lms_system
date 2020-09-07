@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itperson.dao.MemberDao">
+	<resultMap id ="result" type="com.itperson.dto.Member"> 
+		<result property = "id" column = "ID"/> 
+		<result property = "email" column="EMALL"/>
+		<result property = "password" column = "PASSWORD"/>
+	</resultMap>
+	
+	<insert id="memberJoin" parameterType="com.itperson.dto.Member">
+		<![CDATA[
+		INSERT INTO MEMBER (ID, EMAIL, PASSWORD)
+		VALUES (#{id}, #{email}, #{password})
+		]]>
+	</insert>
+	
+	<select id = "memberLogin" parameterType="map" resultType="String">
+		<![CDATA[
+		SELECT ID
+		FROM MEMBER 
+		WHERE ID=#{id} AND PASSWORD=#{pwd}
+		]]>
+	</select>
+	
+	<select id = "searchMembers" resultMap="result">
+		<![CDATA[
+		SELECT ID, EMAIL
+		FROM MEMBER m
+		WHERE m.ID NOT IN (SELECT ID FROM MANAGER)
+		]]>
+	</select>
+	
+	<select id = "searchManagers" resultMap="result">
+		<![CDATA[
+		SELECT ID, EMAIL
+		FROM MANAGER
+		]]>
+	</select>
+	
+	<insert id="registManager" parameterType="String">
+		<![CDATA[
+		INSERT INTO MANAGER (ID, EMAIL)
+		VALUES (#{value}, (
+			Select EMAIL
+			FROM MEMBER
+			WHERE ID = #{value}
+		))
+		]]>
+	</insert>
+	
+	<delete id="managerDelete" parameterType="int">
+		<![CDATA[
+		DELETE FROM MANAGER WHERE id=#{value}
+		]]>
+	</delete>
+	
+	
+	
+	
+</mapper>

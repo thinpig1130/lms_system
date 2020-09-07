@@ -24,4 +24,49 @@
 		WHERE ID=#{id} AND PASSWORD=#{pwd}
 		]]>
 	</select>
+	
+	<select id = "searchMembers" resultMap="result">
+		<![CDATA[
+		SELECT ID, EMAIL
+		FROM MEMBER m
+		WHERE m.ID NOT IN (SELECT ID FROM MANAGER)
+		]]>
+	</select>
+	
+	<select id = "searchManagers" resultMap="result">
+		<![CDATA[
+		SELECT ID, EMAIL
+		FROM MANAGER
+		]]>
+	</select>
+	
+	<insert id="registManager" parameterType="String">
+		<![CDATA[
+		INSERT INTO MANAGER (ID, EMAIL)
+		VALUES (#{value}, (
+			Select EMAIL
+			FROM MEMBER
+			WHERE ID = #{value}
+		))
+		]]>
+	</insert>
+	
+	<delete id="deleteManager" parameterType="String">
+		<![CDATA[
+		DELETE FROM MANAGER 
+		WHERE id=#{value}
+		]]>
+	</delete>
+	
+	<select id = "checkManager" parameterType="String" resultMap="result">
+		<![CDATA[
+		SELECT ID, Email
+		FROM MANAGER
+		WHERE ID=#{value}
+		]]>
+	</select>
+	
+	
+	
+	
 </mapper>

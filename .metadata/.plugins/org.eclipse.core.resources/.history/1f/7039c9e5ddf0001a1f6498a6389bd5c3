@@ -1,0 +1,50 @@
+package com.itperson.common;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import com.itperson.dao.MemberDao;
+
+public class AdminCheckInterceptor extends HandlerInterceptorAdapter {
+	
+	@Autowired
+	private SqlSession sqlSession;
+	
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+		
+		HttpSession session = request.getSession();
+		
+		if(session == null) {
+			response.sendRedirect("/admin/enter_error.jsp");
+			return false;
+		}
+		
+		String id= (String) session.getAttribute("id");
+		
+		if(id == null) {
+			response.sendRedirect("/admin/enter_error.jsp");
+			return false;
+		}
+		return true;
+	}
+	
+//    @Override
+//    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+//    	String id = (String) request.getSession().getAttribute("id");
+//    	modelAndView.addObject("id", id);
+//    	
+//    	MemberDao dao = sqlSession.getMapper(MemberDao.class);
+//    	
+//    	modelAndView.addObject("ad", dao.checkManager(id).getId());
+//    	if(!dao.checkManager(id).getId().equals(id)) {
+//    		response.sendRedirect("/admin/enter_error.jsp");
+//    	};
+//    	
+//    }
+}
