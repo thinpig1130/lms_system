@@ -18,9 +18,12 @@
                   <p class="card-category">Enter error (관리자에게 문의 하세요.)</p>
                 </div>
                 <div class="card-body table-responsive">
-                   <p>접근 권한이 없는 페이지에 접속요청을 하셨습니다.</p><br><br><br>
-                   <p class="align-self-end">홈으로 이동 <p>
-                             
+                   <p>접근 권한이 없는 페이지에 접속요청을 하셨습니다.</p>
+                </div>
+                <div class="container-fluid d-flex justify-content-end">
+                	<div class="row col-md-2">
+                   <a href="/home"><p class="text-primary">홈으로 이동 <p></a>
+                	</div>
                 </div>
               </div>
             </div>

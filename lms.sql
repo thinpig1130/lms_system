@@ -127,11 +127,9 @@ SELECT stu.code, COUNT(vql.CODE)
 FROM STUDY_CONTENTS stu LEFT OUTER JOIN VW_QUESTION_LIST vql ON stu.CODE = vql.STU_CODE
 GROUP BY stu.code;
 
--- 내일 할일 ... ( error 홈으로 이동 링크 / 사용자 관리 중. 자기 자신은 삭제 할 수 없도록 하는 기능 추가 )
+-- 내일 할일 ... (page에 해당하는 tab 메뉴가 sidebar에서 선택되도록 하기!! )
 
--- 문제관련 샘플 데이터 쿼리 생성
--- 사용자 관리 페이지 UI 구현
--- 사용자 관리 기능 구현
--- 관리자만 페이지에 접속 할 수 있도록 interceptor 설정.
-
+-- error 홈으로 이동 링크
+-- 사용자 관리 화면에서 자기 자신은 삭제 할 수 없도록 하는 기능 추가
+--
 

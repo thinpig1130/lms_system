@@ -43,9 +43,9 @@ public class AdminCheckInterceptor extends HandlerInterceptorAdapter {
 		return true;
 	}
 	
-    @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-    	String id = (String) request.getSession().getAttribute("id");
-    	modelAndView.addObject("id", id);
-    }
+//    @Override
+//    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+//    	String id = (String) request.getSession().getAttribute("id");
+//    	modelAndView.addObject("id", id);
+//    }
 }

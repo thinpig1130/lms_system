@@ -83,9 +83,14 @@
 				                          			${manager.email}
 				                          		</td>
 				                          		<td>
-				                          		<a href="/admin/users/delete_manager?id=${manager.id}">
+				                          		<c:if test="${manager.id eq id}">
 				                          			<i class="material-icons">horizontal_rule</i>
-						                        </a>
+				                          		</c:if>
+				                          		<c:if test="${ not (manager.id eq id) }">
+					                          		<a href="/admin/users/delete_manager?id=${manager.id}">
+					                          			<i class="material-icons">horizontal_rule</i>
+							                        </a>
+						                        </c:if>
 				                          		</td>			                        	
 				                        	</tr>
 				                        	</c:forEach>

@@ -3,7 +3,7 @@
 
   <div class="sidebar" data-color="purple" data-background-color="black" data-image="/resources/assets/img/sidebar-2.jpg">
       <div class="logo"><a href="/home" class="simple-text logo-normal">
-        	  ${ ad }
+        	  관리자 '${ id }'님
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
