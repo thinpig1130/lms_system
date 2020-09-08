@@ -71,7 +71,6 @@ CREATE TABLE "M_ANSWER" (
    FOREIGN KEY (Q_CODE) REFERENCES "M_QUESTION"(CODE)
 );
 
-
 --------------------------------------------뷰 생성 -------------------------------------
 --- QUESTION_LIST 뷰.
 CREATE OR REPLACE VIEW VW_QUESTION_LIST AS
@@ -127,9 +126,8 @@ SELECT stu.code, COUNT(vql.CODE)
 FROM STUDY_CONTENTS stu LEFT OUTER JOIN VW_QUESTION_LIST vql ON stu.CODE = vql.STU_CODE
 GROUP BY stu.code;
 
--- 내일 할일 ... (page에 해당하는 tab 메뉴가 sidebar에서 선택되도록 하기!! )
+-- 내일 할일 ... (page에 해당하는 tab 메뉴가 sidebar에서 선택되도록 하기!!, 학습신청시 학습계획 폼추가 및 DB 구성 )
 
--- error 홈으로 이동 링크
--- 사용자 관리 화면에서 자기 자신은 삭제 할 수 없도록 하는 기능 추가
---
+    -- 학습하기 tab UI 설계 및 학습신청page 컨트롤러에 추가.
+
 

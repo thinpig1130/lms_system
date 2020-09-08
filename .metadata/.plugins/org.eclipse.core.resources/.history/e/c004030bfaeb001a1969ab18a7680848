@@ -1,8 +1,0 @@
-package com.itperson.dao;
-
-import com.itperson.dto.Course;
-
-public interface CourseDao {
-	public void createCourse(Course vo);
-	public void	CourseList
-}

@@ -48,6 +48,7 @@ public class AdminController {
 		model.addAttribute("page_name", "과정등록");
 		return "admin/courses";
 	}
+	
 	@RequestMapping(value = "/regist_course")
 	public String AdminRegistCourse( Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
