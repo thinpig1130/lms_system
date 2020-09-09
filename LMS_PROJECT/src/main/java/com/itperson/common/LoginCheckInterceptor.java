@@ -17,8 +17,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 //    }
  
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-            ModelAndView modelAndView) throws Exception {
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
     	String id = (String) request.getSession().getAttribute("id");
     	modelAndView.addObject("id", id);
     }

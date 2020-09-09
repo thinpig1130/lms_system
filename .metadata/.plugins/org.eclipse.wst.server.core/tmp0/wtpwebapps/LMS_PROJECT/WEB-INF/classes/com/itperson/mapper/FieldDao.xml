@@ -101,5 +101,13 @@
 		]]>
 	</select>
 	
+	<select id="getContentsCount" parameterType="String"  resultType="int">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM VW_STUDY_CONTENTS_LIST
+		WHERE SUB_CODE=#{value}
+		]]>
+	</select>
+	
 	
 </mapper>

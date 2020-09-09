@@ -1,0 +1,7 @@
+package com.itperson.dto;
+
+public class CategoryInfo {
+	Category category;
+	
+
+}

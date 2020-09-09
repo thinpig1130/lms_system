@@ -1,0 +1,16 @@
+package com.itperson.dto;
+
+import java.util.ArrayList;
+
+public class CategoryInfo extends Category{
+	ArrayList<SubCategoryInfo> subCategoryArr;
+
+	public ArrayList<SubCategoryInfo> getSubCategoryArr() {
+		return subCategoryArr;
+	}
+	public void setSubCategoryArr(ArrayList<SubCategoryInfo> subCategoryArr) {
+		this.subCategoryArr = subCategoryArr;
+	}
+	
+	
+}

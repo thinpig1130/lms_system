@@ -1,0 +1,5 @@
+package com.itperson.dao;
+
+public interface MyCourseDao {
+	public void registMyCourse(@Param("coCode") String coCode, @Param("memId") String memId);
+}

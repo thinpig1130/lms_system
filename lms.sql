@@ -70,6 +70,19 @@ CREATE TABLE "M_ANSWER" (
    PRIMARY KEY (CODE,Q_CODE), 
    FOREIGN KEY (Q_CODE) REFERENCES "M_QUESTION"(CODE)
 );
+ 
+CREATE TABLE "MY_COURSE"(
+    "CO_CODE" CHAR(3),
+    "MEM_ID" VARCHAR2(50),
+    "PLAN" NUMBER(1), -- 0 (무계획) / 1 (계획)
+    "RANGE" NUMBER(1), -- 1 (중요도 A만 학습), 2 (중요도 B까지 학습), 3 ( 중요한 것 부터 학습), 4 ( 차근차근 순차 학습 ) 
+    "DAYS" NUMERIC,
+    "START_DATE" DATE,
+    "END_DATE" DATE,
+    PRIMARY KEY (CO_CODE, MEM_ID), 
+    FOREIGN KEY (CO_CODE) REFERENCES "COURSE"(CODE),
+    FOREIGN KEY (MEM_ID) REFERENCES "MEMBER"(ID)
+);
 
 --------------------------------------------뷰 생성 -------------------------------------
 --- QUESTION_LIST 뷰.
@@ -109,12 +122,14 @@ DROP TABLE COURSE;
 DROP TABLE CATEGORY;
 DROP TABLE SUB_CATEGORY;
 DROP TABLE STUDY_CONTENTS;
-DROP TABLE M_QUESTION;
 DROP TABLE S_QUESTION;
+DROP TABLE M_QUESTION;
 DROP TABLE M_ANSWER;
 DROP VIEW VW_QUESTION_LIST;
 DROP VIEW VW_STUDY_CONTENTS_LIST;
 DROP VIEW VW_SEARCH_CATEGORY;
+
+DROP TABLE MY_COURSE;
 
 -- --------------------------------------------------- 쿼리 조회 연습 -----------------------------------------------------
 -- 시간 출력
@@ -126,8 +141,12 @@ SELECT stu.code, COUNT(vql.CODE)
 FROM STUDY_CONTENTS stu LEFT OUTER JOIN VW_QUESTION_LIST vql ON stu.CODE = vql.STU_CODE
 GROUP BY stu.code;
 
--- 내일 할일 ... (page에 해당하는 tab 메뉴가 sidebar에서 선택되도록 하기!!, 학습신청시 학습계획 폼추가 및 DB 구성 )
+-- 내일 할일 ... (page에 해당하는 tab 메뉴가 sidebar에서 선택되도록 하기!!, 학습신청시 학습계획 폼추가 및 DB 구성, 학습 계획을 업데이트 하면 보여주는 상세 내용까지 구현 )
 
-    -- 학습하기 tab UI 설계 및 학습신청page 컨트롤러에 추가.
+-- 학습 하기 UI & 컨트롤러 수정
+-- MY_COURSE 테이블 설계 및 생성
+-- 학습신청하면 신청된 학습을 보여주는 학습하기 페이지 까지 완료. 
+
+    
 
 

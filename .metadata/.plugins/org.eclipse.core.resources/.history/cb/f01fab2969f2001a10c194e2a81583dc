@@ -1,0 +1,29 @@
+package com.itperson.service;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
+
+public class StudyApplyService implements Service {
+	private SqlSession sqlSession;
+	
+	public StudyApplyService(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	@Override
+	public void execute(Model model) {
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		MyCourseDao dao = sqlSession.getMapper(MyCourseDao.class);
+		
+		String cocode = request.getParameter("course");
+		String id = (String) request.getSession().getAttribute("id");
+		
+		System.out.println(cocode +"," + id);
+		
+	}
+}

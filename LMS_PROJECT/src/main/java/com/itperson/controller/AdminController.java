@@ -179,14 +179,5 @@ public class AdminController {
 		model.addAttribute("page_name", "관리자답변");
 		return "admin/manage_answers";
 	}
-
-	
-	/*----------------------------------- Test 를 위한 URL / 개발 완료시 삭제 요망 -------------------------------------- */
-	@RequestMapping(value = "/test")
-	public String ManageTest( Model model, HttpServletRequest request) {
-		
-		model.addAttribute("page_name", "테스트");
-		return "admin/summer_note";
-	}
 	
 }

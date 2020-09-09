@@ -8,6 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.itperson.service.CoursesInfoService;
+import com.itperson.service.MyCoursesViewService;
+import com.itperson.service.Service;
+import com.itperson.service.StudyApplyService;
+
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {
@@ -27,23 +32,41 @@ public class UserController {
 	
 	/*----------------------------------- 학습하기 tab-------------------------------------- */
 	@RequestMapping(value = "/study")
-	public String userStudy( Model model, HttpServletRequest request) {	
+	public String userStudy( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		Service service = new MyCoursesViewService(sqlSession);
+		service.execute(model);
 		model.addAttribute("page_name", "학습하기");
 		return "user/study";
 	}
 	
-	@RequestMapping(value = "/study/apply")
-	public String userStudyApply( Model model, HttpServletRequest request) {
+	@RequestMapping(value = "/study/info")
+	public String userStudyInfo( Model model, HttpServletRequest request) {
+		Service service = new CoursesInfoService(sqlSession);
+		service.execute(model);
 		
-		model.addAttribute("page_name", "개설된 학습 정보");
-		return "user/study_apply";
+		model.addAttribute("page_name", "학습 정보");
+		return "user/study_info";
 	}
 	
-	@RequestMapping(value = "/study/applyform")
-	public String userStudyApplyForm( Model model, HttpServletRequest request) {
+	@RequestMapping(value = "/study/apply")
+	public String userStudyApply( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		Service service = new StudyApplyService(sqlSession);
+		service.execute(model);
+		return "redirect:/user/study";
+	}
+	@RequestMapping(value = "/study/apply_update")
+	public String userStudyApplyUpdate( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
 		
-		model.addAttribute("page_name", "학습 계획서 작성");
-		return "user/study_applyform";
+		
+		
+		
+		
+//		Service service = new StudyApplyService(sqlSession);
+//		service.execute(model);
+		return "redirect:/user/study";
 	}
 	
 	

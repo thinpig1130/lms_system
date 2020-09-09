@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,5 +45,13 @@ public class HomeController {
 //		model.addAttribute("serverTime", formattedDate );
 //		model.addAttribute("page_name", "홈");
 		return "error/enter_error";
+	}
+	
+	/*----------------------------------- Test 를 위한 URL / 개발 완료시 삭제 요망 -------------------------------------- */
+	@RequestMapping(value = "/test")
+	public String ManageTest( Model model, HttpServletRequest request) {
+		
+		model.addAttribute("page_name", "테스트");
+		return "datetimepicker";
 	}
 }

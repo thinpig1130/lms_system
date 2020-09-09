@@ -18,5 +18,6 @@ public interface FieldDao {
 	public Field studyContentsBelongs(String stuCode);
 	public Field subCategoryBelongs(String subCode);
 	public Field categoryBelongs(String caCode);
+	public int getContentsCount(String subCode);
 }
 

@@ -1,0 +1,23 @@
+package com.itperson.dto;
+
+import java.util.ArrayList;
+
+public class SubCategoryInfo extends SubCategory{
+	SubCategory subcategory;
+	int counterContents;
+	
+	public SubCategory getSubcategory() {
+		return subcategory;
+	}
+	public void setSubcategory(SubCategory subcategory) {
+		this.subcategory = subcategory;
+	}
+	public int getCounterContents() {
+		return counterContents;
+	}
+	public void setCounterContents(int counterContents) {
+		this.counterContents = counterContents;
+	}
+	
+	
+}

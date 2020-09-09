@@ -1,0 +1,14 @@
+package com.itperson.dto;
+
+public class SubCategoryInfo extends SubCategory{
+	int counterContents;
+	
+	public int getCounterContents() {
+		return counterContents;
+	}
+	public void setCounterContents(int counterContents) {
+		this.counterContents = counterContents;
+	}
+	
+	
+}

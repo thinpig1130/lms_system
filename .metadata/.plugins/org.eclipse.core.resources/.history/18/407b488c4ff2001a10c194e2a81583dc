@@ -1,0 +1,19 @@
+package com.itperson.service;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
+
+public class CoursesInfoService implements Service {
+	private SqlSession sqlSession;
+	
+	public CoursesInfoService(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+
+	@Override
+	public void execute(Model model) {
+		ArrayList<CourseInfo> courseInfoList;
+		
+	}
+
+}

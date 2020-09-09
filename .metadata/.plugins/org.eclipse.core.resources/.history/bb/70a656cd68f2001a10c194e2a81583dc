@@ -1,0 +1,5 @@
+package com.itperson.dao;
+
+public class MyCourseDao {
+	public void registMyCourse(@Param("coCode") String coCode, @Param("pwd") String pw )
+}

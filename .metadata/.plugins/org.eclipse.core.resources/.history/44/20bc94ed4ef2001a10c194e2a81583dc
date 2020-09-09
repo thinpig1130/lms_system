@@ -1,0 +1,21 @@
+package com.itperson.dto;
+
+import java.util.ArrayList;
+
+public class CourseInfo {
+	Course course;
+	ArrayList<CategoryInfo> categoryArr;
+	
+	public Course getCourse() {
+		return course;
+	}
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+	public ArrayList<CategoryInfo> getCategoryArr() {
+		return categoryArr;
+	}
+	public void setCategoryArr(ArrayList<CategoryInfo> categoryArr) {
+		this.categoryArr = categoryArr;
+	}	
+}
