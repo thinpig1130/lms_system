@@ -1,0 +1,9 @@
+package com.itperson.controller;
+
+import org.springframework.web.servlet.mvc.Controller;
+
+@Controller
+public class ErrorPageController {
+
+
+}

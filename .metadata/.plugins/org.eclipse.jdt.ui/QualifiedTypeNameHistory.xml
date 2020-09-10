@@ -3,14 +3,17 @@
 <fullyQualifiedTypeName name="com.itperson.service.CoursesViewService"/>
 <fullyQualifiedTypeName name="com.itperson.dto.Category"/>
 <fullyQualifiedTypeName name="com.itperson.dao.SubCategoryDao"/>
-<fullyQualifiedTypeName name="java.sql.Date"/>
 <fullyQualifiedTypeName name="com.itperson.dto.ViewStudyContentsList"/>
 <fullyQualifiedTypeName name="com.itperson.service.CategoryViewService"/>
-<fullyQualifiedTypeName name="com.itperson.service.Service"/>
 <fullyQualifiedTypeName name="com.itperson.dto.Field"/>
 <fullyQualifiedTypeName name="com.itperson.dto.Question"/>
 <fullyQualifiedTypeName name="com.itperson.dao.QuestionDao"/>
 <fullyQualifiedTypeName name="com.itperson.dao.MemberDao"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
 <fullyQualifiedTypeName name="com.itperson.dto.Member"/>
+<fullyQualifiedTypeName name="com.itperson.service.Service"/>
+<fullyQualifiedTypeName name="com.itperson.dao.Dao"/>
+<fullyQualifiedTypeName name="com.itperson.dao.FieldDao"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
 </qualifiedTypeNameHistroy>

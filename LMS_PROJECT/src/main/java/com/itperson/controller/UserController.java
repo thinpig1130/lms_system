@@ -12,6 +12,7 @@ import com.itperson.service.CoursesInfoService;
 import com.itperson.service.MyCoursesViewService;
 import com.itperson.service.Service;
 import com.itperson.service.StudyApplyService;
+import com.itperson.service.StudyApplyUpdateService;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -59,16 +60,10 @@ public class UserController {
 	@RequestMapping(value = "/study/apply_update")
 	public String userStudyApplyUpdate( Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
-		
-		
-		
-		
-		
-//		Service service = new StudyApplyService(sqlSession);
-//		service.execute(model);
+		Service service = new StudyApplyUpdateService(sqlSession);
+		service.execute(model);		
 		return "redirect:/user/study";
 	}
-	
 	
 	/*----------------------------------- 문제풀기 tab-------------------------------------- */
 	@RequestMapping(value = "/testing")

@@ -8,9 +8,9 @@ public class MyCourse {
 	private String memId;
 	private int plan;
 	private int range;
-	private int days;
-	private Date startDate;
-	private Date endDate;
+	private int daysPerWeeks;
+	private Date applyDate;
+	private Date expectedEndDate;
 	
 	public String getCoCode() {
 		return coCode;
@@ -36,23 +36,23 @@ public class MyCourse {
 	public void setRange(int range) {
 		this.range = range;
 	}
-	public int getDays() {
-		return days;
+	public int getDaysPerWeeks() {
+		return daysPerWeeks;
 	}
-	public void setDays(int days) {
-		this.days = days;
+	public void setDaysPerWeeks(int daysPerWeeks) {
+		this.daysPerWeeks = daysPerWeeks;
 	}
-	public Date getStartDate() {
-		return startDate;
+	public Date getApplyDate() {
+		return applyDate;
 	}
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+	public void setApplyDate(Date applyDate) {
+		this.applyDate = applyDate;
 	}
-	public Date getEndDate() {
-		return endDate;
+	public Date getExpectedEndDate() {
+		return expectedEndDate;
 	}
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+	public void setExpectedEndDate(Date expectedEndDate) {
+		this.expectedEndDate = expectedEndDate;
 	}
 	public String getCoName() {
 		return coName;
@@ -62,7 +62,7 @@ public class MyCourse {
 	}
 	@Override
 	public String toString() {
-		return "MyCourse [coCode=" + coCode + ", memId=" + memId + ", plan=" + plan + ", range=" + range + ", days="
-				+ days + ", startDate=" + startDate + ", endDate=" + endDate + "]";
+		return "MyCourse [coCode=" + coCode + ", memId=" + memId + ", plan=" + plan + ", range=" + range + ", daysPerWeeks="
+				+ daysPerWeeks + ", applyDate=" + applyDate + ", expectedEndDate=" + expectedEndDate + "]";
 	}
 }

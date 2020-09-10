@@ -59,7 +59,6 @@
 			                	하루 복습 목표 : 10개  <br>         	
 			                <div>
 							<div class="row container-Fluid">
-								<button class="btn btn-info pull-right btn-round">계획변경하기</button>
 		                  		<button class="btn btn-info pull-right btn-round">이어서 학습하기</button>
 			                </div>
 						</div>
@@ -75,7 +74,8 @@
       <%@ include file="../include/footer.jsp" %>
     </div>
   </div>
-  <!-- 학습계획 폼 -->
+  
+  <!-- 학습계획작성 폼 -->
   <div class="fixed-plugin">
     <div class="dropdown show-dropdown">
       <a href="#" data-toggle="dropdown">
@@ -137,7 +137,7 @@
         <li class="button-container text-center adjustments-line">
         		<div class="form-check form-check-radio form-check-inline">
 				  <label class="form-check-label">
-				    <input class="form-check-input" type="radio" id="inlineCheckbox1" value="option1"> 1일
+				    <input class="form-check-input" type="radio" name="days_per_week" id="daysperweek" value="1"> 1일
 				    <span class="circle">
 				        <span class="check"></span>
 				    </span>
@@ -145,7 +145,7 @@
 				</div>
 				<div class="form-check form-check-radio form-check-inline">
 				  <label class="form-check-label">
-				    <input class="form-check-input" type="radio" id="inlineCheckbox1" value="option1"> 2일
+				    <input class="form-check-input" type="radio" name="days_per_week" id="daysperweek" value="2"> 2일
 				    <span class="circle">
 				        <span class="check"></span>
 				    </span>
@@ -153,7 +153,7 @@
 				</div>
 				<div class="form-check form-check-radio form-check-inline">
 				  <label class="form-check-label">
-				    <input class="form-check-input" type="radio" id="inlineCheckbox1" value="option1"> 3일
+				    <input class="form-check-input" type="radio" name="days_per_week" id="daysperweek" value="3"> 3일
 				    <span class="circle">
 				        <span class="check"></span>
 				    </span>
@@ -161,7 +161,7 @@
 				</div>
 				<div class="form-check form-check-radio form-check-inline">
 				  <label class="form-check-label">
-				    <input class="form-check-input" type="radio" id="inlineCheckbox1" value="option1"> 4일
+				    <input class="form-check-input" type="radio" name="days_per_week" id="daysperweek" value="4"> 4일
 				    <span class="circle">
 				        <span class="check"></span>
 				    </span>
@@ -169,7 +169,7 @@
 				</div>
 				<div class="form-check form-check-radio form-check-inline">
 				  <label class="form-check-label">
-				    <input class="form-check-input" type="radio" id="inlineCheckbox1" value="option1" checked> 5일
+				    <input class="form-check-input" type="radio" name="days_per_week" id="daysperweek" value="5" checked> 5일
 				    <span class="circle">
 				        <span class="check"></span>
 				    </span>
@@ -177,7 +177,7 @@
 				</div>
 				<div class="form-check form-check-radio form-check-inline">
 				  <label class="form-check-label">
-				    <input class="form-check-input" type="radio" id="inlineCheckbox1" value="option1"> 6일
+				    <input class="form-check-input" type="radio" name="days_per_week" id="daysperweek" value="6"> 6일
 				    <span class="circle">
 				        <span class="check"></span>
 				    </span>
@@ -185,7 +185,7 @@
 				</div>
 				<div class="form-check form-check-radio form-check-inline">
 				  <label class="form-check-label">
-				    <input class="form-check-input" type="radio" id="inlineCheckbox1" value="option1"> 7일
+				    <input class="form-check-input" type="radio"  name="days_per_week" id="daysperweek" value="option1"> 7일
 				    <span class="circle">
 				        <span class="check"></span>
 				    </span>
@@ -196,11 +196,8 @@
         <li class="header-title">학습 기간 선택</li>
         
         <li class="button-container text-center">
-	        	<label>시작 : <input type="date" name="start_date"></label>
+	        	<label> 목표일 : <input type="date" name="expected_end_date"></label>
         </li>
-        <li class="button-container text-center">
-	        	<label>종료 : <input type="date" name="end_date"></label>
-        </li>        
         <li class="button-container">
        		<button type="submit" class="btn btn-primary btn-block">계획 	적용</button>
         </li>

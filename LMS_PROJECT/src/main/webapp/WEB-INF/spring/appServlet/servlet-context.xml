@@ -57,6 +57,17 @@
 		<beans:ref bean="LoginCheckInterceptor"/>
 		</interceptor>
 	</interceptors>
+
+	<beans:bean id="NotLoginInterceptor" class="com.itperson.common.NotLoginInterceptor"> </beans:bean>
+
+	<interceptors>
+		<interceptor>
+		<mapping path="/user/*"/>
+		<mapping path="/admin/*"/>
+		<mapping path="/admin/*/*"/>
+		<beans:ref bean="NotLoginInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 	<beans:bean id="AdminCheckInterceptor" class="com.itperson.common.AdminCheckInterceptor"> </beans:bean>
 

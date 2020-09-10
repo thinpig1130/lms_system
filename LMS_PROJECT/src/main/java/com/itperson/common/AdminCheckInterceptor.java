@@ -21,17 +21,7 @@ public class AdminCheckInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		
 		HttpSession session = request.getSession();
-		
-		if(session == null) {
-			response.sendRedirect("/error/enter");
-			return false;
-		}
-		
 		String id= (String) session.getAttribute("id");
-		if(id == null) {
-			response.sendRedirect("/error/enter");
-			return false;
-		}
 		
     	MemberDao dao = sqlSession.getMapper(MemberDao.class);
     	Member manager = dao.checkManager(id);

@@ -1,0 +1,68 @@
+package com.itperson.dto;
+
+import java.sql.Date;
+
+public class MyCourse {
+	private String coCode;
+	private String coName;
+	private String memId;
+	private int plan;
+	private int range;
+	private int days;
+	private Date applytDate;
+	private Date ExpectedEndDate;
+	
+	public String getCoCode() {
+		return coCode;
+	}
+	public void setCoCode(String coCode) {
+		this.coCode = coCode;
+	}
+	public String getMemId() {
+		return memId;
+	}
+	public void setMemId(String memId) {
+		this.memId = memId;
+	}
+	public int getPlan() {
+		return plan;
+	}
+	public void setPlan(int plan) {
+		this.plan = plan;
+	}
+	public int getRange() {
+		return range;
+	}
+	public void setRange(int range) {
+		this.range = range;
+	}
+	public int getDays() {
+		return days;
+	}
+	public void setDays(int days) {
+		this.days = days;
+	}
+	public Date getApplytDate() {
+		return applytDate;
+	}
+	public void setApplytDate(Date applytDate) {
+		this.applytDate = applytDate;
+	}
+	public Date getExpectedEndDate() {
+		return expectedEndDate;
+	}
+	public void setExpectedEndDate(Date expectedEndDate) {
+		this.expectedEndDate = expectedEndDate;
+	}
+	public String getCoName() {
+		return coName;
+	}
+	public void setCoName(String coName) {
+		this.coName = coName;
+	}
+	@Override
+	public String toString() {
+		return "MyCourse [coCode=" + coCode + ", memId=" + memId + ", plan=" + plan + ", range=" + range + ", days="
+				+ days + ", startDate=" + startDate + ", endDate=" + endDate + "]";
+	}
+}
