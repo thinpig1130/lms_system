@@ -23,7 +23,9 @@ public class MyCoursesViewService implements Service {
 		String id = (String) request.getSession().getAttribute("id");
 		
 		MyCourseDao dao = sqlSession.getMapper(MyCourseDao.class);
-		model.addAttribute("courseList", dao.searchCourses(id));
+		
+		
+		model.addAttribute("courseList", dao.searchComplexCourses(id));
 	}
 
 }

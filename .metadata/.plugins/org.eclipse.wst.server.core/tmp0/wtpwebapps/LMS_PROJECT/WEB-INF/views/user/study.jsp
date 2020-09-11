@@ -35,7 +35,7 @@
 		                <div class="card-icon">
 		                  	<i class="material-icons">edit_road</i>
 		                </div>
-	                	<p class="card-category"> D -100 </p>
+	                	<p class="card-category"> D-${course.daysLeft} </p>
 	                  	<h3 class="card-title">${course.coName}</h3><br>
 	             		<div class="progress">
 		  					<div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">진도율 70%</div>
@@ -49,13 +49,13 @@
 	                  <div class="stats">
 	                  	<div class="container-Fluid">
 	                  		<div class="row container-Fluid">
-			                    <i class="material-icons">update</i> 총 학습 수 40 / 남은 학습 10
+			                    <i class="material-icons">update</i> 총 학습 수 ${course.countContents} / 남은 학습 ${course.countRemaingContnents}
 	                  		</div>
 			                <div class="row container-Fluid">
 			                	중요한 것 부터 공부한다!! <br>
-			                	주 5일 공부 <br>
+			                	주  ${course.daysPerWeeks}일 공부 <br>
 			                	<br>
-			                	오늘 학습 목표 : 모듈 7개 <br>     	
+			                	오늘 학습 목표 : 모듈 ${course.todayContents}개 <br>     	
 			                <div>
 							<div class="row container-Fluid">
 		                  		<a href="/user/study/hard?course=${course.coCode}" class="btn btn-info pull-right btn-round" target="_blank">이어서 학습하기</a>

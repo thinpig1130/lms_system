@@ -1,7 +1,0 @@
-package com.itperson.dao;
-
-import java.util.ArrayList;
-
-public interface ViewStudyContentsListDao {
-	public ArrayList<VeiwStudyContentsList> categoryList(String coCode);
-}

@@ -1,7 +1,0 @@
-package com.itperson.dto;
-
-public class CategoryList {
-	private String code;
-	private String name;
-	
-}
