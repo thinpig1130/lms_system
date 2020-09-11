@@ -7,7 +7,7 @@ public class MyCourse {
 	private String coName;
 	private String memId;
 	private int plan;
-	private int range;
+	private int priority;
 	private int daysPerWeeks;
 	private Date applyDate;
 	private Date expectedEndDate;
@@ -30,11 +30,11 @@ public class MyCourse {
 	public void setPlan(int plan) {
 		this.plan = plan;
 	}
-	public int getRange() {
-		return range;
+	public int getPriority() {
+		return priority;
 	}
-	public void setRange(int range) {
-		this.range = range;
+	public void setPriority(int priority) {
+		this.priority = priority;
 	}
 	public int getDaysPerWeeks() {
 		return daysPerWeeks;
@@ -62,7 +62,7 @@ public class MyCourse {
 	}
 	@Override
 	public String toString() {
-		return "MyCourse [coCode=" + coCode + ", memId=" + memId + ", plan=" + plan + ", range=" + range + ", daysPerWeeks="
+		return "MyCourse [coCode=" + coCode + ", memId=" + memId + ", plan=" + plan + ", priority=" + priority + ", daysPerWeeks="
 				+ daysPerWeeks + ", applyDate=" + applyDate + ", expectedEndDate=" + expectedEndDate + "]";
 	}
 }

@@ -28,7 +28,7 @@ public class StudyApplyUpdateService implements Service{
 		MyCourse vo = new MyCourse();
 		vo.setCoCode(request.getParameter("course"));
 		vo.setMemId((String) request.getSession().getAttribute("id"));
-		vo.setRange(Integer.parseInt(request.getParameter("range")));
+		vo.setPriority((Integer.parseInt(request.getParameter("priority"))));
 		vo.setDaysPerWeeks(Integer.parseInt(request.getParameter("days_per_week")));
 		vo.setExpectedEndDate(Date.valueOf(request.getParameter("expected_end_date")));
 		vo.setPlan(1);

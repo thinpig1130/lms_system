@@ -75,10 +75,10 @@ CREATE TABLE "MY_COURSE"(
     "CO_CODE" CHAR(3),
     "MEM_ID" VARCHAR2(50),
     "PLAN" NUMBER(1), -- 0 (무계획) / 1 (계획)
-    "RANGE" NUMBER(1), -- 1 (중요도 A만 학습), 2 (중요도 B까지 학습), 3 ( 중요한 것 부터 학습), 4 ( 차근차근 순차 학습 ) 
-    "DAYS" NUMERIC,
-    "START_DATE" DATE,
-    "END_DATE" DATE,
+    "PRIORITY" NUMBER(1), -- 1 (중요도 A만 학습), 2 ( 차근차근 순차 학습 ) 
+    "DAYS_PER_WEEK" NUMERIC,
+    "APPLY_DATE" DATE,
+    "EXPECTED_END_DATE" DATE,
     PRIMARY KEY (CO_CODE, MEM_ID), 
     FOREIGN KEY (CO_CODE) REFERENCES "COURSE"(CODE),
     FOREIGN KEY (MEM_ID) REFERENCES "MEMBER"(ID)
@@ -113,6 +113,42 @@ CREATE OR REPLACE VIEW VW_SEARCH_CATEGORY AS
           FROM CATEGORY ca LEFT OUTER JOIN SUB_CATEGORY sub ON ca.CODE = sub.CA_CODE
         )casub ON co.CODE = casub.CO_CODE ;
 
+----------------------------------------- 재만 테이블 QNA --------------------------------------------------------------
+
+CREATE TABLE "QNA_COMMENT"(
+"NO"    INT PRIMARY KEY,
+"CONTENTS" VARCHAR2(1500),
+"REG_DATE" VARCHAR2(30),
+"USER_ID" VARCHAR2(50),
+FOREIGN KEY (USER_ID) REFERENCES "MEMBER"(ID)
+);
+
+--QnA_Question
+CREATE TABLE "QNA_QUESTION"(
+"NO"    INT PRIMARY KEY,
+"QNA_TYPE"  VARCHAR2(150),
+"TITLE" VARCHAR2(150),
+"CONTENTS" VARCHAR2(1500),
+"COUNT" INT,
+"REG_DATE" DATE,
+"USER_ID" VARCHAR2(50),
+"COMMENT_NO" INT,
+FOREIGN KEY (USER_ID) REFERENCES "MEMBER"(ID),
+FOREIGN KEY (COMMENT_NO) REFERENCES "QNA_COMMENT"(NO)
+);
+
+--시퀀스 생성
+CREATE SEQUENCE SEQ_COMMENT_NO
+INCREMENT BY 1
+START WITH 1 
+MINVALUE 0
+MAXVALUE 2000000000;
+
+CREATE SEQUENCE SEQ_QUESTION_NO
+INCREMENT BY 1
+START WITH 1 
+MINVALUE 0
+MAXVALUE 2000000000;
 
 ------------------------------------------ 테이블 수정을 돕기 위한 삭제문 --------------------------------------------------  
 
@@ -128,8 +164,13 @@ DROP TABLE M_ANSWER;
 DROP VIEW VW_QUESTION_LIST;
 DROP VIEW VW_STUDY_CONTENTS_LIST;
 DROP VIEW VW_SEARCH_CATEGORY;
-
 DROP TABLE MY_COURSE;
+
+DROP TABLE QNA_COMMENT;
+DROP TABLE QNA_QUESTION;
+DROP SEQUENCE SEQ_COMMENT_NO;
+DROP SEQUENCE SEQ_QUESTION_NO;
+
 
 -- --------------------------------------------------- 쿼리 조회 연습 -----------------------------------------------------
 -- 시간 출력

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.itperson.service.CoursesInfoService;
+import com.itperson.service.ManagerQuestionRegistService;
 import com.itperson.service.MyCoursesViewService;
 import com.itperson.service.Service;
 import com.itperson.service.StudyApplyService;
@@ -57,6 +58,36 @@ public class UserController {
 		service.execute(model);
 		return "redirect:/user/study";
 	}
+	
+	@RequestMapping(value = "/study/hard")
+	public String userStudyHard( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+//		Service service = new StudyApplyService(sqlSession);
+//		service.execute(model);
+		model.addAttribute("page_name", "나는 공부중이다!");
+		return "user/study_hard";
+	}
+	
+	@RequestMapping(value = "/study/close")
+	public String userStudyClose( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+//		Service service = new StudyApplyService(sqlSession);
+//		service.execute(model);
+// 		현재 학습의 완료 여부를 체크한 후 DB에 저장. 그리고 브라우저 종료 page로 넘김
+		model.addAttribute("page_name", "나는 공부중이다!");
+		return "user/close";
+	}
+	
+	@RequestMapping(value = "/study/next")
+	public String userStudyNext( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+//		Service service = new StudyApplyService(sqlSession);
+//		service.execute(model);
+// 		현재 학습의 완료 여부를 체크한 후 DB에 저장. 그리고 다음 학습 page로 넘김
+		model.addAttribute("page_name", "나는 공부중이다!");
+		return "redirect:/user/study/hard";
+	}
+	
 	@RequestMapping(value = "/study/apply_update")
 	public String userStudyApplyUpdate( Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -93,5 +124,31 @@ public class UserController {
 		model.addAttribute("page_name", "관리자에게 문의");
 		return "user/demands_question";
 	}
+	
+	//9월9일 재만수정 관리자 답변 테이블
+   @RequestMapping(value = "/qnatable_manage")
+   public String QnaTableManage( Model model, HttpServletRequest request) {
+      
+      model.addAttribute("page_name", "관리자용 QNA테이블");
+      return "admin/qnatable_manage";
+   }
+   
+ //9월9일 재만 수정 파라미터 처리
+   @RequestMapping(value = "/demands_question/regist")   //폼의 액션과 맞출것
+   public String userDemandsQuestionRegist( Model model, HttpServletRequest request) {
+      model.addAttribute("request", request);
+      //9월 10일 임포트 수정분 있음 확인
+      ManagerQuestionRegistService service = new ManagerQuestionRegistService(sqlSession);
+      service.execute(model);
+      return "redirect:/user/demands";//리다이렉트 루트부터
+   }
+   
+   //9월9일 재만 수정 관리자 에게문의하는 테이블
+   @RequestMapping(value = "/qnatable_user")
+   public String QnaTableUser( Model model, HttpServletRequest request) {
+      
+      model.addAttribute("page_name", "사용자용 QNA테이블");
+      return "user/qnatable_user";
+   }
 
 }

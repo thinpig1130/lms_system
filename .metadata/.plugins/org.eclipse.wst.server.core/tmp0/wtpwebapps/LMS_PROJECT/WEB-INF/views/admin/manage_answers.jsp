@@ -25,10 +25,12 @@
               </div>
               <div class="form-group">
                 <label for="exampleFormControlSelect1">유형 선택</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option>미답변 목록 보기(기본값)</option>
-                  <option>전체 목록 보기</option>
+                <form action="" method="post">
+                <select class="form-control" id="exampleFormControlSelect1" name="noanswer">
+                  <option value="1" checked>미답변 목록 보기</option>
+                  <option value="2">전체 목록 보기</option>
                 </select>
+                </form>
               </div>
 
                 <div class="card-body">
@@ -66,7 +68,8 @@
                             ???유형
                           </td>
                           <td>
-                            제목을 길게 써놓아서 얼마나 쓸수있나 보자~~~~~~~~~~~~~~~~~~~~~~~~~~~1
+                          <a href="/admin/qnatable_manage">
+                            제목을 길게 써놓아서 얼마나 쓸수있나 보자~~~~~~~~~~~~~~~~~~~~~~~~~~~1</a>
                           </td>
                           <td>
 

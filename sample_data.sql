@@ -93,4 +93,26 @@ INSERT INTO M_QUESTION (CODE, QUESTION, STU_CODE) VALUES('010101001C004', 'Ё╙╪╠г
     INSERT INTO M_ANSWER (CODE, Q_CODE, ANSWER, CORRECT) VALUES(3, '010101001C004', 'ю╖гХ╪╨ фР╟║©║ е╘╟т юга╦го╠Б ╤╖╧╝©║ юл╦╕ ╧ъ╟ъгоаЖ ╬йю╦╦И ╧╝а╕╟║ ╧ъ╩Щгр ╪Ж юж╢ы.', 'X');
     INSERT INTO M_ANSWER (CODE, Q_CODE, ANSWER, CORRECT) VALUES(4, '010101001C004', '╫га╕ ╟Ё╧ъ╣х ╪ргаф╝©Ч╬Н©║ ╢Кгя ╫ца╕г╟ю╩ ╦╦╣И╬Н цжа╬ ╟А╟З╧╟ю╩ ©╧цЬго╢б ╦ПгЭюл╢ы.', 'O');
 
+
+
+--ЁжаЖ╦╩╟м INSERT INTO QNA_QUESTION (NO, QNA_TYPE, TITLE, CONTENTS, COUNT, REG_DATE, USER_ID)
+--VALUES (SEQ_QUESTION_NO.NEXTVAL,'╟гюг ╩Ггв','dsdfsdfs','sdfsdfsdf',0, SYSDATE, 'cjscn');
+--QUESTION ╣╔юлем Ёж╠Б
+--INSERT INTO QNA_QUESTION (NO,QNA_TYPE,TITLE,CONTENTS,COUNT,REG_DATE,USER_ID,COMMENT_NO)  VALUES (SEQ_QUESTION_NO.NEXTVAL,NULL,'╟За╓ ╣Н╥оюл ©ю╥ЫЁ╙╪╜ ╬х╣к╢о╢ы.','╟За╓ ╣Н╥о ╧Жф╟ю╩ ╢╘╦ё╦И юю╢Дюл ╬Ь╬Н юш╣©гоаЖ ╬й╫ю╢о╢ы',1,(to_char(SYSDATE,'yyyy.mm.dd hh24:mi')),'cjscn',NULL);
+
+--QNA_TYPE ╣╔юлем Ёж╠Б
+--INSERT INTO QNA_TYPE (TYPE) VALUES ('╫ц╫╨еш ╧╝юг');
+
+--QNA_COMMENT ╣╔юлем Ёж╠Б
+--INSERT INTO QNA_COMMENT (NO,CONTENTS,REG_DATE,USER_ID)  VALUES (SEQ_COMMENT_NO.NEXTVAL,' ╟За╓ ╣Н╥о ©ю╥Ы©║ ╟Эгя ╢Д╨╞',(to_char(SYSDATE,'yyyy.mm.dd hh24:mi')),'cjscn');
+--UPDATE QNA_QUESTION SET COMMENT_NO = '1' WHERE NO='1';
+--UPDATE QNA_QUESTION SET QNA_TYPE ='╫ц╫╨еш ╧╝юг';
+
+COMMIT;
+
+
+
+
+
+
 commit;

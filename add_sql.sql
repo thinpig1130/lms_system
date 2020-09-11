@@ -2,7 +2,7 @@ CREATE TABLE "MY_COURSE"(
     "CO_CODE" CHAR(3),
     "MEM_ID" VARCHAR2(50),
     "PLAN" NUMBER(1), -- 0 (무계획) / 1 (계획)
-    "RANGE" NUMBER(1), -- 1 (중요도 A만 학습), 2 (중요도 B까지 학습), 3 ( 중요한 것 부터 학습), 4 ( 차근차근 순차 학습 ) 
+    "PRIORITY" NUMBER(1), -- 1 (중요도 A만 학습), 2 ( 차근차근 순차 학습 ) 
     "DAYS_PER_WEEK" NUMERIC,
     "APPLY_DATE" DATE,
     "EXPECTED_END_DATE" DATE,
@@ -13,15 +13,7 @@ CREATE TABLE "MY_COURSE"(
 
 DROP TABLE MY_COURSE;
 
-SELECT CEIL(EXPECTED_END_DATE - SYSDATE) AS D_DAYS
+SELECT CEIL(EXPECTED_END_DATE - SYSDATE)+1 AS DAYS_LEFT
 FROM MY_COURSE
-WHERE CO_CODE="" AND MEM_ID="";
+WHERE CO_CODE='C01' AND MEM_ID='tp1130';
 
--- 미완기능 메모. 
-	<select id="searchDDays" parameterType="map" resultMap="result">
-		<![CDATA[
-		SELECT CEIL(EXPECTED_END_DATE - SYSDATE) AS D_DAYS
-		FROM MY_COURSE
-		WHERE CO_CODE=#{coCode} AND #{memId}
-		]]>
-	</select>

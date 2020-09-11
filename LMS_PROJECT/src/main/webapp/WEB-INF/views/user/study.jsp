@@ -52,14 +52,13 @@
 			                    <i class="material-icons">update</i> 총 학습 수 40 / 남은 학습 10
 	                  		</div>
 			                <div class="row container-Fluid">
-			                	중요도 A만 공부 <br>
+			                	중요한 것 부터 공부한다!! <br>
 			                	주 5일 공부 <br>
-			                	목표기간 : 2002.03.04~2002.05.07<br>
-			                	하루 학습 목표 : 7개 <br>
-			                	하루 복습 목표 : 10개  <br>         	
+			                	<br>
+			                	오늘 학습 목표 : 모듈 7개 <br>     	
 			                <div>
 							<div class="row container-Fluid">
-		                  		<button class="btn btn-info pull-right btn-round">이어서 학습하기</button>
+		                  		<a href="/user/study/hard?course=${course.coCode}" class="btn btn-info pull-right btn-round" target="_blank">이어서 학습하기</a>
 			                </div>
 						</div>
 	                  </div>
@@ -75,6 +74,7 @@
     </div>
   </div>
   
+  <c:if test="${not empty courseList}">
   <!-- 학습계획작성 폼 -->
   <div class="fixed-plugin">
     <div class="dropdown show-dropdown">
@@ -98,11 +98,11 @@
 				</div>
 			</c:forEach>
         </li>
-        <li class="header-title">학습 범위 선택</li>
+        <li class="header-title">학습 우선 순위 선택</li>
         <li class="button-container adjustments-line">
-        	<div class="form-check form-check-radio">
+			<div class="form-check form-check-radio">
 			  <label class="form-check-label">
-			    <input class="form-check-input" type="radio" name="range" id="range" value="1"> 중요도 A만 학습
+			    <input class="form-check-input" type="radio" name="priority" id="priority" value="1"> 증요한 것부터 학습
 			    <span class="circle">
 			        <span class="check"></span>
 			    </span>
@@ -110,23 +110,7 @@
 			</div>
 			<div class="form-check form-check-radio">
 			  <label class="form-check-label">
-			    <input class="form-check-input" type="radio" name="range" id="range" value="2"> 증요도 B까지 학습
-			    <span class="circle">
-			        <span class="check"></span>
-			    </span>
-			  </label>
-			</div>
-			<div class="form-check form-check-radio">
-			  <label class="form-check-label">
-			    <input class="form-check-input" type="radio" name="range" id="range" value="3"> 증요한 것부터 학습
-			    <span class="circle">
-			        <span class="check"></span>
-			    </span>
-			  </label>
-			</div>
-			<div class="form-check form-check-radio">
-			  <label class="form-check-label">
-			    <input class="form-check-input" type="radio" name="range" id="range" value="4" checked> 차근 차근 순서대로 학습
+			    <input class="form-check-input" type="radio" name="priority" id="priority" value="2" checked> 차근 차근 순서대로 학습
 			    <span class="circle">
 			        <span class="check"></span>
 			    </span>
@@ -199,12 +183,13 @@
 	        	<label> 목표일 : <input type="date" name="expected_end_date"></label>
         </li>
         <li class="button-container">
-       		<button type="submit" class="btn btn-primary btn-block">계획 	적용</button>
+       		<button type="submit" class="btn btn-primary btn-block">계획 적용</button>
         </li>
       </ul>
       </form>
     </div>
   </div>
+  </c:if>
 <%@ include file="../include/corejs.jsp" %>
 </body>
 </html>
