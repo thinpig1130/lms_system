@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itperson.dao.MyCourseDao">
+	<resultMap id ="result" type="com.itperson.dto.MyCourse">
+		<result property = "coCode" column = "CO_CODE"/>
+		<result property = "coName" column="CO_NAME"/>
+		<result property = "memId" column="MEM_ID"/>
+		<result property = "plan" column="PLAN"/>
+		<result property = "priority" column="PRIORITY"/>
+		<result property = "daysPerWeeks" column="DAYS_PER_WEEK"/>
+		<result property = "applyDate" column="APPLY_DATE"/>
+		<result property = "expectedEndDate" column="EXPECTED_END_DATE"/>
+	</resultMap>
+	<resultMap id ="complexResult" type="com.itperson.dto.ViewForStudy">
+		<result property = "coCode" column = "CO_CODE"/>
+		<result property = "coName" column="CO_NAME"/>
+		<result property = "memId" column="MEM_ID"/>
+		<result property = "plan" column="PLAN"/>
+		<result property = "priority" column="PRIORITY"/>
+		<result property = "daysPerWeeks" column="DAYS_PER_WEEK"/>
+		<result property = "applyDate" column="APPLY_DATE"/>
+		<result property = "expectedEndDate" column="EXPECTED_END_DATE"/>
+		<result property = "daysLeft" column="DAYS_LEFT"/>
+		<result property = "countContents" column="COUNT_CONTNETS"/>
+		<result property = "countRemaingContnents" column="COUNT_REMANING_CONTNETS"/>
+	</resultMap>
+	
+	<insert id="registMyCourse" parameterType="map">
+		<![CDATA[
+		INSERT INTO MY_COURSE (CO_CODE, MEM_ID, PLAN, APPLY_DATE)
+		VALUES (#{coCode}, #{memId}, 0, SYSDATE)
+		]]>
+	</insert>
+	
+	<select id="searchCourses" parameterType="String" resultMap="result">
+		<![CDATA[
+		SELECT CO_CODE, NAME AS CO_NAME, MEM_ID, PLAN, PRIORITY, DAYS_PER_WEEK, APPLY_DATE, EXPECTED_END_DATE
+		FROM MY_COURSE mc, COURSE co 
+		WHERE mc.CO_CODE = co.CODE
+            AND MEM_ID=#{value}
+		]]>
+	</select>
+	
+	<update id ="updateMyCourse" parameterType="com.itperson.dto.MyCourse">
+		<![CDATA[
+		UPDATE MY_COURSE
+		SET PLAN = #{plan}, PRIORITY=#{priority}, DAYS_PER_WEEK=#{daysPerWeeks}, EXPECTED_END_DATE=#{expectedEndDate}
+		WHERE CO_CODE = #{coCode} AND  MEM_ID = #{memId}
+		]]>
+	</update>
+	
+ 	<select id="searchDaysLeft" parameterType="map" resultType="int">
+		<![CDATA[
+		SELECT CEIL(EXPECTED_END_DATE - SYSDATE)+1 AS DAYS_LEFT
+		FROM MY_COURSE
+		WHERE CO_CODE=#{coCode} AND #{memId}
+		]]>
+	</select>
+	
+	<select id="searchComplexCourses" parameterType="String" resultMap="complexResult">
+		<![CDATA[
+		SELECT mc.CO_CODE, NAME AS CO_NAME, MEM_ID, PLAN, PRIORITY, DAYS_PER_WEEK, APPLY_DATE, EXPECTED_END_DATE, CEIL(EXPECTED_END_DATE - SYSDATE)+1 AS DAYS_LEFT, cnt.COUNT_CONTNETS, rst.COUNT_REMANING_CONTNETS
+		FROM MY_COURSE mc, COURSE co, 
+		    (
+		    SELECT CO_CODE, count(*) AS COUNT_CONTNETS
+		    FROM VW_STUDY_CONTENTS_LIST 
+		    GROUP BY CO_CODE) cnt, 
+		    (
+		    SELECT CO_CODE, count(*) AS COUNT_REMANING_CONTNETS
+		    FROM VW_STUDY_CONTENTS_LIST
+		    WHERE CODE NOT IN (
+		        SELECT DISTINCT(STU_CODE) 
+		        FROM STUDY_LOG
+		        WHERE MEM_ID=#{memId})
+		    GROUP BY CO_CODE ) rst
+		WHERE mc.CO_CODE = co.CODE AND cnt.CO_CODE = mc.CO_CODE AND mc.CO_CODE = rst.CO_CODE
+		    AND MEM_ID=#{memId}
+		]]>
+	</select>
+	
+	<select id="nextStucodeInOrder" parameterType="String" resultType="String">
+	</select>
+	
+	<select id="nextStucodeImport" parameterType="String" resultType="String">
+	</select>
+	
+	
+	
+</mapper>

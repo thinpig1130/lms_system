@@ -1,0 +1,46 @@
+package com.itperson.service;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
+
+import com.itperson.dao.FieldDao;
+import com.itperson.dao.StudyLogDao;
+import com.itperson.dto.Field;
+
+public class StudyRegistLogService implements Service {
+	private SqlSession sqlSession;
+	public StudyRegistLogService(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	@Override
+	public void execute(Model model) {
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		
+		System.out.println(request.getAttribute("correct[]"));
+		
+		
+		
+		StudyLogDao dao = sqlSession.getMapper(StudyLogDao.class);
+		FieldDao fieldDao = sqlSession.getMapper(FieldDao.class);
+		
+		String stuCode = request.getParameter("code");
+		String memId = (String) request.getSession().getAttribute("id");
+//		System.out.println(stuCode +"," +memId);
+		dao.registStudyLog(stuCode, memId);
+		
+		Field subcategory = fieldDao.studyContentsBelongs(stuCode);
+		Field category = fieldDao.subCategoryBelongs(subcategory.getCode());
+		Field course = fieldDao.categoryBelongs(category.getCode());
+		
+		
+		model.addAttribute("course", course.getCode());
+	}
+
+}

@@ -54,6 +54,30 @@
 		]]>
 	</insert>
 	
+	<select id="searchQuestionList" parameterType="String"  resultMap="question">
+		<![CDATA[
+		SELECT *
+		FROM VW_QUESTION_LIST
+		WHERE STU_CODE=#{value}
+		]]>
+	</select>
+	
+	<select id="searchMAnswer" parameterType="String"  resultMap="mAnswer">
+		<![CDATA[
+		SELECT *
+		FROM M_ANSWER
+		WHERE Q_CODE = #{value}
+		]]>
+	</select>
+	
+	<select id="searchSAnswer" parameterType="String"  resultType="String">
+		<![CDATA[
+		SELECT ANSWER
+		FROM S_QUESTION
+		WHERE CODE = #{value}
+		]]>
+	</select>
+	
 	<select id="maxCode" parameterType="String" resultType="String">
 		<![CDATA[
 		SELECT MAX(CODE)

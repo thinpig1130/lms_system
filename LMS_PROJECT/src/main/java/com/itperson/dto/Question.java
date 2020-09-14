@@ -1,5 +1,7 @@
 package com.itperson.dto;
 
+import java.util.ArrayList;
+
 public class Question {
 	private String code;
 	private String question;
@@ -8,7 +10,6 @@ public class Question {
 	
 	public Question() {};
 	public Question(String code, String question, String stuCode, String type) {
-		super();
 		this.code = code;
 		this.question = question;
 		this.stuCode = stuCode;
@@ -38,8 +39,17 @@ public class Question {
 	public void setType(String type) {
 		this.type = type;
 	}
+	
 	@Override
 	public String toString() {
 		return "MQuestion [code=" + code + ", question=" + question + ", stuCode=" + stuCode + ", type=" + type + "]";
+	}
+	
+	public ArrayList<MAnswer> getAnswerList(){
+		return null;		
+	}
+	
+	public String getAnswer() {
+		return null;
 	}
 }

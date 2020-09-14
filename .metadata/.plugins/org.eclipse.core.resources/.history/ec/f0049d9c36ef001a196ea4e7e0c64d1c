@@ -1,9 +1,0 @@
-package com.itperson.dto;
-
-public class MAnswer {
-	private int code;
-	private String qConde;
-	private String answer;
-	private String correct;
-
-}

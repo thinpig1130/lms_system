@@ -84,6 +84,15 @@ CREATE TABLE "MY_COURSE"(
     FOREIGN KEY (MEM_ID) REFERENCES "MEMBER"(ID)
 );
 
+CREATE TABLE "STUDY_LOG"(
+    "MEM_ID" VARCHAR2(50),
+    "STU_CODE" CHAR(10),
+    "COMPLETED" CHAR(1),
+    "REG_DATE" DATE,
+    FOREIGN KEY (MEM_ID) REFERENCES "MEMBER"(ID),
+    FOREIGN KEY (STU_CODE) REFERENCES "STUDY_CONTENTS"(CODE)
+);
+
 --------------------------------------------뷰 생성 -------------------------------------
 --- QUESTION_LIST 뷰.
 CREATE OR REPLACE VIEW VW_QUESTION_LIST AS
@@ -165,6 +174,7 @@ DROP VIEW VW_QUESTION_LIST;
 DROP VIEW VW_STUDY_CONTENTS_LIST;
 DROP VIEW VW_SEARCH_CATEGORY;
 DROP TABLE MY_COURSE;
+DROP TABLE STUDY_LOG;
 
 DROP TABLE QNA_COMMENT;
 DROP TABLE QNA_QUESTION;
@@ -182,13 +192,10 @@ SELECT stu.code, COUNT(vql.CODE)
 FROM STUDY_CONTENTS stu LEFT OUTER JOIN VW_QUESTION_LIST vql ON stu.CODE = vql.STU_CODE
 GROUP BY stu.code;
 
--- 내일 할일 ... (page에 해당하는 tab 메뉴가 sidebar에서 선택되도록 하기!!, 학습신청시 학습계획 폼추가 및 DB 구성, 학습 계획을 업데이트 하면 보여주는 상세 내용까지 구현 )
+-- 내일 할일 ... (page에 해당하는 tab 메뉴가 sidebar에서 선택되도록 하기!!) Next 학습내용 로직 재 설계 , 문제가 많아도 3개만 test 하는 로직 구현, 맞춘 문제는 다시 입력하지 않도록 하고, 완료 되었다는것을 분명히 알수 있도록 UI 구성
 
--- 학습 하기 UI & 컨트롤러 수정
--- MY_COURSE 테이블 설계 및 생성
--- 학습신청하면 신청된 학습을 보여주는 학습하기 페이지 까지 완료. 
-
--- error 컨트롤러 분리 / 로그인 후 사용할 수 있는 페이지에 interceptor 추가.
+-- 학습내용 service 구현
+-- 문제내용 service 구현
 
 
 

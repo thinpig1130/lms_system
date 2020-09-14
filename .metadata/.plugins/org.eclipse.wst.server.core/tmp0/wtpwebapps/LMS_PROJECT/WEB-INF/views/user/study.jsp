@@ -35,11 +35,18 @@
 		                <div class="card-icon">
 		                  	<i class="material-icons">edit_road</i>
 		                </div>
+		                <c:if test="${course.plan == 1}" >
 	                	<p class="card-category"> D-${course.daysLeft} </p>
-	                  	<h3 class="card-title">${course.coName}</h3><br>
+	                	</c:if>
+	                	<c:if test="${course.plan == 0}" >
+	                	<p class="card-category"> 무계획이 계획 ! </p>
+	                	</c:if>
+	                  	<h3 class="card-title">${course.coName} ${course.progressRate}</h3><br>
+	                  	학습진행
 	             		<div class="progress">
-		  					<div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">진도율 70%</div>
+		  					<div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: ${course.progressRate}%;" aria-valuenow="${course.progressRate}" aria-valuemin="0" aria-valuemax="100">${course.progressRate} %</div>
 						</div>
+						기억
 						<br>
 						<div class="progress">
 		  					<div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">기억률 30%</div>
@@ -52,13 +59,26 @@
 			                    <i class="material-icons">update</i> 총 학습 수 ${course.countContents} / 남은 학습 ${course.countRemaingContnents}
 	                  		</div>
 			                <div class="row container-Fluid">
-			                	중요한 것 부터 공부한다!! <br>
+	                  		<c:if test="${course.plan == 1}" >
+			                	학습전략 : 
+			                	<c:if test="${course.priority==1}">
+			                    	중요한 것 부터 공부한다!! 
+			                    </c:if>
+			                    <c:if test="${course.priority==2}">
+			                    	차근차근 공부한다!! 
+			                    </c:if>
+			                    <br>
 			                	주  ${course.daysPerWeeks}일 공부 <br>
-			                	<br>
-			                	오늘 학습 목표 : 모듈 ${course.todayContents}개 <br>     	
+			                	오늘 학습 목표 : 모듈 ${course.todayContents}개      	
+			                </c:if>
+			                <c:if test="${course.plan == 0}" >
+			                	계획을 세우려면 오른쪽의&nbsp;&nbsp; '&nbsp;<i class="fa fa-cog fa-2x"> </i>&nbsp;' &nbsp;&nbsp;아이콘을 누르세요! 
+			                </c:if>
+			                <br><br>
 			                <div>
 							<div class="row container-Fluid">
 		                  		<a href="/user/study/hard?course=${course.coCode}" class="btn btn-info pull-right btn-round" target="_blank">이어서 학습하기</a>
+		                  		<a href="/user/study/hard?course=${course.coCode}" class="btn btn-info pull-right btn-round" target="_blank">골라서 학습하기</a>
 			                </div>
 						</div>
 	                  </div>

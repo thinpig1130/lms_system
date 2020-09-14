@@ -23,3 +23,7 @@
 9월 11, 2020 13:30:29.75 [7348:12536:0911/133029.755:ERROR:socket_stream.cc(219)] Closing stream with result -2
 9월 11, 2020 13:30:36.95 [7348:12536:0911/133036.957:ERROR:socket_stream.cc(219)] Closing stream with result -2
 9월 11, 2020 13:40:59.68 [7348:12536:0911/134059.689:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -106
+
+9월 14, 2020 08:41:11.48 NEW SESSION
+9월 14, 2020 08:41:11.48 [10728:10904:0914/084111.479:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+9월 14, 2020 08:41:24.57 [10728:9420:0914/084124.574:ERROR:device_event_log_impl.cc(208)] [08:41:24.574] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.

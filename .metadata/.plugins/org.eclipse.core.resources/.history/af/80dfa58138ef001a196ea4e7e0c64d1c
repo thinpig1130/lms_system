@@ -1,7 +1,0 @@
-package com.itperson.dto;
-
-import java.util.ArrayList;
-
-public class MQuestion extends Question{
-	private ArrayList<MAnswer> answer;
-}

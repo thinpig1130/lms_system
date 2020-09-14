@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itperson.dao.QuestionDao">
+	<resultMap id ="question" type="com.itperson.dto.Question"> 
+		<result property = "code" column = "CODE"/> 
+		<result property = "question" column="QUESTION"/>
+		<result property = "stuCode" column = "STU_CODE"/>
+		<result property = "type" column = "TYPE"/>
+	</resultMap>
+    
+    <resultMap id ="mQuestion" type="com.itperson.dto.MQuestion"> 
+		<result property = "code" column = "CODE"/> 
+		<result property = "question" column="QUESTION"/>
+		<result property = "stuCode" column = "STU_CODE"/>
+		<result property = "type" column = "TYPE"/>
+	</resultMap>
+	
+	<resultMap id ="sQuestion" type="com.itperson.dto.SQuestion"> 
+		<result property = "code" column = "CODE"/> 
+		<result property = "question" column="QUESTION"/>
+		<result property = "stuCode" column = "STU_CODE"/>
+		<result property = "type" column = "TYPE"/>
+		<result property = "answer" column ="ANSWER"/>
+	</resultMap>
+	
+	<resultMap id ="mAnswer" type="com.itperson.dto.MAnswer"> 
+		<result property = "code" column = "CODE"/> 
+		<result property = "qCode" column="Q_CODE"/>
+		<result property = "answer" column = "ANSWER"/>
+		<result property = "correct" column = "CORRECT"/>
+	</resultMap>
+	
+	<insert id="registQuestionM" parameterType="com.itperson.dto.Question">
+		<![CDATA[
+		INSERT INTO M_QUESTION (CODE, QUESTION, STU_CODE)
+		VALUES (#{code}, #{question}, #{stuCode})
+		]]>
+	</insert>
+	
+	<insert id="registQuestionS" parameterType="com.itperson.dto.SQuestion">
+		<![CDATA[
+		INSERT INTO S_QUESTION (CODE, QUESTION, ANSWER, STU_CODE)
+		VALUES (#{code}, #{question}, #{answer}, #{stuCode})
+		]]>
+	</insert>	
+	
+	<insert id="registAnswer" parameterType="com.itperson.dto.MAnswer">
+		<![CDATA[
+		INSERT INTO M_ANSWER (CODE, Q_CODE, ANSWER, CORRECT)
+		VALUES (#{code}, #{qCode}, #{answer}, #{correct})
+		]]>
+	</insert>
+	
+	<select id="searchQuestionList" parameterType="String"  resultMap="question">
+		<![CDATA[
+		SELECT *
+		FROM VW_QUESTION_LIST
+		WHERE STU_CODE=#{value}
+		]]>
+	</select>
+	
+	<select id="searchMAnswer" parameterType="String"  resultMap="mAnswer">
+		<![CDATA[
+		SELECT *
+		FROM M_ANSWER
+		WHERE Q_CODE = #{value}
+		]]>
+	</select>
+	
+	<select id="searchSAnswer" parameterType="String"  resultMap="mAnswer">
+		<![CDATA[
+		SELECT ANSWER
+		FROM S_QUESTION
+		WHERE CODE = #{value}
+		]]>
+	</select>
+	
+	<select id="maxCode" parameterType="String" resultType="String">
+		<![CDATA[
+		SELECT MAX(CODE)
+		FROM VW_QUESTION_LIST
+		WHERE STU_CODE=#{value}
+		]]>
+	</select>
+</mapper>

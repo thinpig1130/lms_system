@@ -1,16 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <%@ page session="false" %>
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>공부하러 들어왔어요~~!!</title>
+		<title>${id}님 스터디룸</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="/resources/assets_core/css/main.css" />
 		<noscript><link rel="stylesheet" href="/resources/assets_core/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
+
 
 		<!-- Sidebar -->
 			<section id="sidebar">
@@ -19,23 +21,20 @@
 						<ul>
 							<li><a href="#intro">학습하기</a></li>
 							<li><a href="#one">문제풀기</a></li>
-							<li><a href="/user/study/next">NEXT</a></li>
+							<li><a href="#" onclick="formSubmit();">NEXT</a></li>
 							<li><a href="/user/study/close">Exit</a></li>
 						</ul>
 					</nav>
 				</div>
 			</section>
-
 		<!-- Wrapper -->
 			<div id="wrapper">
 
 				<!-- Intro -->
 					<section id="intro" class="wrapper style1 fullscreen fade-up">
 						<div class="inner">
-							<h1>학습제목</h1>
-							학습내용 표시
-							<p>Next를 눌렀을 때 관련된 문제를 다 풀고, 정답까지 확인 한 학습에 한해서만 완료된 학습으로 인정한다. <br />
-							and released for free under the <a href="http://html5up.net/license">Creative Commons</a>.</p>
+							<h1>${content.title}</h1>
+							${content.contents}
 							<ul class="actions">
 								<li><a href="#one" class="button scrolly">문제풀러가기</a></li>
 							</ul>
@@ -47,63 +46,49 @@
 						<div class="inner">
 						<h2> 문제 </h2>
 						<hr>
+						<c:set var="quesNum" value="1"/>
+						<c:forEach items="${questions}" var="question">
 						<section>
 							<div class="content">
 									<p>
-										1. Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.
+										${quesNum}.&nbsp;&nbsp; ${question.question}
+										<c:if test="${ 'M' eq question.type }">
+											<c:set var="ansNum" value="1"/>
+											<c:forEach items="${question.answerList}" var="answer">
+											<div class="col-4 col-12-small">
+												<input type="radio" onclick="passValue(${ansNum},${quesNum})"  id="ques${quesNum}${ansNum}" name="ques${quesNum}" value="${ansNum}">
+												<label for="ques${quesNum}${ansNum}">${answer.answer}</label>
+												<c:if test="${'O' eq answer.correct }">
+													<input type="hidden" id="ques${quesNum}" name="ques${quesNum}" value="">
+													<input type="hidden" id="ans${quesNum}" name="ans${quesNum}" value="${ansNum}">
+												</c:if>
+											</div>
+											<c:set var="ansNum" value="${ansNum+1}"/>
+											</c:forEach>
+										</c:if>
+										<c:if test="${'S' eq question.type }">
 										<div class="col-12 col-12-xsmall">
-											<input type="text" name="demo-name" id="demo-name" value="" placeholder="정답 입력" />
+											<input type="text" name="ques${quesNum}" id="ques${quesNum}" placeholder="정답 입력" />
+											<input type="hidden" name="ans${quesNum}" id="ans${quesNum}" value="${question.answer}">
 										</div>
+										</c:if>
 									</p>
-									
-									<ul class="actions">
-										<li><button onclick="" class="button">정답확인</button></li>
-										<input type="hidden" name="ques1" value="X">
-									</ul>
-							</div>
-						</section>
-						<hr>
-						<section>
-							<div class="content">
-								<div class="inner">
-									<p>2. sdfsdfsdfsdfsdfsd 개관식 문제 예시us.</p>
-									<div class="col-4 col-12-small">
-										<input type="radio" id="demo-priority-low" name="demo-priority">
-										<label for="demo-priority-low">Low</label>
-									</div>
-									<div class="col-4 col-12-small">
-										<input type="radio" id="demo-priority-normal" name="demo-priority">
-										<label for="demo-priority-normal">Normal</label>
-									</div>
-									<div class="col-4 col-12-small">
-										<input type="radio" id="demo-priority-top" name="demo-priority">
-										<label for="demo-priority-top">ㅇㅇㅇ</label>
-									</div>
-									<div class="col-4 col-12-small">
-										<input type="radio" id="demo-priority-high" name="demo-priority">
-										<label for="demo-priority-high">High</label>
-									</div>
 									<br>
 									<ul class="actions">
-										<li><button onclick="" class="button">정답확인</button></li>
-										<input type="hidden" name="ques2" value="X">
+										<li><button onclick="checkAnswer(${quesNum})" class="button">정답확인</button></li>
 									</ul>
-								</div>
-							</div>							
-						</section>
-						<hr>
-						<section>
-							<div class="content">
-								<div class="inner">
-									<p>3. Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><button onclick="" class="button">정답확인</button></li>
-										<input type="hidden" name="ques3" value="X">
-									</ul>
-								</div>
+									
 							</div>
 						</section>
-					</section>
+						<hr>
+						<c:set var="quesNum" value="${quesNum+1}"/>
+						</c:forEach>
+					<form id="resultForm" action="/user/study/next">
+						<input type="hidden" name="code" value="${content.code}">
+						<c:forEach var="i" begin="1" end="${fn:length(questions)}">
+							<input type="hidden" id="submit${i}" name="correct" value="X"/>
+						</c:forEach>														
+					</form>
 				</div>
 			</div>
 
@@ -125,6 +110,33 @@
 			<script src="/resources/assets_core/js/breakpoints.min.js"></script>
 			<script src="/resources/assets_core/js/util.js"></script>
 			<script src="/resources/assets_core/js/main.js"></script>
+
+
+<script type="text/javascript">
+	 function checkAnswer(num) {
+		let str = "ques"+num;
+		let str2 = "ans"+num;
+		let str3 = "submit"+num;
+		let input = document.getElementById(str).value;
+		let answer = document.getElementById(str2).value;
+		if(input == answer){
+			let submit = document.getElementById(str3);
+			submit.value='O';
+		};
+	   	alert(input == answer);
+	 }
+	 
+	 function passValue(val, num) {
+		 let str = "ques"+num;
+		 let input = document.getElementById(str);
+		 input.value = val;
+	 }
+	 
+	 function formSubmit(){
+		 document.getElementById('resultForm').submit();
+	 } 
+</script>
+
 
 	</body>
 </html>

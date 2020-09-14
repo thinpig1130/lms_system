@@ -1,8 +1,0 @@
-package com.itperson.dao;
-
-import com.itperson.dto.MQuestion;
-
-public interface QuestionDao {
-	public void registMQuestion(MQuestion vo);
-
-}

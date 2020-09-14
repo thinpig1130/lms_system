@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itperson.dao.StudyLogDao">
+	<resultMap id ="result" type="com.itperson.dto.StudyLog">
+		<result property = "code" column = "CODE"/> 
+		<result property = "name" column="NAME"/>
+	</resultMap>
+	
+	<insert id="registCourse" parameterType="com.itperson.dto.Course">
+		<![CDATA[
+		INSERT INTO Course (CODE, NAME)
+		VALUES (#{code}, #{name})
+		]]>
+	</insert>
+</mapper>

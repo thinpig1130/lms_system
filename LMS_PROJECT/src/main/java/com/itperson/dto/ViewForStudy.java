@@ -26,5 +26,8 @@ public class ViewForStudy extends MyCourse {
 	public int getTodayContents(){
 		return (int) Math.ceil(this.countRemaingContnents / (float) daysLeft) ;
 	}
+	public String getProgressRate() {
+		return  String.format("%.1f", 100-(100.0/this.getCountContents()) * this.getCountRemaingContnents());
+	}
 	
 }

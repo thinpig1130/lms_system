@@ -29,7 +29,6 @@ public class AdminCheckInterceptor extends HandlerInterceptorAdapter {
 			response.sendRedirect("/error/enter");
 			return false;
 		}
-		
 		return true;
 	}
 	

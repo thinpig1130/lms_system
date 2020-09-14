@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itperson.dao.StudyLogDao">
+	<resultMap id ="result" type="com.itperson.dto.StudyLog">
+		<result property = "memId" column = "MEM_ID"/> 
+		<result property = "stuCode" column="STU_CODE"/>
+		<result property = "regDate" column="REG_DATE"/>
+	</resultMap>
+	
+	<insert id="registStudyLog" parameterType="map">
+		<![CDATA[
+		INSERT INTO STUDY_LOG(MEM_ID,STU_CODE,REG_DATE)
+		VALUES (#{memId}, #{stuCode}, SYSDATE);
+		]]>
+	</insert>
+</mapper>

@@ -1,0 +1,50 @@
+package com.itperson.service;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
+
+import com.itperson.dao.FieldDao;
+import com.itperson.dao.MyCourseDao;
+import com.itperson.dao.StudyContentsDao;
+
+public class StudyCursorService implements Service {
+
+	private SqlSession sqlSession;
+	public StudyCursorService(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	@Override
+	public void execute(Model model) {
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		String coCode = request.getParameter("course");
+		String memId = (String) request.getSession().getAttribute("id");
+		
+		
+		// 학습내용 
+		MyCourseDao dao = sqlSession.getMapper(MyCourseDao.class);
+		StudyContentsDao studyContentsDao = sqlSession.getMapper(StudyContentsDao.class);
+		
+		String stuCode;
+		if(dao.searchPlan(coCode, memId)==1 && dao.searchPriority(coCode, memId)==1) {
+			 stuCode = dao.nextStucodeImport(coCode, memId);
+		}else{
+			 stuCode = dao.nextStucodeInOrder(coCode, memId);			
+		}
+		
+		model.addAttribute("content", studyContentsDao.searchStudyContents(stuCode));
+		
+		
+		
+		// 해당 학습의 문제 검색 
+		
+		System.out.println(coCode + ", " + memId + "," + stuCode);
+		
+	}
+
+}

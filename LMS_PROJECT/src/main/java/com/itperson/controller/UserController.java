@@ -14,6 +14,8 @@ import com.itperson.service.MyCoursesViewService;
 import com.itperson.service.Service;
 import com.itperson.service.StudyApplyService;
 import com.itperson.service.StudyApplyUpdateService;
+import com.itperson.service.StudyCursorService;
+import com.itperson.service.StudyRegistLogService;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -62,8 +64,8 @@ public class UserController {
 	@RequestMapping(value = "/study/hard")
 	public String userStudyHard( Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
-//		Service service = new StudyApplyService(sqlSession);
-//		service.execute(model);
+		Service service = new StudyCursorService(sqlSession);
+		service.execute(model);
 		model.addAttribute("page_name", "나는 공부중이다!");
 		return "user/study_hard";
 	}
@@ -81,10 +83,10 @@ public class UserController {
 	@RequestMapping(value = "/study/next")
 	public String userStudyNext( Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
-//		Service service = new StudyApplyService(sqlSession);
-//		service.execute(model);
-// 		현재 학습의 완료 여부를 체크한 후 DB에 저장. 그리고 다음 학습 page로 넘김
-		model.addAttribute("page_name", "나는 공부중이다!");
+		
+		Service service = new StudyRegistLogService(sqlSession);
+		service.execute(model);
+// 		현재 학습의 완료 여부를 체크 추가해야 함.
 		return "redirect:/user/study/hard";
 	}
 	
