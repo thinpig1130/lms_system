@@ -47,7 +47,7 @@ public class ManagerQuestionRegistService implements Service{
 //		vo.setReg_date(request.getParameter("reg_date"));
 		vo.setUser_id(memId);
 //		vo.setComment_no(Integer.parseInt((request.getParameter("comment_no"))));
-		System.out.println(vo);
+		System.out.println("등록서비스"+vo);
 		
 		QnaQuestionDao dao = sqlSession.getMapper(QnaQuestionDao.class);
 		dao.registQnaQuestion(vo);

@@ -22,5 +22,12 @@
 		VALUES (SEQ_QUESTION_NO.NEXTVAL,#{qna_type},#{title},#{contents},0, SYSDATE,#{user_id})
 		]]>
 	</insert>
+	
+	<select id="QnaQuestionList" resultMap="result">
+		<![CDATA[
+			SELECT NO,QNA_TYPE,TITLE,COMMENT_NO,USER_ID, REG_DATE ,COUNT FROM QNA_QUESTION
+		]]>
+	</select>
 
 </mapper>
+

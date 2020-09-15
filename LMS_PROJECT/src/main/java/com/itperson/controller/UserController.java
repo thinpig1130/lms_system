@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.itperson.service.CoursesInfoService;
 import com.itperson.service.ManagerQuestionRegistService;
+import com.itperson.service.ManagerQuestionViewService;
 import com.itperson.service.MyCoursesViewService;
+import com.itperson.service.ReviewListService;
 import com.itperson.service.Service;
 import com.itperson.service.StudyApplyService;
 import com.itperson.service.StudyApplyUpdateService;
 import com.itperson.service.StudyCursorService;
+import com.itperson.service.StudyExitService;
 import com.itperson.service.StudyRegistLogService;
 
 @Controller
@@ -73,9 +76,8 @@ public class UserController {
 	@RequestMapping(value = "/study/close")
 	public String userStudyClose( Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
-//		Service service = new StudyApplyService(sqlSession);
-//		service.execute(model);
-// 		현재 학습의 완료 여부를 체크한 후 DB에 저장. 그리고 브라우저 종료 page로 넘김
+		Service service = new StudyExitService(sqlSession);
+		service.execute(model);
 		model.addAttribute("page_name", "나는 공부중이다!");
 		return "user/close";
 	}
@@ -83,10 +85,8 @@ public class UserController {
 	@RequestMapping(value = "/study/next")
 	public String userStudyNext( Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
-		
 		Service service = new StudyRegistLogService(sqlSession);
 		service.execute(model);
-// 		현재 학습의 완료 여부를 체크 추가해야 함.
 		return "redirect:/user/study/hard";
 	}
 	
@@ -94,7 +94,7 @@ public class UserController {
 	public String userStudyApplyUpdate( Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
 		Service service = new StudyApplyUpdateService(sqlSession);
-		service.execute(model);		
+		service.execute(model);
 		return "redirect:/user/study";
 	}
 	
@@ -106,20 +106,26 @@ public class UserController {
 		return "user/testing";
 	}
 	
+	/*----------------------------------- 문제풀기 tab-------------------------------------- */
 	@RequestMapping(value = "/review")
 	public String userReview( Model model, HttpServletRequest request) {
-		
+		model.addAttribute("request", request);
+		Service service = new ReviewListService(sqlSession);
+		service.execute(model);		
 		model.addAttribute("page_name", "복습하기");
 		return "user/review";
 	}
 	
 	/*----------------------------------- 관리자에게 문의 tab (재만) -------------------------------------- */
+	//9월15일 재만 수정
 	@RequestMapping(value = "/demands")
 	public String userDemands( Model model, HttpServletRequest request) {
-      
-		model.addAttribute("page_name", "관리자에게 문의");
-		return "user/demands";
+		ManagerQuestionViewService service = new ManagerQuestionViewService(sqlSession);
+	    service.execute(model);
+	    model.addAttribute("page_name", "관리자에게 문의");
+	    return "user/demands";
 	}
+	
 	@RequestMapping(value = "/demands_question")
 	public String userDemandsQuestion( Model model, HttpServletRequest request) {
       

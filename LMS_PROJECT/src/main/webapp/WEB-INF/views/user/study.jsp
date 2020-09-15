@@ -69,7 +69,8 @@
 			                    </c:if>
 			                    <br>
 			                	주  ${course.daysPerWeeks}일 공부 <br>
-			                	오늘 학습 목표 : 모듈 ${course.todayContents}개      	
+			                	오늘 학습 목표 : 모듈 ${course.todayContents}개 <br>
+			                	완료 예정일 : ${course.expectedEndDate}     	
 			                </c:if>
 			                <c:if test="${course.plan == 0}" >
 			                	계획을 세우려면 오른쪽의&nbsp;&nbsp; '&nbsp;<i class="fa fa-cog fa-2x"> </i>&nbsp;' &nbsp;&nbsp;아이콘을 누르세요! 
@@ -78,7 +79,9 @@
 			                <div>
 							<div class="row container-Fluid">
 		                  		<a href="/user/study/hard?course=${course.coCode}" class="btn btn-info pull-right btn-round" target="_blank">이어서 학습하기</a>
+		                  		<!-- 
 		                  		<a href="/user/study/hard?course=${course.coCode}" class="btn btn-info pull-right btn-round" target="_blank">골라서 학습하기</a>
+		                  		 -->
 			                </div>
 						</div>
 	                  </div>
@@ -189,7 +192,7 @@
 				</div>
 				<div class="form-check form-check-radio form-check-inline">
 				  <label class="form-check-label">
-				    <input class="form-check-input" type="radio"  name="days_per_week" id="daysperweek" value="option1"> 7일
+				    <input class="form-check-input" type="radio"  name="days_per_week" id="daysperweek" value="7"> 7일
 				    <span class="circle">
 				        <span class="check"></span>
 				    </span>

@@ -1,0 +1,9 @@
+package com.itperson.dto;
+
+public class ViewStudyLogCalculation {
+	private String stuCode;
+	private String memId;
+	private int stuCount;
+	private long elapsedTime;
+
+}

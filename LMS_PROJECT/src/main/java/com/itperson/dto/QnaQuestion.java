@@ -66,6 +66,10 @@ public class QnaQuestion {
 				+ ", count=" + count + ", reg_date=" + reg_date + ", user_id=" + user_id + ", comment_no=" + comment_no
 				+ "]";
 	}
+	
+//	public String getDateTime() {
+//		return getReg_date().y
+//	}
 
 	
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itperson.dao.CategoryDao">
+	<resultMap id ="result" type="com.itperson.dto.Category">
+		<result property = "code" column = "CODE"/> 
+		<result property = "name" column="NAME"/>
+		<result property = "coCode" column="CO_CODE"/>
+	</resultMap>
+	
+	<insert id="searchList" parameterType="com.itperson.dto.Category">
+		<![CDATA[
+			SELECT *
+			FROM VW_STUDY_LOG_CALCULATION
+			WHERE MEM_ID = 'tp1130';
+		]]>
+	</insert>
+</mapper>

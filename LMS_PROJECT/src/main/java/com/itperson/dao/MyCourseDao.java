@@ -14,6 +14,9 @@ public interface MyCourseDao {
 	public ArrayList<ViewForStudy> searchComplexCourses(String memId);
 	public String nextStucodeInOrder(@Param("coCode") String coCode, @Param("memId") String memId);
 	public String nextStucodeImport(@Param("coCode") String coCode, @Param("memId") String memId);
+	public String firstStucodeInOrder(String coCode);
+	public String firstStucodeImport(String coCode);
 	public int searchPlan(@Param("coCode") String coCode, @Param("memId") String memId);
 	public int searchPriority(@Param("coCode") String coCode, @Param("memId") String memId);
+	public int isStudyLog(@Param("coCode") String coCode, @Param("memId") String memId);
 }

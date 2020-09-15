@@ -1,0 +1,20 @@
+package com.itperson.service;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
+
+public class ReviewListService implements Service {
+	private SqlSession sqlSession;
+	
+	public ReviewListService(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+
+	@Override
+	public void execute(Model model) {
+		
+		
+		model.addAttribute("page_name", "복습하기");
+	}
+
+}

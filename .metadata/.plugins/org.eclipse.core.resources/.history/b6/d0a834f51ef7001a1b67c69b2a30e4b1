@@ -1,0 +1,6 @@
+package com.itperson.dao;
+
+public interface ViewStudyLogCalculationDao {
+	public ArrayList<> coursePageCnt(String memId);
+
+}

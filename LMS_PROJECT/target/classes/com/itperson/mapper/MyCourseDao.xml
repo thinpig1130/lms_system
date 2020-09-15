@@ -83,16 +83,23 @@
 	
 	<select id="nextStucodeInOrder" parameterType="map" resultType="String">
 		<![CDATA[
-		SELECT CODE
+		SELECT CODE, TITLE
 		FROM (
-		    SELECT CODE
+		    SELECT CODE, TITLE
 		    FROM vw_study_contents_list
-		    WHERE CO_CODE=#{coCode} AND CODE NOT IN 
-		        (
-		        SELECT DISTINCT STU_CODE
-		        FROM STUDY_LOG stl, vw_study_contents_list vsc
-		        WHERE stl.STU_CODE = vsc.CODE AND 
-		        CO_CODE=#{coCode} AND MEM_ID=#{memId} AND COMPLETED='O'
+		    WHERE CO_CODE=#{coCode} AND CODE NOT IN (
+		            SELECT DISTINCT STU_CODE
+		            FROM STUDY_LOG stl, vw_study_contents_list vsc
+		            WHERE stl.STU_CODE = vsc.CODE AND 
+		            CO_CODE=#{coCode} AND MEM_ID=#{memId} AND COMPLETED=#{memId}
+		        )AND CODE > (
+		            SELECT STU_CODE
+		            FROM STUDY_LOG stl, vw_study_contents_list vsc
+		            WHERE stl.STU_CODE = vsc.CODE AND CO_CODE=#{coCode} AND MEM_ID=#{memId}
+		                AND stl.REG_DATE = (
+		                SELECT MAX(stl.REG_DATE)
+		                FROM STUDY_LOG stl, vw_study_contents_list vsc
+		                WHERE stl.STU_CODE = vsc.CODE AND vsc.CO_CODE=#{coCode} AND MEM_ID=#{memId})
 		        )
 		    ORDER BY CODE
 		    ) 
@@ -102,20 +109,58 @@
 	
 	<select id="nextStucodeImport" parameterType="map" resultType="String">
 		<![CDATA[
-		SELECT CODE, TITLE
+		SELECT CODE
 		FROM (
-		    SELECT CODE, TITLE
+		    SELECT CODE
 		    FROM vw_study_contents_list
-		    WHERE CO_CODE=#{coCode} AND CODE NOT IN 
-		        (
-		        SELECT DISTINCT STU_CODE
-		        FROM STUDY_LOG stl, vw_study_contents_list vsc
-		        WHERE stl.STU_CODE = vsc.CODE AND 
-		        CO_CODE=#{coCode} AND MEM_ID=#{memId} AND COMPLETED='O'
+		    WHERE CO_CODE=#{coCode} AND CODE NOT IN (
+		            SELECT DISTINCT STU_CODE
+		            FROM STUDY_LOG stl, vw_study_contents_list vsc
+		            WHERE stl.STU_CODE = vsc.CODE AND 
+		            CO_CODE=#{coCode} AND MEM_ID=#{memId} AND COMPLETED='O'
+		        ) AND CODE > (
+		            SELECT STU_CODE
+		            FROM STUDY_LOG stl, vw_study_contents_list vsc
+		            WHERE stl.STU_CODE = vsc.CODE AND CO_CODE=#{coCode} AND MEM_ID=#{memId}
+		                AND stl.REG_DATE = (
+		                SELECT MAX(stl.REG_DATE)
+		                FROM STUDY_LOG stl, vw_study_contents_list vsc
+		                WHERE stl.STU_CODE = vsc.CODE AND vsc.CO_CODE=#{coCode} AND MEM_ID=#{memId})
 		        )
 		    ORDER BY IMPORTANCE, CODE
 		    ) 
 		WHERE ROWNUM = 1
+		]]>
+	</select>
+	
+	<select id="isStudyLog" parameterType="map"  resultType="int">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM STUDY_LOG stl, vw_study_contents_list vsc
+		WHERE stl.STU_CODE = vsc.CODE 
+			AND MEM_ID=#{memId} AND CO_CODE=#{coCode}
+		]]>
+	</select>
+	
+	<select id="firstStucodeInOrder" parameterType="String"  resultType="String">
+		<![CDATA[
+        SELECT CODE
+		FROM (SELECT CODE
+            FROM vw_study_contents_list
+            WHERE CO_CODE=#{value}
+            ORDER BY CODE)
+		WHERE ROWNUM=1
+		]]>
+	</select>
+	
+	<select id="firstStucodeImport" parameterType="String"  resultType="String">
+		<![CDATA[
+        SELECT CODE
+		FROM (SELECT CODE
+            FROM vw_study_contents_list
+            WHERE CO_CODE = #{value}
+            ORDER BY IMPORTANCE, CODE)
+		WHERE ROWNUM=1
 		]]>
 	</select>
 	

@@ -52,88 +52,43 @@
                         </th>
                       </thead>
                       <tbody>
+                      <c:forEach items="${qnaquestions}" var="qnaquestion">
                         <tr>
                           <td>
-                            1
+                            ${qnaquestion.no}
                           </td>
                           <td>
-                            ???유형
+                            ${qnaquestion.qna_type}
                           </td>
                           <td>
                           <a href="/user/qnatable_user">
-                            제목을 길게 써놓아서 얼마나 쓸수있나 보자~~~~~~~~~~~~~~~~~~~~~~~~~~~1
+                            ${qnaquestion.title}
                             </a>
                           </td>
                           <td>
-
-                          </td>
-                          <td>
-                            Oud-Turnhoot
-                          </td>
-                          <td>
-                            2020.09.01
-                          </td>
-                          <td>
-                            <center>
-                            11
-                            </center>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            2
-                          </td>
-                          <td>
-                            xxx유형
-                          </td>
-                          <td>
-                            제목을 길게 써놓아서 얼마나 쓸수있나 보자~~~~~~~~~~~~~~~~~~~~~~~~~~~2
-                          </td>
-                          
-                          <td>
-                            <center>
-                            <span class="material-icons">
+                          <c:if test="${qnaquestion.comment_no == 0}" >
+							<!-- 널일때 입력할곳 -->0
+	                	  </c:if>
+	                	  <c:if test="${qnaquestion.comment_no != 0}" >
+	                	 	<span class="material-icons">
 							question_answer
 							</span>
-                            </center>
+	                	  </c:if>
                           </td>
                           <td>
-                            Sinaai-Waas
+                            ${qnaquestion.user_id}
                           </td>
                           <td>
-                            2020.09.10
-                          </td>
-                          <td>
-                            <center>
-                            12
-                            </center>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            3
-                          </td>
-                          <td>
-                            yyy유형
-                          </td>
-                          <td>
-                            제목을 길게 써놓아서 얼마나 쓸수있나 보자~~~~~~~~~~~~~~~~~~~~~~~~~~~3
-                          </td>
-                          <td>
-                            
-                          </td>
-                          <td>
-                            Baileux
-                          </td>
-                          <td>
-                            2020.09.01
+                            <!-- ${qnaquestion.reg_date.year+1900} 이런식으로 세부 세팅 할것 나중에-->
+                            ${qnaquestion.reg_date}
                           </td>
                           <td>
                             <center>
-                            13
+                            ${qnaquestion.count}
                             </center>
                           </td>
                         </tr>
+                        </c:forEach>
                       </tbody>
                     </table>
                   </div>

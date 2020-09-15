@@ -192,10 +192,10 @@ SELECT stu.code, COUNT(vql.CODE)
 FROM STUDY_CONTENTS stu LEFT OUTER JOIN VW_QUESTION_LIST vql ON stu.CODE = vql.STU_CODE
 GROUP BY stu.code;
 
--- 내일 할일 ... (page에 해당하는 tab 메뉴가 sidebar에서 선택되도록 하기!!) Next 학습내용 로직 재 설계 , 문제가 많아도 3개만 test 하는 로직 구현, 맞춘 문제는 다시 입력하지 않도록 하고, 완료 되었다는것을 분명히 알수 있도록 UI 구성
+-- 내일 할일 ... (page에 해당하는 tab 메뉴가 sidebar에서 선택되도록 하기!!), 맞춘 문제는 다시 입력하지 않도록 하고, 완료 되었다는것을 분명히 알수 있도록 UI 구성, 다음 학습이 없을경우 학습 커서를 앞으로 보내주는 로직 추가.
 
--- 학습내용 service 구현
--- 문제내용 service 구현
-
+-- Next 학습내용 로직 재 설계
+-- 학습할때 문제가 많아도 3개만 렌덤으로 보여주는 로직 구현
+-- 기억률을 계산하여 복습을 추천하기 위한 View 테이블 생성 (경과시간 계산)
 
 

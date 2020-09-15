@@ -13,7 +13,9 @@
       <div class="content">
         <div class="container-fluid">
           <!-- your content here -->
-          
+          <c:forEach items="${list}" var="item">
+          	${item.stuCode} / ${item.memId} / ${item.stuCount} / ${item.elapsedTime} / ${item.memoryRate} <br>
+          </c:forEach>
         </div>
       </div>
       <%@ include file="../include/footer.jsp" %>

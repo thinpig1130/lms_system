@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itperson.dao.ViewStudyLogCalculationDao">
+	<resultMap id ="result" type="com.itperson.dto.ViewStudyLogCalculation">
+		<result property = "code" column = "STU_CODE"/> 
+		<result property = "name" column="MEM_ID"/>
+		<result property = "coCode" column="STU_COUNT"/>
+		<result property = "coCode" column="ELAPSED_TIME"/>
+	</resultMap>
+	
+	<insert id="searchList" parameterType="String" resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM VW_STUDY_LOG_CALCULATION
+			WHERE MEM_ID=#{value}
+		]]>
+	</insert>
+</mapper>

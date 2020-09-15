@@ -22,7 +22,7 @@
 							<li><a href="#intro">학습하기</a></li>
 							<li><a href="#one">문제풀기</a></li>
 							<li><a href="#" onclick="formSubmit();">NEXT</a></li>
-							<li><a href="/user/study/close">Exit</a></li>
+							<li><a href="#" onclick="formEXit();">Exit</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -83,7 +83,7 @@
 						<hr>
 						<c:set var="quesNum" value="${quesNum+1}"/>
 						</c:forEach>
-					<form id="resultForm" action="/user/study/next">
+					<form id="resultForm">
 						<input type="hidden" name="code" value="${content.code}">
 						<c:forEach var="i" begin="1" end="${fn:length(questions)}">
 							<input type="hidden" id="submit${i}" name="correct" value="X"/>
@@ -133,6 +133,12 @@
 	 }
 	 
 	 function formSubmit(){
+		 document.getElementById('resultForm').action="/user/study/next";
+		 document.getElementById('resultForm').submit();
+	 }
+	 
+	 function formEXit(){
+		 document.getElementById('resultForm').action="/user/study/close";
 		 document.getElementById('resultForm').submit();
 	 } 
 </script>

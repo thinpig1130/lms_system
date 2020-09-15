@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;LMS_PROJECT/src/main/java/com/itperson/mapper/ViewStudyLogCalculation.xml&apos; to &apos;ViewStudyLogCalculationDao.xml&apos;" description="Rename resource &apos;ViewStudyLogCalculation.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/java/com/itperson/mapper/ViewStudyLogCalculation.xml" name="ViewStudyLogCalculationDao.xml" stamp="1600152046824" updateReferences="true"/>
+</session>

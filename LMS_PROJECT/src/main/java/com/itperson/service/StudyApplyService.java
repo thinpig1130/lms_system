@@ -25,6 +25,6 @@ public class StudyApplyService implements Service {
 		String coCode = request.getParameter("course");
 		String memId = (String) request.getSession().getAttribute("id");
 		
-		dao.registMyCourse(coCode, memId);		
+		dao.registMyCourse(coCode, memId);
 	}
 }
