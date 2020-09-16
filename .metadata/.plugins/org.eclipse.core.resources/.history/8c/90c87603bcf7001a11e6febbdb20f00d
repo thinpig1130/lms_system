@@ -1,0 +1,48 @@
+package com.itperson.service;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
+
+import com.itperson.dao.ViewStudyLogCalculationDao;
+import com.itperson.dto.ViewStudyLogCalculation;
+
+public class ReviewListService implements Service {
+	private SqlSession sqlSession;
+	
+	public ReviewListService(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+
+	@Override
+	public void execute(Model model) {
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		String memId = (String) request.getSession().getAttribute("id");
+		
+		ViewStudyLogCalculationDao dao = sqlSession.getMapper(ViewStudyLogCalculationDao.class);
+		
+		ArrayList<ViewStudyLogCalculation> list = dao.searchList(memId);
+		
+		Collections.sort(list, new Comparator() {
+			@Override public int compare(ViewStudyLogCalculation b1, ViewStudyLogCalculation b2) {
+				return b1.getMemoryRate() > (b2.getMemoryRate())?1:0; }
+
+			@Override
+			public int compare(Object o1, Object o2) {
+				ViewStudyLogCalculation val1 = (ViewStudyLogCalculation) o1;
+				ViewStudyLogCalculation val2 = (ViewStudyLogCalculation) o2;
+				return 0;
+			} 
+			});
+		
+		model.addAttribute("list", list);
+	}
+
+}

@@ -18,4 +18,5 @@
 <fullyQualifiedTypeName name="com.itperson.dao.StudyLogDao"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.itperson.dao.QuestionDao"/>
+<fullyQualifiedTypeName name="java.util.Random"/>
 </qualifiedTypeNameHistroy>

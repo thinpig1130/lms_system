@@ -23,11 +23,27 @@
 		]]>
 	</insert>
 	
-	<select id="QnaQuestionList" resultMap="result">
+<!--<select id="QnaQuestionList" resultMap="result">
 		<![CDATA[
 			SELECT NO,QNA_TYPE,TITLE,COMMENT_NO,USER_ID, REG_DATE ,COUNT FROM QNA_QUESTION
 		]]>
+	</select> -->	
+	
+	<select id="qnaQuestionMaxPage" resultType="int">
+		<![CDATA[
+			SELECT TRUNC((COUNT(*)-1)/10)+ 1 AS MAXPAGE FROM qna_question
+		]]>
 	</select>
-
+	<select id="qnaQuestionList" parameterType="int" resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+			(
+			    SELECT ROW_NUMBER() OVER(ORDER BY REG_DATE DESC) NUM,ls.*
+			    FROM VW_QNA_QUESTION_LIST ls
+			)
+			WHERE NUM BETWEEN 1+((#{value}-1)*10) AND #{value}*10
+		]]>
+	</select>
 </mapper>
 

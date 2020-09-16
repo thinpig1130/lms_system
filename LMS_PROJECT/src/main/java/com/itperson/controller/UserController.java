@@ -12,6 +12,7 @@ import com.itperson.service.CoursesInfoService;
 import com.itperson.service.ManagerQuestionRegistService;
 import com.itperson.service.ManagerQuestionViewService;
 import com.itperson.service.MyCoursesViewService;
+import com.itperson.service.ReviewCursorService;
 import com.itperson.service.ReviewListService;
 import com.itperson.service.Service;
 import com.itperson.service.StudyApplyService;
@@ -112,15 +113,32 @@ public class UserController {
 		model.addAttribute("request", request);
 		Service service = new ReviewListService(sqlSession);
 		service.execute(model);		
-		model.addAttribute("page_name", "복습하기");
+		model.addAttribute("page_name", "추천 복습 목록");
 		return "user/review";
 	}
 	
+	@RequestMapping(value = "/review/hard")
+	public String userReviewHard( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		Service service = new ReviewCursorService(sqlSession);
+		service.execute(model);		
+		return "user/review_hard";
+	}
+	
+	@RequestMapping(value = "/review/close")
+	public String userReviewClose( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		Service service = new StudyExitService(sqlSession);
+		service.execute(model);
+		model.addAttribute("page_name", "나는 공부중이다!");
+		return "redirect:/user/review";
+	}
+	
 	/*----------------------------------- 관리자에게 문의 tab (재만) -------------------------------------- */
-	//9월15일 재만 수정
 	@RequestMapping(value = "/demands")
 	public String userDemands( Model model, HttpServletRequest request) {
-		ManagerQuestionViewService service = new ManagerQuestionViewService(sqlSession);
+	    model.addAttribute("request", request);
+	    ManagerQuestionViewService service = new ManagerQuestionViewService(sqlSession);
 	    service.execute(model);
 	    model.addAttribute("page_name", "관리자에게 문의");
 	    return "user/demands";

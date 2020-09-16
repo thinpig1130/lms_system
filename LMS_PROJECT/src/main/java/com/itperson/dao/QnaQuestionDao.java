@@ -5,5 +5,6 @@ import com.itperson.dto.QnaQuestion;
 
 public interface QnaQuestionDao {
 	public void registQnaQuestion(QnaQuestion vo);
-	public ArrayList<QnaQuestion> QnaQuestionList();
+	public int qnaQuestionMaxPage();
+	public ArrayList<QnaQuestion> qnaQuestionList(int page);
 }

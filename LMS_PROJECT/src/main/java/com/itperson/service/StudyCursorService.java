@@ -69,7 +69,7 @@ public class StudyCursorService implements Service {
 		while(result.size() < 3 && ques.size() != 0) {
 			Random random = new Random();
 			int index = Math.abs(random.nextInt() % ques.size());
-			System.out.println(index);
+//			System.out.println(index);
 			Question item = ques.remove(index);
 			
 			if(item.getType().equals("M")) {

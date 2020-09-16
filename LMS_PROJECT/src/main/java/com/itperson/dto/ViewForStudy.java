@@ -4,6 +4,7 @@ public class ViewForStudy extends MyCourse {
 	private int daysLeft;
 	private int countContents;
 	private int countRemaingContnents;
+	private double memoryRate;
 	
 	public int getDaysLeft() {
 		return daysLeft;
@@ -29,5 +30,10 @@ public class ViewForStudy extends MyCourse {
 	public String getProgressRate() {
 		return  String.format("%.1f", 100-(100.0/this.getCountContents()) * this.getCountRemaingContnents());
 	}
-	
+	public double getMemoryRate() {
+		return memoryRate;
+	}
+	public void setMemoryRate(double memoryRate) {
+		this.memoryRate = memoryRate;
+	}	
 }

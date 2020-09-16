@@ -63,6 +63,7 @@
 	<interceptors>
 		<interceptor>
 		<mapping path="/user/*"/>
+		<mapping path="/user/*/*"/>
 		<mapping path="/admin/*"/>
 		<mapping path="/admin/*/*"/>
 		<beans:ref bean="NotLoginInterceptor"/>

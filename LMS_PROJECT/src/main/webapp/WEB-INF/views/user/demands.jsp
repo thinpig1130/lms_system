@@ -92,9 +92,12 @@
                       </tbody>
                     </table>
                   </div>
-                  <center>
-                      ◀ [1] [2] [3] ▶
-                  </center>
+					<div class="row container-fluid d-flex justify-content-center">
+						<c:forEach var="i" begin="1" end="${qnaquestionmaxpages}" step="1">
+							<a href="/user/demands?page=${i}" 
+								class="btn btn-primary btn-sm ${i==page?'btn-round':'btn-link'}">${i}</a>
+						</c:forEach>
+					</div>
                   <!-- href링크시 .jsp빼고 절대 해당 경로로 입력할것 -->
                   <button type="button" class="btn btn-primary" onClick="location.href='demands_question'">
                   	문의 등록</button>

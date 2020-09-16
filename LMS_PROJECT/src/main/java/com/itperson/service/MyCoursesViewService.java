@@ -1,5 +1,6 @@
 package com.itperson.service;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import com.itperson.dao.MyCourseDao;
+import com.itperson.dao.ViewStudyLogCalculationDao;
+import com.itperson.dto.ViewForStudy;
+import com.itperson.dto.ViewStudyLogCalculation;
 
 public class MyCoursesViewService implements Service {
 
@@ -20,12 +24,37 @@ public class MyCoursesViewService implements Service {
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");		
-		String id = (String) request.getSession().getAttribute("id");
+		String memId = (String) request.getSession().getAttribute("id");
 		
 		MyCourseDao dao = sqlSession.getMapper(MyCourseDao.class);
+		ArrayList<ViewForStudy> viewForStudyArr = dao.searchComplexCourses(memId);
+		
+		if(viewForStudyArr!=null && viewForStudyArr.size() != 0) {
+			ViewStudyLogCalculationDao VSCdao = sqlSession.getMapper(ViewStudyLogCalculationDao.class);
+			
+			for (ViewForStudy vfs : viewForStudyArr) {
+				ArrayList<ViewStudyLogCalculation> list = VSCdao.searchCoCodeList(vfs.getCoCode(), memId);
+				vfs.setMemoryRate(calcMemoryRate(list));
+				System.out.println(list);
+			}
+		}
 		
 		
-		model.addAttribute("courseList", dao.searchComplexCourses(id));
+		
+		model.addAttribute("courseList", viewForStudyArr);
 	}
-
+	
+	double calcMemoryRate(ArrayList<ViewStudyLogCalculation> list) {
+		double sum = 0; 
+		for(ViewStudyLogCalculation vslc : list) {
+			sum += vslc.getMemoryRate();
+			
+			
+			
+			
+			/// 하다 말았음. 
+		}
+		return 0.0;
+	}
 }
+

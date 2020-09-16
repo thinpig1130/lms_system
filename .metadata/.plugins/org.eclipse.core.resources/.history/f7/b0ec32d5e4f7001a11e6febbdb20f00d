@@ -1,0 +1,35 @@
+package com.itperson.service;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
+
+import com.itperson.dao.MyCourseDao;
+import com.itperson.dao.StudyContentsDao;
+
+public class ReviewCursorService implements Service {
+	private SqlSession sqlSession;
+	
+	public ReviewCursorService(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	@Override
+	public void execute(Model model) {
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		String coCode = request.getParameter("course");
+		String memId = (String) request.getSession().getAttribute("id");
+		String stuCode = request.getParameter("stuCode");
+		// 학습내용 셋팅
+		MyCourseDao dao = sqlSession.getMapper(MyCourseDao.class);
+		StudyContentsDao studyContentsDao = sqlSession.getMapper(StudyContentsDao.class);
+		
+		
+
+	}
+
+}

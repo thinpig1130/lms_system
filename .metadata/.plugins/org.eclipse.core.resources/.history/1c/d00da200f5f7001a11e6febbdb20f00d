@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.itperson.dao.QnaQuestionDao">
+	<resultMap id ="result" type="com.itperson.dto.QnaQuestion">
+		<result property = "no" column = "NO"/>
+		<result property = "qna_type" column = "QNA_TYPE"/> 
+		<result property = "title" column="TITLE"/>
+		<result property = "contents" column="CONTENTS"/>
+		<result property = "count" column="COUNT"/>
+		<result property = "reg_date" column="REG_DATE"/>
+		<result property = "user_id" column="USER_ID"/>
+		<result property = "comment_no" column="COMMENT_NO"/>
+	</resultMap>
+	
+	<insert id="registQnaQuestion" parameterType="com.itperson.dto.QnaQuestion">
+		<![CDATA[
+		INSERT INTO QNA_QUESTION (NO, QNA_TYPE, TITLE, CONTENTS, COUNT, REG_DATE, USER_ID)
+		VALUES (SEQ_QUESTION_NO.NEXTVAL,#{qna_type},#{title},#{contents},0, SYSDATE,#{user_id})
+		]]>
+	</insert>
+	
+	<select id="QnaQuestionList" resultMap="result">
+		<![CDATA[
+			SELECT NO,QNA_TYPE,TITLE,COMMENT_NO,USER_ID, REG_DATE ,COUNT FROM QNA_QUESTION
+		]]>
+	</select>
+
+</mapper>
+

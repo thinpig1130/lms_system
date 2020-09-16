@@ -121,6 +121,12 @@ CREATE OR REPLACE VIEW VW_SEARCH_CATEGORY AS
         ( SELECT ca.CO_CODE, ca.CODE AS CA_CODE, ca.NAME AS CA_NAME, sub.CODE AS SUB_CODE, sub.NAME AS SUB_NAME
           FROM CATEGORY ca LEFT OUTER JOIN SUB_CATEGORY sub ON ca.CODE = sub.CA_CODE
         )casub ON co.CODE = casub.CO_CODE ;
+        
+--재만 뷰
+--뷰 생성
+CREATE VIEW VW_QNA_QUESTION_LIST AS
+    SELECT NO,QNA_TYPE,TITLE,COMMENT_NO,USER_ID, REG_DATE, COUNT
+    FROM QNA_QUESTION;
 
 ----------------------------------------- 재만 테이블 QNA --------------------------------------------------------------
 
@@ -170,17 +176,18 @@ DROP TABLE STUDY_CONTENTS;
 DROP TABLE S_QUESTION;
 DROP TABLE M_QUESTION;
 DROP TABLE M_ANSWER;
+DROP TABLE MY_COURSE;
+DROP TABLE STUDY_LOG;
 DROP VIEW VW_QUESTION_LIST;
 DROP VIEW VW_STUDY_CONTENTS_LIST;
 DROP VIEW VW_SEARCH_CATEGORY;
-DROP TABLE MY_COURSE;
-DROP TABLE STUDY_LOG;
+
 
 DROP TABLE QNA_COMMENT;
 DROP TABLE QNA_QUESTION;
 DROP SEQUENCE SEQ_COMMENT_NO;
 DROP SEQUENCE SEQ_QUESTION_NO;
-
+DROP VIEW VW_QNA_QUESTION_LIST;
 
 -- --------------------------------------------------- 쿼리 조회 연습 -----------------------------------------------------
 -- 시간 출력
@@ -193,9 +200,9 @@ FROM STUDY_CONTENTS stu LEFT OUTER JOIN VW_QUESTION_LIST vql ON stu.CODE = vql.S
 GROUP BY stu.code;
 
 -- 내일 할일 ... (page에 해당하는 tab 메뉴가 sidebar에서 선택되도록 하기!!), 맞춘 문제는 다시 입력하지 않도록 하고, 완료 되었다는것을 분명히 알수 있도록 UI 구성, 다음 학습이 없을경우 학습 커서를 앞으로 보내주는 로직 추가.
+            -- 내일은 MyCoursesViewService에서 기억률 계산해서 넘겨주는 코드 작성... 학습하기 메인 페이지 완성.
 
--- Next 학습내용 로직 재 설계
--- 학습할때 문제가 많아도 3개만 렌덤으로 보여주는 로직 구현
--- 기억률을 계산하여 복습을 추천하기 위한 View 테이블 생성 (경과시간 계산)
+-- 복습추천 모듈 완성.
+-- 복습 페이지 완성.
 
 
