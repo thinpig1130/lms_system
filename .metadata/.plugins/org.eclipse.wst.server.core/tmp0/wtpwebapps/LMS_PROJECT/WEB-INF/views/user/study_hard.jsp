@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>${id}님 스터디룸</title>
+		<title>weLEarn - 스터디룸 </title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="/resources/assets_core/css/main.css" />
@@ -29,9 +29,13 @@
 			</section>
 		<!-- Wrapper -->
 			<div id="wrapper">
-
+			    <div>
+			    	<br>
+					<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${id}님 배우는 중...</h4>
+			    </div>
 				<!-- Intro -->
 					<section id="intro" class="wrapper style1 fullscreen fade-up">
+						
 						<div class="inner">
 							<h1>${content.title}</h1>
 							${content.contents}
@@ -56,7 +60,7 @@
 											<c:set var="ansNum" value="1"/>
 											<c:forEach items="${question.answerList}" var="answer">
 											<div class="col-4 col-12-small">
-												<input type="radio" onclick="passValue(${ansNum},${quesNum})"  id="ques${quesNum}${ansNum}" name="ques${quesNum}" value="${ansNum}">
+												<input class="cls${quesNum}" type="radio" onclick="passValue(${ansNum},${quesNum})"  id="ques${quesNum}${ansNum}" name="ques${quesNum}" value="${ansNum}">
 												<label for="ques${quesNum}${ansNum}">${answer.answer}</label>
 												<c:if test="${'O' eq answer.correct }">
 													<input type="hidden" id="ques${quesNum}" name="ques${quesNum}" value="">
@@ -68,16 +72,15 @@
 										</c:if>
 										<c:if test="${'S' eq question.type }">
 										<div class="col-12 col-12-xsmall">
-											<input type="text" name="ques${quesNum}" id="ques${quesNum}" placeholder="정답 입력" />
+											<input class="cls${quesNum}" type="text" name="ques${quesNum}" id="ques${quesNum}" placeholder="정답 입력" />
 											<input type="hidden" name="ans${quesNum}" id="ans${quesNum}" value="${question.answer}">
 										</div>
 										</c:if>
 									</p>
 									<br>
 									<ul class="actions">
-										<li><button onclick="checkAnswer(${quesNum})" class="button">정답확인</button></li>
+										<li><button onclick="checkAnswer(${quesNum})" id="btn${quesNum}" class="button primary">정답확인</button></li>
 									</ul>
-									
 							</div>
 						</section>
 						<hr>
@@ -96,8 +99,8 @@
 			<footer id="footer" class="wrapper style1-alt">
 				<div class="inner">
 					<ul class="menu">
-						<li>&copy; 시스템 이름 </li>
-						<li> Team 잇플 </li>
+						<li> weLEarn </li>
+						<li>&copy;잇플 </li>
 					</ul>
 				</div>
 			</footer>
@@ -113,17 +116,28 @@
 
 
 <script type="text/javascript">
-	 function checkAnswer(num) {
-		let str = "ques"+num;
-		let str2 = "ans"+num;
-		let str3 = "submit"+num;
-		let input = document.getElementById(str).value;
-		let answer = document.getElementById(str2).value;
-		if(input == answer){
-			let submit = document.getElementById(str3);
+	function checkAnswer(num) {
+		let quesStr = "ques"+num;
+		let ansStr = "ans"+num;
+		let submitStr = "submit"+num;
+		let btnStr = "btn"+num;
+		let clsStr = ".cls"+num;
+		let ques = document.getElementById(quesStr).value;
+		let ans = document.getElementById(ansStr).value;
+		if(ques == ans){
+			let submit = document.getElementById(submitStr);
+			let btn = document.getElementById(btnStr);
+			let cls = document.querySelectorAll(clsStr);
 			submit.value='O';
-		};
-	   	alert(input == answer);
+			btn.innerText='정답!!';
+			btn.classList.remove("primary");
+			btn.setAttribute('disabled', 'disabled');
+			for( i=0 ; i< cls.length ; i++ ){
+				cls[i].setAttribute('disabled', 'disabled');
+			}
+		}else{		
+	   		alert("땡!");
+		}
 	 }
 	 
 	 function passValue(val, num) {

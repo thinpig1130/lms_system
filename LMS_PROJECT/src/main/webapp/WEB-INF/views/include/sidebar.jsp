@@ -8,12 +8,6 @@
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="/user/status">
-              <i class="material-icons">dashboard</i>
-              <p>학습현황</p>
-            </a>
-          </li>
           <li class="nav-item ">
             <a class="nav-link" href="/user/study">
               <i class="material-icons">edit</i>
@@ -27,9 +21,15 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="/user/review"">
+            <a class="nav-link" href="/user/review">
               <i class="material-icons">psychology</i>
               <p>복습하기</p>
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/user/status">
+              <i class="material-icons">dashboard</i>
+              <p>학습현황</p>
             </a>
           </li>
           <li class="nav-item ">

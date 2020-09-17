@@ -1,8 +1,0 @@
-package com.itperson.dto;
-
-import java.util.ArrayList;
-
-public class CategoryInfo {
-	Category category;
-	ArrayList<SubCategoryInfo> subCategoryArr;
-}

@@ -47,7 +47,7 @@ CREATE TABLE "STUDY_CONTENTS" (
 -- CODE 991266456C100 한 학습모듈 당 주관식/객관식 합 999문제 등록 가능.
 CREATE TABLE "M_QUESTION" (
    "CODE"       CHAR(13) PRIMARY KEY,
-   "QUESTION"   VARCHAR2(1500),
+   "QUESTION"   VARCHAR2(3000),
    "STU_CODE"   CHAR(10) NOT NULL,
    FOREIGN KEY (STU_CODE) REFERENCES "STUDY_CONTENTS"(CODE)
 );
@@ -61,11 +61,10 @@ CREATE TABLE "S_QUESTION" (
    FOREIGN KEY (STU_CODE) REFERENCES "STUDY_CONTENTS"(CODE)
 );
 
-
 CREATE TABLE "M_ANSWER" (
    "CODE"    NUMERIC,
    "Q_CODE"  CHAR(13),
-   "ANSWER"  VARCHAR2(150),
+   "ANSWER"  VARCHAR2(2000),
    "CORRECT" CHAR(1),                                                       -- 'O' OR 'X'
    PRIMARY KEY (CODE,Q_CODE), 
    FOREIGN KEY (Q_CODE) REFERENCES "M_QUESTION"(CODE)
@@ -93,43 +92,7 @@ CREATE TABLE "STUDY_LOG"(
     FOREIGN KEY (STU_CODE) REFERENCES "STUDY_CONTENTS"(CODE)
 );
 
---------------------------------------------뷰 생성 -------------------------------------
---- QUESTION_LIST 뷰.
-CREATE OR REPLACE VIEW VW_QUESTION_LIST AS
-    SELECT CODE, STU_CODE, QUESTION, 'M' AS TYPE
-    FROM M_QUESTION
-    UNION
-    SELECT CODE, STU_CODE, QUESTION, 'S' AS TYPE
-    FROM S_QUESTION;
-
---- STUDY_CONTNETS_LIST 뷰.
-CREATE OR REPLACE VIEW VW_STUDY_CONTENTS_LIST AS
-    SELECT cor.CODE AS CO_CODE, cor.NAME AS CO_NAME, cat.CODE AS CA_CODE, cat.NAME AS CA_NAME, 
-        sub.CODE AS SUB_CODE, sub.NAME AS SUB_NAME, stu.CODE, stu.TITLE, stu.IMPORTANCE, stu.REG_DATE, qcnt.Q_COUNT 
-    FROM STUDY_CONTENTS stu, (SELECT stu.code as STU_CODE, COUNT(vql.CODE) as Q_COUNT
-        FROM STUDY_CONTENTS stu LEFT OUTER JOIN VW_QUESTION_LIST vql ON stu.CODE = vql.STU_CODE
-        GROUP BY stu.code) qcnt, SUB_CATEGORY sub, CATEGORY cat, COURSE cor
-    WHERE stu.CODE = qcnt.STU_CODE
-        AND stu.SUB_CODE = sub.CODE
-        AND sub.CA_CODE = cat.CODE 
-        AND cat.CO_CODE = cor.CODE;
-        
---- SEARCH_CATEGORY 뷰.
-CREATE OR REPLACE VIEW VW_SEARCH_CATEGORY AS
-    SELECT co.CODE AS CO_CODE, co.NAME AS CO_NAME, CA_CODE, CA_NAME, SUB_CODE, SUB_NAME
-    FROM COURSE co LEFT OUTER JOIN
-        ( SELECT ca.CO_CODE, ca.CODE AS CA_CODE, ca.NAME AS CA_NAME, sub.CODE AS SUB_CODE, sub.NAME AS SUB_NAME
-          FROM CATEGORY ca LEFT OUTER JOIN SUB_CATEGORY sub ON ca.CODE = sub.CA_CODE
-        )casub ON co.CODE = casub.CO_CODE ;
-        
---재만 뷰
---뷰 생성
-CREATE VIEW VW_QNA_QUESTION_LIST AS
-    SELECT NO,QNA_TYPE,TITLE,COMMENT_NO,USER_ID, REG_DATE, COUNT
-    FROM QNA_QUESTION;
-
------------------------------------------ 재만 테이블 QNA --------------------------------------------------------------
-
+--재만 QNA_COMMENT 테이블
 CREATE TABLE "QNA_COMMENT"(
 "NO"    INT PRIMARY KEY,
 "CONTENTS" VARCHAR2(1500),
@@ -138,7 +101,7 @@ CREATE TABLE "QNA_COMMENT"(
 FOREIGN KEY (USER_ID) REFERENCES "MEMBER"(ID)
 );
 
---QnA_Question
+--재만 QNA_QUESTION 테이블
 CREATE TABLE "QNA_QUESTION"(
 "NO"    INT PRIMARY KEY,
 "QNA_TYPE"  VARCHAR2(150),
@@ -152,13 +115,59 @@ FOREIGN KEY (USER_ID) REFERENCES "MEMBER"(ID),
 FOREIGN KEY (COMMENT_NO) REFERENCES "QNA_COMMENT"(NO)
 );
 
---시퀀스 생성
+--------------------------------------------뷰 생성 -------------------------------------
+
+--- VW_SEARCH_CATEGORY 뷰.
+CREATE OR REPLACE VIEW VW_SEARCH_CATEGORY AS
+    SELECT co.CODE AS CO_CODE, co.NAME AS CO_NAME, CA_CODE, CA_NAME, SUB_CODE, SUB_NAME
+    FROM COURSE co LEFT OUTER JOIN
+        ( SELECT ca.CO_CODE, ca.CODE AS CA_CODE, ca.NAME AS CA_NAME, sub.CODE AS SUB_CODE, sub.NAME AS SUB_NAME
+          FROM CATEGORY ca LEFT OUTER JOIN SUB_CATEGORY sub ON ca.CODE = sub.CA_CODE
+        )casub ON co.CODE = casub.CO_CODE ;
+        
+--- VW_QUESTION_LIST 뷰.
+CREATE OR REPLACE VIEW VW_QUESTION_LIST AS
+    SELECT CODE, STU_CODE, QUESTION, 'M' AS TYPE
+    FROM M_QUESTION
+    UNION
+    SELECT CODE, STU_CODE, QUESTION, 'S' AS TYPE
+    FROM S_QUESTION;
+
+--- VW_STUDY_CONTENTS_LIST 뷰.
+CREATE OR REPLACE VIEW VW_STUDY_CONTENTS_LIST AS
+    SELECT cor.CODE AS CO_CODE, cor.NAME AS CO_NAME, cat.CODE AS CA_CODE, cat.NAME AS CA_NAME, 
+        sub.CODE AS SUB_CODE, sub.NAME AS SUB_NAME, stu.CODE, stu.TITLE, stu.IMPORTANCE, stu.REG_DATE, qcnt.Q_COUNT 
+    FROM STUDY_CONTENTS stu, (SELECT stu.code as STU_CODE, COUNT(vql.CODE) as Q_COUNT
+        FROM STUDY_CONTENTS stu LEFT OUTER JOIN VW_QUESTION_LIST vql ON stu.CODE = vql.STU_CODE
+        GROUP BY stu.code) qcnt, SUB_CATEGORY sub, CATEGORY cat, COURSE cor
+    WHERE stu.CODE = qcnt.STU_CODE
+        AND stu.SUB_CODE = sub.CODE
+        AND sub.CA_CODE = cat.CODE 
+        AND cat.CO_CODE = cor.CODE;
+        
+--- VW_STUDY_LOG_CALCULATION 뷰.
+CREATE OR REPLACE VIEW VW_STUDY_LOG_CALCULATION AS
+    SELECT vsc.CO_CODE, vsc.CO_NAME, stl.STU_CODE, vsc.TITLE, stl.MEM_ID, COUNT(*) AS STU_COUNT , TRUNC((SYSDATE - MAX(stl.REG_DATE))*(60*60)) AS ELAPSED_TIME,  MAX(stl.REG_DATE) AS REG_DATE
+    FROM STUDY_LOG stl, VW_STUDY_CONTENTS_LIST vsc
+    WHERE stl.STU_CODE = vsc.CODE
+        AND stl.COMPLETED='O'
+    GROUP BY vsc.CO_CODE, vsc.CO_NAME, stl.STU_CODE, vsc.TITLE, stl.MEM_ID
+    ORDER BY ELAPSED_TIME;
+        
+--재만 : VW_QNA_QUESTION_LIST 뷰
+CREATE VIEW VW_QNA_QUESTION_LIST AS
+    SELECT NO,QNA_TYPE,TITLE,COMMENT_NO,USER_ID, REG_DATE, COUNT
+    FROM QNA_QUESTION;
+
+------------------------------------------------ 시퀀스 생성 -------------------------------------------------- 
+--재만 : SEQ_COMMENT_NO 시퀀스
 CREATE SEQUENCE SEQ_COMMENT_NO
 INCREMENT BY 1
 START WITH 1 
 MINVALUE 0
 MAXVALUE 2000000000;
 
+--재만 : SEQ_QUESTION_NO 시퀀스
 CREATE SEQUENCE SEQ_QUESTION_NO
 INCREMENT BY 1
 START WITH 1 
@@ -182,7 +191,6 @@ DROP VIEW VW_QUESTION_LIST;
 DROP VIEW VW_STUDY_CONTENTS_LIST;
 DROP VIEW VW_SEARCH_CATEGORY;
 
-
 DROP TABLE QNA_COMMENT;
 DROP TABLE QNA_QUESTION;
 DROP SEQUENCE SEQ_COMMENT_NO;
@@ -199,10 +207,12 @@ SELECT stu.code, COUNT(vql.CODE)
 FROM STUDY_CONTENTS stu LEFT OUTER JOIN VW_QUESTION_LIST vql ON stu.CODE = vql.STU_CODE
 GROUP BY stu.code;
 
--- 내일 할일 ... (page에 해당하는 tab 메뉴가 sidebar에서 선택되도록 하기!!), 맞춘 문제는 다시 입력하지 않도록 하고, 완료 되었다는것을 분명히 알수 있도록 UI 구성, 다음 학습이 없을경우 학습 커서를 앞으로 보내주는 로직 추가.
-            -- 내일은 MyCoursesViewService에서 기억률 계산해서 넘겨주는 코드 작성... 학습하기 메인 페이지 완성.
+-- 내일 할일 ... (page에 해당하는 tab 메뉴가 sidebar에서 선택되도록 하기!!), 다음 학습이 없을경우 학습 커서를 앞으로 보내주는 로직 추가. 문제풀기 페이지 구성
 
--- 복습추천 모듈 완성.
--- 복습 페이지 완성.
+-- 학습하기에서 기억률 계산 후 출력 완료.
+-- 맞춘 문제는 다시 입력하지 않도록 함. UI 도 수정
+-- home 화면 구조 완성
+
+commit;
 
 

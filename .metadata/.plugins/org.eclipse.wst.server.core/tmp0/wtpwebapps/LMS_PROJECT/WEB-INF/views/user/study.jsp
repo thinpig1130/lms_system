@@ -42,14 +42,14 @@
 	                	<p class="card-category"> 무계획이 계획 ! </p>
 	                	</c:if>
 	                  	<h3 class="card-title">${course.coName} ${course.progressRate}</h3><br>
-	                  	학습진행
+	                  	학습진행 &nbsp;&nbsp;&nbsp;${course.progressRate} %
 	             		<div class="progress">
-		  					<div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: ${course.progressRate}%;" aria-valuenow="${course.progressRate}" aria-valuemin="0" aria-valuemax="100">${course.progressRate} %</div>
+		  					<div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: ${course.progressRate}%" aria-valuenow="${course.progressRate}" aria-valuemin="0" aria-valuemax="100"></div>
 						</div>
-						기억
+						<br>기억률 ${course.memoryRate} &nbsp;&nbsp;&nbsp; %
 						<br>
 						<div class="progress">
-		  					<div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">기억률 30%</div>
+		  					<div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" style="width: ${course.memoryRate}%" aria-valuenow="${course.memoryRate}" aria-valuemin="0" aria-valuemax="100"></div>
 						</div>
 	                </div>
 	                <div class="card-footer">
@@ -70,7 +70,7 @@
 			                    <br>
 			                	주  ${course.daysPerWeeks}일 공부 <br>
 			                	오늘 학습 목표 : 모듈 ${course.todayContents}개 <br>
-			                	완료 예정일 : ${course.expectedEndDate}     	
+			                	완료 예정일 : ${course.expectedEndDate}
 			                </c:if>
 			                <c:if test="${course.plan == 0}" >
 			                	계획을 세우려면 오른쪽의&nbsp;&nbsp; '&nbsp;<i class="fa fa-cog fa-2x"> </i>&nbsp;' &nbsp;&nbsp;아이콘을 누르세요! 

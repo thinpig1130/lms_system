@@ -81,19 +81,7 @@ public class StudyCursorService implements Service {
 				sq.setAnswer(dao.searchSAnswer(item.getCode()));
 				result.add(sq);
 			}
-		}
-		
-//		for(Question que : ques) {
-//			if(que.getType().equals("M")) {
-//				MQuestion mq = new MQuestion(que);
-//				mq.setAnswer(dao.searchMAnswer(que.getCode()));
-//				result.add(mq);
-//			}else {
-//				SQuestion sq = new SQuestion(que);
-//				sq.setAnswer(dao.searchSAnswer(que.getCode()));
-//				result.add(sq);
-//			}
-//		}		
+		}		
 		return result;
 	}
 }

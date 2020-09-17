@@ -1,5 +1,0 @@
-package com.itperson.common;
-
-public class NotLoginInterceptor {
-
-}

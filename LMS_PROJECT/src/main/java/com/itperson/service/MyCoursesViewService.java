@@ -34,27 +34,21 @@ public class MyCoursesViewService implements Service {
 			
 			for (ViewForStudy vfs : viewForStudyArr) {
 				ArrayList<ViewStudyLogCalculation> list = VSCdao.searchCoCodeList(vfs.getCoCode(), memId);
-				vfs.setMemoryRate(calcMemoryRate(list));
-				System.out.println(list);
+				double avg = calcMemoryRate(list);
+				vfs.setMemoryRate(avg);
 			}
 		}
-		
-		
 		
 		model.addAttribute("courseList", viewForStudyArr);
 	}
 	
 	double calcMemoryRate(ArrayList<ViewStudyLogCalculation> list) {
-		double sum = 0; 
+		double sum = 0;
 		for(ViewStudyLogCalculation vslc : list) {
 			sum += vslc.getMemoryRate();
-			
-			
-			
-			
-			/// 하다 말았음. 
 		}
-		return 0.0;
+		double result = sum / list.size();		
+		return Double.isNaN(result)? 0.0 : result;
 	}
 }
 

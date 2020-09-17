@@ -31,3 +31,8 @@
 9월 14, 2020 17:26:37.94 NEW SESSION
 9월 14, 2020 17:26:37.94 [12484:1668:0914/172637.941:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
 9월 14, 2020 17:26:52.07 [12484:1108:0914/172652.078:ERROR:device_event_log_impl.cc(208)] [17:26:52.078] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+
+9월 17, 2020 14:46:30.92 NEW SESSION
+9월 17, 2020 14:46:30.92 [22364:18228:0917/144630.923:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+9월 17, 2020 14:46:42.31 [22364:3116:0917/144642.319:ERROR:device_event_log_impl.cc(208)] [14:46:42.319] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+9월 17, 2020 14:49:25.14 [22364:3116:0917/144925.147:ERROR:CONSOLE(0)] "TypeError: Cannot read property 'isAnonymousInlineStyleSheet' of null", source:  (0)

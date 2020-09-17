@@ -14,9 +14,12 @@
 <fullyQualifiedTypeName name="com.itperson.dao.Dao"/>
 <fullyQualifiedTypeName name="com.itperson.dao.FieldDao"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
-<fullyQualifiedTypeName name="java.sql.Date"/>
 <fullyQualifiedTypeName name="com.itperson.dao.StudyLogDao"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.itperson.dao.QuestionDao"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
+<fullyQualifiedTypeName name="java.util.Collections"/>
+<fullyQualifiedTypeName name="java.util.Comparator"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="com.itperson.dto.ViewForStudy"/>
 </qualifiedTypeNameHistroy>

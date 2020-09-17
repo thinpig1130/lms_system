@@ -1,5 +1,0 @@
-package com.itperson.dao;
-
-public class MyCourseDao {
-	public void registMyCourse(@Param("coCode") String coCode, @Param("memId") String memId )
-}

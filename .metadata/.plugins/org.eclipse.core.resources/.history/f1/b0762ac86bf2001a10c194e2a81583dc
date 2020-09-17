@@ -1,7 +1,0 @@
-package com.itperson.dao;
-
-import org.apache.ibatis.annotations.Param;
-
-public interface MyCourseDao {
-	public void registMyCourse(@Param("coCode") String coCode, @Param("memId") String memId);
-}
