@@ -45,6 +45,7 @@ public class AdminController {
 		CoursesViewService service = new CoursesViewService(sqlSession);
 		service.execute(model);
 
+		model.addAttribute("select_t", "course-t");
 		model.addAttribute("page_name", "과정등록");
 		return "admin/courses";
 	}
@@ -64,6 +65,7 @@ public class AdminController {
 		CategoryViewService service = new CategoryViewService(sqlSession);
 		service.execute(model);
 		
+		model.addAttribute("select_t", "cate-t");
 		model.addAttribute("page_name", "분류등록");
 		return "admin/categorys";
 	}
@@ -92,7 +94,7 @@ public class AdminController {
 		
 		service = new ContentsViewService(sqlSession);		
 		service.execute(model);
-		
+		model.addAttribute("select_t", "con-study-t");
 		model.addAttribute("page_name", "학습목록");
 		return "admin/contents";
 	}	
@@ -101,7 +103,7 @@ public class AdminController {
 		model.addAttribute("request", request);
 		CategoryViewService service = new CategoryViewService(sqlSession);
 		service.execute(model);
-		
+		model.addAttribute("select_t", "con-study-t");
 		model.addAttribute("page_name", "학습내용");
 		return "admin/contents_form";
 	}
@@ -120,7 +122,7 @@ public class AdminController {
 		
 		Service service = new ContentDetailsViewService(sqlSession);
 		service.execute(model);
-		
+		model.addAttribute("select_t", "con-study-t");
 		model.addAttribute("page_name", "학습모듈 상세 보기");
 		return "admin/content_details";
 		
@@ -149,7 +151,7 @@ public class AdminController {
 		model.addAttribute("request", request);
 		Service service = new MembersViewService(sqlSession);
 		service.execute(model);
-		
+		model.addAttribute("select_t", "mana-user-t");		
 		model.addAttribute("page_name", "사용자관리");
 		return "admin/manage_users";
 	}
@@ -175,7 +177,7 @@ public class AdminController {
 	/*----------------------------------- 관리자 답변 tab-------------------------------------- */
 	@RequestMapping(value = "/manage/answers")
 	public String ManageAnswers( Model model, HttpServletRequest request) {
-		
+		model.addAttribute("select_t", "answer-t");	
 		model.addAttribute("page_name", "관리자답변");
 		return "admin/manage_answers";
 	}

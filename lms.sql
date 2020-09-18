@@ -207,11 +207,9 @@ SELECT stu.code, COUNT(vql.CODE)
 FROM STUDY_CONTENTS stu LEFT OUTER JOIN VW_QUESTION_LIST vql ON stu.CODE = vql.STU_CODE
 GROUP BY stu.code;
 
--- 내일 할일 ... (page에 해당하는 tab 메뉴가 sidebar에서 선택되도록 하기!!), 다음 학습이 없을경우 학습 커서를 앞으로 보내주는 로직 추가. 문제풀기 페이지 구성
 
--- 학습하기에서 기억률 계산 후 출력 완료.
--- 맞춘 문제는 다시 입력하지 않도록 함. UI 도 수정
--- home 화면 구조 완성
+-- sidebar active 메뉴 선택 수정.
+-- 샘플 학습 모듈 2개 생성.
 
 commit;
 

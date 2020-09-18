@@ -186,4 +186,14 @@
         });
       });
     });
+    
+    function init(){
+    	let selectTitle = ".${select_t}";
+    	if(selectTitle!="."){
+	    	let menu = document.querySelector(selectTitle);
+	    	menu.classList.add("active");
+    	}
+    }
+    
+    init();
   </script>

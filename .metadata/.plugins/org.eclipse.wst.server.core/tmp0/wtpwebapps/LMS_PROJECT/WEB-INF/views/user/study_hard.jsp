@@ -37,7 +37,7 @@
 					<section id="intro" class="wrapper style1 fullscreen fade-up">
 						
 						<div class="inner">
-							<h1>${content.title}</h1>
+							<h1>${content.title}</h1><br>
 							${content.contents}
 							<ul class="actions">
 								<li><a href="#one" class="button scrolly">문제풀러가기</a></li>

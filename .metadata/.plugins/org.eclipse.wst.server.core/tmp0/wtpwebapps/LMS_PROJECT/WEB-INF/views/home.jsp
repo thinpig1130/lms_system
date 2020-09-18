@@ -17,6 +17,11 @@
   <link href="/resources/assets_home/css/material-kit.css?v=2.0.7" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="/resources/assets_home/demo/demo.css" rel="stylesheet" />
+  <style type="text/css">
+    hr.line {
+      border-top: 1px solid rgb(182, 181, 181);
+    }    
+  </style>
 </head>
 
 <body class="profile-page sidebar-collapse">
@@ -65,7 +70,6 @@
 
   <!--상단 네비게이션 바-->
   <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg bg-primary" color-on-scroll="100" id="sectionsNav">
-  <!--<nav class="navbar fixed-bottom navbar-expand-lg  bg-primary">-->
     <div class="container">
       <a class="navbar-brand" href="/home">weLEarn &nbsp;&nbsp;&nbsp;  </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,9 +81,6 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <!-- 아이콘 바 -->
         <ul class="navbar-nav ml-auto" role="tablist">
-          <!--
-              color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
-          -->
           <c:if test="${not empty id}">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="javascript:;" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -89,11 +90,11 @@
               <a class="dropdown-item" href="/user/study">
                 <i class="material-icons">edit</i>&nbsp;&nbsp;학습하기
               </a>
-              <a class="dropdown-item" href="/user/testing">
-                <i class="material-icons">rate_review</i>&nbsp;&nbsp;문제풀기
-              </a>
               <a class="dropdown-item" href="/user/review">
                 <i class="material-icons">psychology</i>&nbsp;&nbsp;복습하기
+              </a>
+              <a class="dropdown-item" href="/user/testing">
+                <i class="material-icons">rate_review</i>&nbsp;&nbsp;모의고사
               </a>
               <a class="dropdown-item" href="/user/status">
                 <i class="material-icons">dashboard</i>&nbsp;&nbsp;학습현황
@@ -121,13 +122,17 @@
       </div>
     </div>
   </nav>
-  <div class="page-header header-filter clear-filter purple-filter" data-parallax="true" style="background-image: url('/resources/assets_home/img/bg2.jpg');">
+  
+  
+  <!-- 상단 로고  main header -->
+  <div class="page-header header-filter clear-filter purple-filter" data-parallax="true" style="background-image: url('/resources/assets_home/img/main/bg-main.png');">
     <div class="container">
       <div class="row">
-        <div class="col-md-8 ml-auto mr-auto">
+        <div class="col-md-10 ml-auto mr-auto">
           <div class="brand">
-            <h1>weLEarn</h1>
-            <h3>배우고 익히는 좋은 습관</h3>
+            <div class="col-sm-4">
+              <img class="img-fluid" src="/resources/assets_home/img/main/logo-dark.png">
+            </div>
           </div>
         </div>
       </div>
@@ -148,22 +153,23 @@
 		              </a>
 		          </li>
 		          <li class="nav-item">
-		            <a class="nav-link" href="#veteran" role="tab" data-toggle="tab">
+		            <a class="nav-link" href="#learn" role="tab" data-toggle="tab">
 		                <i class="material-icons">edit</i>
 		                학습하기
 		            </a>
 		          </li>
 		          <li class="nav-item">
-		            <a class="nav-link" href="#coding_q_and_a" role="tab" data-toggle="tab">
-		                <i class="material-icons">rate_review</i>
-		                문제풀기
-		            </a>
-		          </li>
-		          <li class="nav-item">
-		            <a class="nav-link" href="#course" role="tab" data-toggle="tab">
-		              <i class="material-icons">psychology</i>
+                <a class="nav-link" href="#review" role="tab" data-toggle="tab">
+                  <i class="material-icons">psychology</i>
 		              복습하기
-		            </a>
+                </a>
+		          </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#question" role="tab" data-toggle="tab">
+                    <i class="material-icons">rate_review</i>
+                    모의고사
+                </a>
+              </li>
 		          <li class="nav-item">
 		              <a class="nav-link" href="#dashboard" role="tab" data-toggle="tab">
 		                  <i class="material-icons">dashboard</i>
@@ -177,257 +183,150 @@
         <!-- 아이콘 클릭시 !! -->
         <div class="tab-content tab-space">
         
-          <!--- welearn ------------------------------>
+          <!--- 소개 welearn ------------------------------>
           <div class="tab-pane active" id="welearn">
-		      <div class="container">
-		        <div class="row">
-		          <div class="col-md-8 mr-auto ml-auto">
-		            <!-- Carousel Card -->
-		            <div class="card card-raised card-carousel">
-		              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
-		                <ol class="carousel-indicators">
-		                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-		                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-		                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-		                </ol>
-		                <div class="carousel-inner">
-		                  <div class="carousel-item active">
-		                    <img class="d-block w-100" src="/resources/assets_home/img/main/welearn1.jpg" alt="First slide">
-		                    <div class="carousel-caption d-none d-md-block">
-		                      <h4>
-		                        <i class="material-icons">location_on</i>
-		                        Yellowstone National Park, United States
-		                      </h4>
-		                    </div>
-		                  </div>
-		                  <div class="carousel-item">
-		                    <img class="d-block w-100" src="/resources/assets_home/img/main/welearn2.jpg" alt="Second slide">
-		                    <div class="carousel-caption d-none d-md-block">
-		                      <h4>
-		                        <i class="material-icons">location_on</i>
-		                        Somewhere Beyond, United States
-		                      </h4>
-		                    </div>
-		                  </div>
-		                  <div class="carousel-item">
-		                    <img class="d-block w-100" src="/resources/assets_home/img/main/welearn3.jpg" alt="Third slide">
-		                    <div class="carousel-caption d-none d-md-block">
-		                      <h4>
-		                        <i class="material-icons">location_on</i>
-		                        Yellowstone National Park, United States
-		                      </h4>
-		                    </div>
-		                  </div>
-		                </div>
-		                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-		                  <i class="material-icons">keyboard_arrow_left</i>
-		                  <span class="sr-only">Previous</span>
-		                </a>
-		                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-		                  <i class="material-icons">keyboard_arrow_right</i>
-		                  <span class="sr-only">Next</span>
-		                </a>
-		              </div>
-		            </div>
-		            <!-- End Carousel Card -->
-		          </div>
-		        </div>
-		      </div>        		
-          </div>
- 		  
-       
-
-          <div class="tab-pane" id="veteran">
-            검색tab 입력 조건에 맞는 목록 검색 출력
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">검색조건선택</label>
-              <select class="form-control selectpicker" data-style="btn btn-link" id="exampleFormControlSelect1">
-                <option>등급</option>
-                <option>이름</option>
-                <option>제목</option>
-                <option>기업</option>
-                <option>등등</option>
-              </select>
-          </div>    
-          <form>
-            <div class="form-group">
-              <label for="search">Search</label>
-              <input type="text" class="form-control" id="search" placeholder="검색어 입력(등급,이름,코딩문답제목,기업)">
+            <div class="container">
+              <div class="col-md-10 mr-auto ml-auto">
+                <hr class="line">
+                <div class="row d-flex align-items-center">
+                  <div class="col-sm-5 d-flex justify-content-center">
+                    <div class="col-sm-10">
+                      <img class="img-fluid " src="/resources/assets_home/img/main/logo-dark.png">
+                    </div>
+                  </div>
+                  <div class="col-sm-6 rounded">
+                    <br>
+                    <table class="table table-borderless">
+                      <tbody>
+                        <tr>
+                          <td><button class="btn btn-danger btn-sm">&nbsp;&nbsp; We &nbsp;&nbsp;</button></td>
+                          <td>
+                            <p class="text-danger">
+                            '우리'라는 가치 추구
+                            </p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><button class="btn btn-primary btn-sm">Learn </button></td>
+                          <td>
+                            <p class="text-primary">
+                              '배움'의 본연 가치 실현
+                            </p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><button class="btn btn-success btn-sm">&nbsp; Well&nbsp;</button></td>
+                          <td>
+                            <p class="text-success">
+                              '잘' 배울 수 있도록 학습 추천
+                            </p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><button class="btn btn-info btn-sm">&nbsp; Earn&nbsp;</button></td>
+                          <td>
+                            <p class="text-info">
+                              '얻어'가는 학습 효과
+                            </p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                    </table>
+                  </div>
+                </div>
+                <hr class="line">
+              </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-round">검색</button>
-          </form>
-           <!-- 등급,이름,코딩문답제목,기업 -->
-        </div>
-
-          <div class="tab-pane" id="coding_q_and_a">
-            <div class="text-right">
-              <a href="base.html" class="btn btn-primary btn-sm">더보기</a>
-            </div>
-            <h3><small># IT</small></h3>
-            <table class="table table-sm table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">질문</th>
-                  <th scope="col">분야</th>
-                  <th scope="col">조회수/댓글수</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>고수님들 쫌 도와주세요.</td>
-                  <td>JAVA</td>
-                  <td>10/0</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>고수님들 쫌 도와주세요.</td>
-                  <td>JAVA</td>
-                  <td>10/0</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>고수님들 쫌 도와주세요.</td>
-                  <td>JAVA</td>
-                  <td>10/0</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>이 에러는 왜 날까요? 이방법 저방법 구글링해서 써봤는데 ... ㅠ_ㅜ </td>
-                  <td>DB</td>
-                  <td>7/3</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>JAVA 어느정도가 신입의 기준인가요?</td>
-                  <td>DB</td>
-                  <td>7/3</td>
-                </tr>
-              </tbody>
-            </table>
-            <br>
-            <h3><small># NEW</small></h3>
-            <table class="table table-sm table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">질문</th>
-                  <th scope="col">분야</th>
-                  <th scope="col">조회수/댓글수</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>고수님들 쫌 도와주세요.</td>
-                  <td>JAVA</td>
-                  <td>10/0</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>고수님들 쫌 도와주세요.</td>
-                  <td>JAVA</td>
-                  <td>10/0</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>고수님들 쫌 도와주세요.</td>
-                  <td>JAVA</td>
-                  <td>10/0</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>이 에러는 왜 날까요? 이방법 저방법 구글링해서 써봤는데 ... ㅠ_ㅜ </td>
-                  <td>DB</td>
-                  <td>7/3</td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>JAVA 어느정도가 신입의 기준인가요?</td>
-                  <td>DB</td>
-                  <td>7/3</td>
-                </tr>
-              </tbody>
-            </table>
           </div>
 
-          <div class="tab-pane" id="course">
-            
-            <div class="row">
-              <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header card-header-text card-header-primary">
-                      <div class="card-text">
-                        <h4 class="card-title">과정명</h4>
-                      </div>
-                    </div>
-                    <div class="card-body">
-                      <h5><b>사용언어#</h5></b>
-                      상세설명 쓰는란
-                    </div>
-                </div>
-            </div>
-            
-              <div class="col-md-6">
-                  <div class="card">
-                      <div class="card-header card-header-text card-header-primary">
-                        <div class="card-text">
-                          <h4 class="card-title">과정명</h4>
+ 		      <!--- 학습하기 learn ------------------------------>
+          <div class="tab-pane" id="learn">
+            <div class="container">
+              <div class="col-md-8 mr-auto ml-auto">
+                <!-- Carousel Card -->
+                <div class="card card-raised card-carousel">
+                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
+                    <ol class="carousel-indicators">
+                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img class="d-block w-100" src="/resources/assets_home/img/main//ex1.jpeg" alt="학습 신청">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h4>
+                            학습 신청
+                          </h4>
                         </div>
                       </div>
-                      <div class="card-body">
-                        <h5><b>사용언어#</h5></b>
-                        상세설명 쓰는란
-                      </div>
-                  </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header card-header-text card-header-primary">
-                      <div class="card-text">
-                        <h4 class="card-title">과정명</h4>
-                      </div>
-                    </div>
-                    <div class="card-body">
-                      <h5><b>사용언어#</h5></b>
-                      상세설명 쓰는란
-                    </div>
-                </div>
-              </div>
-            
-              <div class="col-md-6">
-                  <div class="card">
-                      <div class="card-header card-header-text card-header-primary">
-                        <div class="card-text">
-                          <h4 class="card-title">과정명</h4>
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="/resources/assets_home/img/main//ex2.jpeg" alt="학습 계획 작성">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h4>
+                            학습 계획 작성
+                          </h4>
                         </div>
                       </div>
-                      <div class="card-body">
-                        <h5><b>사용언어#</h5></b>
-                        상세설명 쓰는란
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="/resources/assets_home/img/main//ex3.jpg" alt="내 학습">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h4>
+                            내 학습
+                          </h4>
+                        </div>
                       </div>
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="/resources/assets_home/img/main/ex4.jpeg" alt="학습 스터디룸 ">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h4>
+                            학습 스터디룸 
+                          </h4>
+                        </div>
+                      </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                      <i class="material-icons">keyboard_arrow_left</i>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                      <i class="material-icons">keyboard_arrow_right</i>
+                      <span class="sr-only">Next</span>
+                    </a>
                   </div>
+                </div>
+                <!-- End Carousel Card -->
               </div>
-            </div>
-            <!-- 8월26일 재만 수정끝-->
-            
-            <div class="text-right">
-              <a href="base.html" class="btn btn-primary btn-sm">더보기</a>
-            </div>
+            </div>   
+          </div>
+
+ 		      <!--- 복습하기 review ------------------------------>
+          <div class="tab-pane" id="review">
+            복습 추천
+            복습 하기
+          </div>
+          
+ 		      <!--- 문제풀기 question ------------------------------>
+          <div class="tab-pane" id="question">
+            문제풀기
           </div>
         
           <!--- 학습 현황 dashboard ------------------------------>
           <div class="tab-pane" id="dashboard">
-	            <div class="row">
-		            <div class="col-sm-6">
-		              <h4>한 주 학습한 내용을 표로 보여줍니다.</h4>
-		              <img src="/resources/assets_home/img/main/dashboard.jpg" alt="Rounded Image" class="rounded img-fluid">
-		            </div>
-	          	</div>
-           </div>
+            일일 학습 그래프
+            기억률 그래프
+            
+            <div class="row">
+              <div class="col-sm-6">
+                <h4>한 주 학습한 내용을 표로 보여줍니다.</h4>
+                <img src="/resources/assets_home/img/main/dashboard.jpg" alt="Rounded Image" class="rounded img-fluid">
+              </div>
+            </div>
+          </div>
            
         </div>
       </div>

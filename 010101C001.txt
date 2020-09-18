@@ -1,0 +1,20 @@
+<h4>소프트웨어 생명 주기(Software Life Cycle)</h4><ul><li>소프트웨어 생명 주기(수명 주기)는 개발과 유지보수 등에 필요한 작업들을 체계적으로 정리한 개발 방법론의 바탕으로서, 개발을 위한 정의, 운용, 유지보수 등의 과정을 단계별로 나눈것입니다.</li>
+<li>소프트웨어 개발 단계와 각 단계별 활동, 결과에 대한 산출물로 표현합니다.개발자는 문제의 유형, 개발 방법에 따라 특정한 생명 주기 모형을 선택하여 사용하거나, 개별적인 새로운 모형을 사용할 수 있습니다.</li>
+<li>대표적인 생명 주기 모형 : 폭포수 모형 / 프로토 타입 모형 / 나선형 모형 / 애자일 모형</li></ul><h4>폭포수 모형</h4>&nbsp;&nbsp;폭포수 모델의 특징은 이전 단계로 돌아갈 수 없다는 전제를 깔아둡니다. 이러한 전제하에 각 단계에서 확실하게 진행하여 결과를 검토하고 승인하는 과정을 마친 후에 다음 단계로 이어나가는 방식입니다.
+<ul><li>가장 오래되고 폭넓게 사용된 전통적인 모델입니다. (고전적 생명 주기 모형)</li><li>한 단계가 마무리 되어야 다음 단계로 넘어가는 선형 순차적인 모형입니다.</li>
+	<li>메뉴얼 작성이 필요합니다.</li><li>각 단계를 마친 후에는 다음 단계를 위한 결과물이 명확하게 나와야합니다.</li>
+	<li>두개 이상의 과정이 병행하여 수행하지 않습니다.</li></ul><p>	&nbsp;&nbsp;&nbsp;' 순서 ' <br>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;타당성 검토&nbsp; > &nbsp;계획 &nbsp;> &nbsp;요구 분석 &nbsp;> &nbsp;설계 &nbsp;> &nbsp;구현  &nbsp;> 시험 &nbsp;> &nbsp;유지 보수</p>
+&nbsp;&nbsp;언제 사용하나요? <ul><li>요구사항을 합리적으로 이해했을 때 사용합니다.</li><li>선형적인 방식에서 배포를 통해 통신을 할 때 사용합니다.</li>	<li>요구사항이 아주 명확하고 합리적일 때 사용합니다.</li>
+</ul><h4>프로토 타입 모형</h4>&nbsp;&nbsp;무엇보다도 사용자의 요구사항을 명확하게 파악을 위한 모델입니다. 시제품(Prototype)을 만들어 최종에 완성될 결과물을 예측하는 모델입니다.<ul><li>시제품은 사용자와 시스템 사이의 인터페이스에 중점을 두어서 만듭니다.</li>
+<li>추후 구현 과정에서 사용될 골격이 됩니다.</li><li>폭포수 모델의 단점을 보완하기 위한 모델입니다. (개발이 완료된 후 오류가 발견되는 경우)</li>
+</ul><p>	&nbsp;&nbsp;&nbsp;' 순서 ' <br>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;요구 수집&nbsp; > &nbsp;빠른 설계 &nbsp;> &nbsp;프로토타입 구축 &nbsp;> &nbsp;고객 평가 &nbsp;> &nbsp;조정  &nbsp;> 구현 
+</p><h4>나선형 모형</h4>&nbsp;&nbsp;폭소수 모형과 프로토타입의 장점을 더하고 위험 분석 기능을 추가한 모델입니다.
+<ul><li>나선을 따라 돌듯이 여러 번의 개발 과정을 거쳐서 점진적으로 결과를 완성하는 것입니다.</li><li>개발 중에 발생가능한 위험을 관리하고, 최소화하는 것이 목적입니다.</li><li>누락되거나 추가된 요구사항을 첨가하여 진행가능하며, 정밀하며, 유지보수 과정이 필요 없습니다.</li></ul>
+<p>	&nbsp;&nbsp;&nbsp;' 순서 ' <br>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;계획 및 정의&nbsp; > &nbsp;위험 분석 &nbsp;> &nbsp;공학적 개발&nbsp;> &nbsp;고객 평가 &nbsp;> &nbsp; 1~4 반복 &nbsp;
+</p><div class="row">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 장점 & 단점&nbsp;&nbsp;&nbsp;&nbsp;
+	<ul><li>요구사항을 효과적으로 모으고 재정할 수 있습니다.</li><li>고객의 피드백을 통해 위험을 감소할 수 있습니다.</li><li>거대한 규모의 시스템에서 현실적인 접근이 가능합니다.</li><li>관리가 어렵습니다. (Progress Monitoring)</li></ul>
+</div><h4>애자일 모형</h4>&nbsp;&nbsp; Agile(민첩한, 기민한) 고객의 요구 사항 변화에 유연하게 대응하는 일정한 주기를 가지고 반복하여 개발하는 모델입니다.<br>
+<ul><li>고객과의 소통에 초점을 맞춘 방법론을 통칭합니다. (Rapid and flexible response to change)</li><li>스프린트(Sprint) 또는 이터레이션(Iteration)이라고 불리는 짧은 개발 주기를 반복하며, 반복 주기마다 결과에 대한 고객의 평가와 요구를 수용합니다. (A time-boxed iterative approach)</li>
+	<li>개발 주기에는 고객이 우선순위를 부여하여 개발 작업을 진행합니다. (우선 순위: A prioritized list of product Backlog items)</li>
+</ul><div class="row">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 애자일 기반 소프트웨어 개발 모형 &nbsp;&nbsp;&nbsp;&nbsp;	<ul><li>스크럼(Scrum)</li><li>XP(eXtreame Programming)</li>	<li>칸반(Kanban)</li><li>Lean</li><li>크리스탈(Crystal)</li>
+<li>ASD(Adaptive Software Development)</li>	<li>FDD(Feature Driven Development)</li><li>DSDM(Dynamic System Development)</li><li>DAD(Disciplined Agile Delivery) 등</li></ul></div>

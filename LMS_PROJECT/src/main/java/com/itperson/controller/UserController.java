@@ -33,7 +33,8 @@ public class UserController {
 //		model.addAttribute("request", request);
 //		MemberJoinService service = new MemberJoinService(sqlSession);
 //		service.execute(model);
-//		
+		
+		model.addAttribute("select_t", "dash-t");
 		model.addAttribute("page_name", "학습현황");
 		return "user/status";
 	}
@@ -44,6 +45,7 @@ public class UserController {
 		model.addAttribute("request", request);
 		Service service = new MyCoursesViewService(sqlSession);
 		service.execute(model);
+		model.addAttribute("select_t", "study-t");
 		model.addAttribute("page_name", "학습하기");
 		return "user/study";
 	}
@@ -53,6 +55,7 @@ public class UserController {
 		Service service = new CoursesInfoService(sqlSession);
 		service.execute(model);
 		
+		model.addAttribute("select_t", "study-t");
 		model.addAttribute("page_name", "학습 정보");
 		return "user/study_info";
 	}
@@ -70,6 +73,7 @@ public class UserController {
 		model.addAttribute("request", request);
 		Service service = new StudyCursorService(sqlSession);
 		service.execute(model);
+		model.addAttribute("select_t", "study-t");
 		model.addAttribute("page_name", "나는 공부중이다!");
 		return "user/study_hard";
 	}
@@ -102,7 +106,7 @@ public class UserController {
 	/*----------------------------------- 문제풀기 tab-------------------------------------- */
 	@RequestMapping(value = "/testing")
 	public String userTesting( Model model, HttpServletRequest request) {
-		
+		model.addAttribute("select_t", "ques-t");
 		model.addAttribute("page_name", "문제풀기");
 		return "user/testing";
 	}
@@ -112,7 +116,8 @@ public class UserController {
 	public String userReview( Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
 		Service service = new ReviewListService(sqlSession);
-		service.execute(model);		
+		service.execute(model);
+		model.addAttribute("select_t", "review-t");
 		model.addAttribute("page_name", "추천 복습 목록");
 		return "user/review";
 	}
@@ -130,6 +135,7 @@ public class UserController {
 		model.addAttribute("request", request);
 		Service service = new StudyExitService(sqlSession);
 		service.execute(model);
+		model.addAttribute("select_t", "review-t");
 		model.addAttribute("page_name", "나는 공부중이다!");
 		return "redirect:/user/review";
 	}
@@ -140,21 +146,23 @@ public class UserController {
 	    model.addAttribute("request", request);
 	    ManagerQuestionViewService service = new ManagerQuestionViewService(sqlSession);
 	    service.execute(model);
+		model.addAttribute("select_t", "m-ques-t");
 	    model.addAttribute("page_name", "관리자에게 문의");
 	    return "user/demands";
 	}
 	
 	@RequestMapping(value = "/demands_question")
 	public String userDemandsQuestion( Model model, HttpServletRequest request) {
-      
+		model.addAttribute("select_t", "m-ques-t");
 		model.addAttribute("page_name", "관리자에게 문의");
 		return "user/demands_question";
 	}
 	
+	
+	// 뭔가 이상한데요??
 	//9월9일 재만수정 관리자 답변 테이블
    @RequestMapping(value = "/qnatable_manage")
    public String QnaTableManage( Model model, HttpServletRequest request) {
-      
       model.addAttribute("page_name", "관리자용 QNA테이블");
       return "admin/qnatable_manage";
    }
@@ -169,10 +177,11 @@ public class UserController {
       return "redirect:/user/demands";//리다이렉트 루트부터
    }
    
+   // 왜 관리자 페이지로 이동하는지 모르겠습니다.
    //9월9일 재만 수정 관리자 에게문의하는 테이블
    @RequestMapping(value = "/qnatable_user")
    public String QnaTableUser( Model model, HttpServletRequest request) {
-      
+	  model.addAttribute("select_t", "m-ques-t");
       model.addAttribute("page_name", "사용자용 QNA테이블");
       return "user/qnatable_user";
    }
