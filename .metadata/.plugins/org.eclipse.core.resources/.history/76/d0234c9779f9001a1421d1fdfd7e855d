@@ -1,0 +1,54 @@
+package com.itperson.service;
+
+import java.util.ArrayList;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
+
+import com.itperson.dao.QuestionDao;
+import com.itperson.dao.TestDao;
+import com.itperson.dto.Question;
+import com.itperson.dto.Test;
+
+public class PracticeTestService implements Service {
+	private SqlSession sqlSession;
+	public PracticeTestService(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	@Override
+	public void execute(Model model) {
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		TestDao testDao = sqlSession.getMapper(TestDao.class);
+		
+		String coCode = request.getParameter("coCode");
+		Test test = testDao.searchTest(coCode);
+		
+		System.out.println(test);
+		
+		model.addAttribute("test", test);
+		
+		// 문제 List setting
+		model.addAttribute("questions", this.questionSetting(test)) ;
+		
+	}
+	
+	ArrayList<Question> questionSetting(Test test){
+		ArrayList<Question> ques;
+		QuestionDao questionDao = sqlSession.getMapper(QuestionDao.class);
+		
+		if(test.getTestType() == 1) {
+			
+		}else if(test.getTestType()==2) {
+			
+		}else {
+			
+		}
+		
+		return null;
+	}
+
+}

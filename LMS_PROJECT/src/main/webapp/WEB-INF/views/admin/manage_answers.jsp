@@ -65,59 +65,30 @@
                             1
                           </td>
                           <td>
-                            ???유형
+                            	시스템문의
                           </td>
                           <td>
-                          <a href="/admin/qnatable_manage">
-                            제목을 길게 써놓아서 얼마나 쓸수있나 보자~~~~~~~~~~~~~~~~~~~~~~~~~~~1</a>
+                          <a href="/user/qnatable_user2">
+                           복습하기에 빨간색,주황색,초록색은 무슨 의미 인가요?</a>
                           </td>
                           <td>
 
                           </td>
                           <td>
-                            Oud-Turnhoot
+                            cjscn
                           </td>
                           <td>
-                            2020.09.01
-                          </td>
-                          <td>
-                            <center>
-                            11
-                            </center>
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td>
-                            3
-                          </td>
-                          <td>
-                            yyy유형
-                          </td>
-                          <td>
-                            제목을 길게 써놓아서 얼마나 쓸수있나 보자~~~~~~~~~~~~~~~~~~~~~~~~~~~3
-                          </td>
-                          <td>
-                            
-                          </td>
-                          <td>
-                            Baileux
-                          </td>
-                          <td>
-                            2020.09.01
+                            2020-09-18
                           </td>
                           <td>
                             <center>
-                            13
+                            1
                             </center>
                           </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
-                  <center>
-                      ◀ [1] [2] [3] ▶
-                  </center>
                   
         </div>    
         </div>

@@ -22,4 +22,5 @@
 <fullyQualifiedTypeName name="java.util.Comparator"/>
 <fullyQualifiedTypeName name="java.sql.Date"/>
 <fullyQualifiedTypeName name="com.itperson.dto.ViewForStudy"/>
+<fullyQualifiedTypeName name="com.itperson.dto.Test"/>
 </qualifiedTypeNameHistroy>

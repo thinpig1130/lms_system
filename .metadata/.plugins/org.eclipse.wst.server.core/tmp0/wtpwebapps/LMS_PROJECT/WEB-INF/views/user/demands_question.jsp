@@ -48,7 +48,7 @@
                    <button type="submit" class="btn btn-primary pull-right">
                     	 입력</button>
                     	
-                    <button type="submit" class="btn btn-primary pull-right">취소</button>
+                    <button type="button" class="btn btn-primary pull-right" onClick="location.href='demands'">취소</button>
                   </div>
                   </form>
                 </div>

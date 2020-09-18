@@ -1,7 +1,0 @@
-package com.itperson.dto;
-
-public class ViewForStudy extends MyCourse {
-	private int daysLeft;
-	private int countContents;
-	private int countRemaingContnents;
-}

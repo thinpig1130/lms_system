@@ -1,0 +1,108 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+<%@ page session="false" %>
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>weLEarn - 결과확인 </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/resources/assets_core/css/main.css" />
+		<noscript><link rel="stylesheet" href="/resources/assets_core/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="#"> 재시험 </a></li>
+							<li><a onclick="formExit()"> 결과 기록 후, 종료</a></li>
+							<li><a href="#"> 종료 </a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>			
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Intro -->
+				<section id="intro" class="wrapper style1 fullscreen fade-up">
+					
+					<div class="inner">
+						<h1>수고하셨습니다.</h1><br>
+						{score}
+						시험시간&nbsp; : &nbsp;${test.timeLimit}&nbsp; 분 <br><br>
+						총 문제 수&nbsp; : &nbsp;${test.questionCount}&nbsp; 개<br><br>
+						<ul class="actions">
+								<li><a href="#one" class="button scrolly">문제 풀기</a></li>
+						</ul>
+					</div>
+				</section>
+
+				<form id="resultForm" method="POST" >
+					<input type="hidden" name="coCode" value="${coCode}">
+					<input type="hidden" name="coCode" value="${coCode}">
+					<input type="hidden" name="coCode" value="${coCode}">
+					<input type="hidden" name="coCode" value="${coCode}">
+					<input type="hidden" name="coCode" value="${coCode}">													
+				</form>
+			</div>
+		<!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li> weLEarn </li>
+						<li>&copy;잇플 </li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="/resources/assets_core/js/jquery.min.js"></script>
+			<script src="/resources/assets_core/js/jquery.scrollex.min.js"></script>
+			<script src="/resources/assets_core/js/jquery.scrolly.min.js"></script>
+			<script src="/resources/assets_core/js/browser.min.js"></script>
+			<script src="/resources/assets_core/js/breakpoints.min.js"></script>
+			<script src="/resources/assets_core/js/util.js"></script>
+			<script src="/resources/assets_core/js/main.js"></script>
+
+
+<script type="text/javascript">
+	 function checkAnswer(num) {
+		let quesStr = "ques"+num+"ans0";
+		let ansStr = "ans"+num;
+		let submitStr = "submit"+num;
+		let ques = document.getElementById(quesStr).value;
+		let ans = document.getElementById(ansStr).value;
+		
+		if(ques == ans){
+			let submit = document.getElementById(submitStr);
+			submit.value='O';
+		}
+	 }
+	 
+	 function passValue(quesNum, ansNum){
+		 let quesStr = "ques"+quesNum +"ans" + ansNum;
+		 let subStr = "submit"+quesNum;
+		 let input = document.getElementById(quesStr);
+		 let res = document.getElementById(subStr);
+		 res.value = input.value;
+	 }
+	 
+	 function formExit(){
+		 document.getElementById('resultForm').action="/user/testing/result";
+		 document.getElementById('resultForm').submit();
+	 }
+</script>
+
+
+	</body>
+</html>
+
+
+
+
+문제 수 : ${questions}
+정답 수 : ${correct}
+점수 : ${score }

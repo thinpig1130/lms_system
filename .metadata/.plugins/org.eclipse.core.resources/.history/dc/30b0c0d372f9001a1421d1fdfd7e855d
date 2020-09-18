@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itperson.dao.TestDao">
+	<resultMap id ="result" type="com.itperson.dto.Test">
+		<result property = "coCode" column = "CO_CODE"/>
+		<result property = "coName" column = "CO_NAME"/>
+		<result property = "testType" column="TEST_TYPE"/>
+		<result property = "questionCount" column = "QUESTION_COUNT"/> 
+		<result property = "timeLimit" column="TIME_LIMIT"/>
+		
+	</resultMap>
+	
+	<select id="searchTest" parameterType="String" resultMap="result">
+		<![CDATA[
+		SELECT CO_CODE, NAME AS CO_NAME, TEST_TYPE, QUESTION_COUNT, TIME_LIMIT
+		FROM PRACTICE_TEST pt, COURSE co
+		WHERE pt.CO_CODE = co.CODE
+		    AND pt.CO_CODE = #{value}
+		]]>
+	</select>
+</mapper>

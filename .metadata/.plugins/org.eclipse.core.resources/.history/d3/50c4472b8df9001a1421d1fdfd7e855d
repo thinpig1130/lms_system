@@ -1,0 +1,19 @@
+package com.itperson;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
+
+import com.itperson.service.Service;
+
+public class PracticeTestScoringService implements Service {
+	public PracticeTestScoringService(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	@Override
+	public void execute(Model model) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

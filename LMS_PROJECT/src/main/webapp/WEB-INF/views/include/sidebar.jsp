@@ -23,7 +23,7 @@
           <li class="nav-item ques-t">
             <a class="nav-link" href="/user/testing">
               <i class="material-icons">rate_review</i>
-              <p>문제풀기</p>
+              <p>모의고사</p>
             </a>
           </li>
           <li class="nav-item dash-t">

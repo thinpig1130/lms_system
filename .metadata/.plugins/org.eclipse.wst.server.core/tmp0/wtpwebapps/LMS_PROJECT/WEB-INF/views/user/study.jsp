@@ -90,7 +90,7 @@
 	           </div>
 	        </div>
 	      </div>
-      </c:forEach>
+      	</c:forEach>
           </div>
       </c:if>
       <%@ include file="../include/footer.jsp" %>

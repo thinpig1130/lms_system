@@ -415,6 +415,9 @@ INSERT INTO M_QUESTION (CODE, QUESTION, STU_CODE) VALUES('010101040C003', '다음 
     INSERT INTO M_ANSWER (CODE, Q_CODE, ANSWER, CORRECT) VALUES(3, '010101040C003', 'Microsoft SQL Server', 'X');
     INSERT INTO M_ANSWER (CODE, Q_CODE, ANSWER, CORRECT) VALUES(4, '010101040C003', 'Android', 'O');
 
+---------------------------------------------------- 모의고사 등록 ------------------------------------------------------
+INSERT INTO PRACTICE_TEST (CO_CODE, TEST_TYPE, QUESTION_COUNT, TIME_LIMIT) VALUES ('C01', 1, 20, 120);
+
 
 ---------------------------------------------------- 추가 샘플 ------------------------------------------------------
 ---------------------------------------------------- 미완성 ------------------------------------------------------
@@ -428,7 +431,6 @@ INSERT INTO M_QUESTION (CODE, QUESTION, STU_CODE) VALUES('010101040C00', '', '01
 
 INSERT INTO S_QUESTION (CODE, QUESTION, ANSWER, STU_CODE) VALUES('010101001C001', '폭포에서 한번 떨어진 물은 거슬러 올라갈 수 없듯이 소프트웨어 개발도 이전 단꼐로 돌아갈 수 없다는 전제하에 각 단계를 확실히 매듭짓고 그 결과를 철저하게 검토하여 승인 과정을 거친 후에 다음 단계를 진행하는 개발 방법론은 무엇 인가?','폭포수 모형', '010101C001');
 INSERT INTO S_QUESTION (CODE, QUESTION, ANSWER, STU_CODE) VALUES('010101001C002', '사용자의 요구사항을 정확히 파악하기 위해 실제 개발될 소프트웨어에 대한 견본(시제)품(Prototype)을 만들어 최종 결과물을 예측하는 모형은 무엇인가?','프로토타입 모형', '010101C001');
-
 
 
 COMMIT;

@@ -248,7 +248,7 @@
               <div class="col-md-8 mr-auto ml-auto">
                 <!-- Carousel Card -->
                 <div class="card card-raised card-carousel">
-                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
+                  <div id="carousel_study" class="carousel slide" data-ride="carousel" data-interval="10000">
                     <ol class="carousel-indicators">
                       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -257,7 +257,7 @@
                     </ol>
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img class="d-block w-100" src="/resources/assets_home/img/main//ex1.jpeg" alt="학습 신청">
+                        <img class="d-block w-100" src="/resources/assets_home/img/main/study1.gif" alt="학습 신청">
                         <div class="carousel-caption d-none d-md-block">
                           <h4>
                             학습 신청
@@ -265,7 +265,7 @@
                         </div>
                       </div>
                       <div class="carousel-item">
-                        <img class="d-block w-100" src="/resources/assets_home/img/main//ex2.jpeg" alt="학습 계획 작성">
+                        <img class="d-block w-100" src="/resources/assets_home/img/main/study2.gif" alt="학습 계획 작성">
                         <div class="carousel-caption d-none d-md-block">
                           <h4>
                             학습 계획 작성
@@ -273,7 +273,7 @@
                         </div>
                       </div>
                       <div class="carousel-item">
-                        <img class="d-block w-100" src="/resources/assets_home/img/main//ex3.jpg" alt="내 학습">
+                        <img class="d-block w-100" src="/resources/assets_home/img/main/study3.jpg" alt="내 학습">
                         <div class="carousel-caption d-none d-md-block">
                           <h4>
                             내 학습
@@ -281,7 +281,7 @@
                         </div>
                       </div>
                       <div class="carousel-item">
-                        <img class="d-block w-100" src="/resources/assets_home/img/main/ex4.jpeg" alt="학습 스터디룸 ">
+                        <img class="d-block w-100" src="/resources/assets_home/img/main/study4.gif" alt="학습 스터디룸 ">
                         <div class="carousel-caption d-none d-md-block">
                           <h4>
                             학습 스터디룸 
@@ -289,11 +289,11 @@
                         </div>
                       </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <a class="carousel-control-prev" href="#carousel_study" role="button" data-slide="prev">
                       <i class="material-icons">keyboard_arrow_left</i>
                       <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <a class="carousel-control-next" href="#carousel_study" role="button" data-slide="next">
                       <i class="material-icons">keyboard_arrow_right</i>
                       <span class="sr-only">Next</span>
                     </a>
@@ -306,27 +306,137 @@
 
  		      <!--- 복습하기 review ------------------------------>
           <div class="tab-pane" id="review">
-            복습 추천
-            복습 하기
+	          <div class="container">
+	            <div class="col-md-8 mr-auto ml-auto">
+          		<!-- Carousel Card -->
+                <div class="card card-raised card-carousel">
+                  <div id="carousel_review" class="carousel slide" data-ride="carousel" data-interval="10000">
+                    <ol class="carousel-indicators">
+                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img class="d-block w-100" src="/resources/assets_home/img/main/review1.gif" alt="학습 신청">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h4>
+                            복습 추천
+                          </h4>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="/resources/assets_home/img/main/review2.gif" alt="학습 계획 작성">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h4>
+                             복습 하기
+                          </h4>
+                        </div>
+                      </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carousel_review" role="button" data-slide="prev">
+                      <i class="material-icons">keyboard_arrow_left</i>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel_review" role="button" data-slide="next">
+                      <i class="material-icons">keyboard_arrow_right</i>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                </div>
+                <!-- End Carousel Card -->
+                </div>
+              </div>
+            
+
           </div>
           
  		      <!--- 문제풀기 question ------------------------------>
           <div class="tab-pane" id="question">
-            문제풀기
+           <div class="container">
+	            <div class="col-md-8 mr-auto ml-auto">
+          		<!-- Carousel Card -->
+                <div class="card card-raised card-carousel">
+                  <div id="carousel_testing" class="carousel slide" data-ride="carousel" data-interval="10000">
+                    <ol class="carousel-indicators">
+                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img class="d-block w-100" src="/resources/assets_home/img/main/study1.gif" alt="학습 신청">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h4>
+                          	  모의시작
+                          </h4>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="/resources/assets_home/img/main/study2.gif" alt="학습 계획 작성">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h4>
+                                                    남은시간 출력
+                          </h4>
+                        </div>
+                      </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carousel_testing" role="button" data-slide="prev">
+                      <i class="material-icons">keyboard_arrow_left</i>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel_testing" role="button" data-slide="next">
+                      <i class="material-icons">keyboard_arrow_right</i>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                </div>
+                <!-- End Carousel Card -->
+                </div>
+              </div>
           </div>
         
           <!--- 학습 현황 dashboard ------------------------------>
           <div class="tab-pane" id="dashboard">
-            일일 학습 그래프
-            기억률 그래프
-            
-            <div class="row">
-              <div class="col-sm-6">
-                <h4>한 주 학습한 내용을 표로 보여줍니다.</h4>
-                <img src="/resources/assets_home/img/main/dashboard.jpg" alt="Rounded Image" class="rounded img-fluid">
+            <div class="container">
+	            <div class="col-md-8 mr-auto ml-auto">
+          		<!-- Carousel Card -->
+                <div class="card card-raised card-carousel">
+                  <div id="carousel_dashboard" class="carousel slide" data-ride="carousel" data-interval="10000">
+                    <ol class="carousel-indicators">
+                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img class="d-block w-100" src="/resources/assets_home/img/main/study1.gif" alt="학습 신청">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h4>
+                          	 일주일 학습 현황
+                          </h4>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="/resources/assets_home/img/main/study2.gif" alt="학습 계획 작성">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h4>
+                             	지식 축척 비율                       
+                          </h4>
+                        </div>
+                      </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carousel_dashboard" role="button" data-slide="prev">
+                      <i class="material-icons">keyboard_arrow_left</i>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel_dashboard" role="button" data-slide="next">
+                      <i class="material-icons">keyboard_arrow_right</i>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                </div>
+                <!-- End Carousel Card -->
+                </div>
               </div>
-            </div>
-          </div>
+          
            
         </div>
       </div>

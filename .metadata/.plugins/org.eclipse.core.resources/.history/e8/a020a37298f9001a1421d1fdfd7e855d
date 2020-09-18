@@ -1,0 +1,12 @@
+package com.itperson.dao;
+
+import java.util.ArrayList;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.itperson.dto.ViewStudyContentsList;
+
+public interface TestLogDao {
+	public void partOfListBySubCategory(@Param("subCode") String subCode, @Param("page") int page);
+
+}

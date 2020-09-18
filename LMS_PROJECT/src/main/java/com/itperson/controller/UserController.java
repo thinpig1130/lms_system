@@ -8,10 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.itperson.PracticeTestScoringService;
 import com.itperson.service.CoursesInfoService;
 import com.itperson.service.ManagerQuestionRegistService;
 import com.itperson.service.ManagerQuestionViewService;
 import com.itperson.service.MyCoursesViewService;
+import com.itperson.service.PracticeTestListService;
+import com.itperson.service.PracticeTestRecordService;
+import com.itperson.service.PracticeTestService;
 import com.itperson.service.ReviewCursorService;
 import com.itperson.service.ReviewListService;
 import com.itperson.service.Service;
@@ -54,7 +58,6 @@ public class UserController {
 	public String userStudyInfo( Model model, HttpServletRequest request) {
 		Service service = new CoursesInfoService(sqlSession);
 		service.execute(model);
-		
 		model.addAttribute("select_t", "study-t");
 		model.addAttribute("page_name", "학습 정보");
 		return "user/study_info";
@@ -106,12 +109,49 @@ public class UserController {
 	/*----------------------------------- 문제풀기 tab-------------------------------------- */
 	@RequestMapping(value = "/testing")
 	public String userTesting( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		Service service = new PracticeTestListService(sqlSession);
+		service.execute(model);
 		model.addAttribute("select_t", "ques-t");
 		model.addAttribute("page_name", "문제풀기");
 		return "user/testing";
 	}
 	
-	/*----------------------------------- 문제풀기 tab-------------------------------------- */
+	@RequestMapping(value = "/testing/start")
+	public String userTestingStart( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		Service service = new PracticeTestService(sqlSession);
+		service.execute(model);
+		model.addAttribute("select_t", "ques-t");
+		return "user/testing_start";
+	}
+	
+	@RequestMapping(value = "/testing/result")
+	public String userTestingResult( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		Service service = new PracticeTestScoringService(sqlSession);
+		service.execute(model);
+		model.addAttribute("select_t", "ques-t");
+		return "user/testing_result";
+	}
+	
+	@RequestMapping(value = "/testing/record")
+	public String userTestingRecord( Model model, HttpServletRequest request) {
+		model.addAttribute("request", request);
+		Service service = new PracticeTestRecordService(sqlSession);
+		service.execute(model);
+		model.addAttribute("select_t", "ques-t");
+		return "user/close";
+	}
+	
+	@RequestMapping(value = "/testing/close")
+	public String userTestingClose( Model model, HttpServletRequest request) {
+		model.addAttribute("select_t", "ques-t");
+		return "user/close";
+	}
+	
+	
+	/*----------------------------------- 복습하기 tab-------------------------------------- */
 	@RequestMapping(value = "/review")
 	public String userReview( Model model, HttpServletRequest request) {
 		model.addAttribute("request", request);
@@ -184,6 +224,22 @@ public class UserController {
 	  model.addAttribute("select_t", "m-ques-t");
       model.addAttribute("page_name", "사용자용 QNA테이블");
       return "user/qnatable_user";
+   }
+   
+   //9월18일 재만 수정
+   @RequestMapping(value = "/qnatable_user1")
+   public String QnaTableUser1( Model model, HttpServletRequest request) {
+     model.addAttribute("select_t", "m-ques-t");
+      model.addAttribute("page_name", "사용자용 QNA테이블");
+      return "user/qnatable_user1";
+   }
+   
+   //9월18일 재만 수정
+   @RequestMapping(value = "/qnatable_user2")
+   public String QnaTableUser2( Model model, HttpServletRequest request) {
+     model.addAttribute("select_t", "m-ques-t");
+      model.addAttribute("page_name", "사용자용 QNA테이블");
+      return "user/qnatable_user2";
    }
 
 }

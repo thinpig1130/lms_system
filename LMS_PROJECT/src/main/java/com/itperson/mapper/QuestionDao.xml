@@ -62,6 +62,34 @@
 		]]>
 	</select>
 	
+	<select id="searchQuestionListByCourse" parameterType="String"  resultMap="question">
+		<![CDATA[
+		SELECT vql.*
+		FROM VW_QUESTION_LIST vql, VW_STUDY_CONTENTS_LIST vsc
+		WHERE vql.STU_CODE = vsc.CODE AND vsc.CO_CODE=#{value}
+		]]>
+	</select>
+	
+	<select id="searchMQuestionListByCourse" parameterType="String"  resultMap="question">
+		<![CDATA[
+		SELECT vql.*
+		FROM VW_QUESTION_LIST vql, VW_STUDY_CONTENTS_LIST vsc
+		WHERE vql.STU_CODE = vsc.CODE AND vsc.CO_CODE=#{value} AND vql.TYPE='M'
+		]]>
+	</select>
+	
+	<select id="searchSQuestionListByCourse" parameterType="String"  resultMap="question">
+		<![CDATA[
+		SELECT vql.*
+		FROM VW_QUESTION_LIST vql, VW_STUDY_CONTENTS_LIST vsc
+		WHERE vql.STU_CODE = vsc.CODE AND vsc.CO_CODE=#{value} AND vql.TYPE='S'
+		]]>
+	</select>
+	
+	
+	
+	
+	
 	<select id="searchMAnswer" parameterType="String"  resultMap="mAnswer">
 		<![CDATA[
 		SELECT *

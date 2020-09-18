@@ -1,0 +1,83 @@
+package com.itperson.service;
+
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Random;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.ui.Model;
+
+import com.itperson.dao.QuestionDao;
+import com.itperson.dao.TestDao;
+import com.itperson.dto.MQuestion;
+import com.itperson.dto.Question;
+import com.itperson.dto.SQuestion;
+import com.itperson.dto.Test;
+
+public class PracticeTestService implements Service {
+	private SqlSession sqlSession;
+	public PracticeTestService(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	@Override
+	public void execute(Model model) {
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		TestDao testDao = sqlSession.getMapper(TestDao.class);
+		
+		String coCode = request.getParameter("coCode");
+		Test test = testDao.searchTest(coCode);
+		
+//		System.out.println(test);		
+		model.addAttribute("test", test);
+		// 문제 List setting
+		model.addAttribute("questions", this.questionSetting(test)) ;
+		
+	}
+	
+	ArrayList<Question> questionSetting(Test test){
+		ArrayList<Question> ques;
+		QuestionDao questionDao = sqlSession.getMapper(QuestionDao.class);
+		
+		if(test.getTestType() == 1) {
+			//개관식
+			questionDao.searchMQuestionListByCourse(test.getCoCode());
+		} else if(test.getTestType()==2) {
+			//주관식	
+			
+		}else {
+			//혼합
+			
+		}
+		
+		return null;
+	}
+	
+	ArrayList<Question> answerSetting(ArrayList<Question> ques){
+		
+		ArrayList<Question> result = new ArrayList<Question>();
+		
+//		// 질문 중 3개만 random으로 선택 반환
+//		while(result.size() < 3 && ques.size() != 0) {
+//			Random random = new Random();
+//			int index = Math.abs(random.nextInt() % ques.size());
+////			System.out.println(index);
+//			Question item = ques.remove(index);
+//			
+//			if(item.getType().equals("M")) {
+//				MQuestion mq = new MQuestion(item);
+//				mq.setAnswer(dao.searchMAnswer(item.getCode()));
+//				result.add(mq);
+//			}else {
+//				SQuestion sq = new SQuestion(item);
+//				sq.setAnswer(dao.searchSAnswer(item.getCode()));
+//				result.add(sq);
+//			}
+//		}		
+		return result;
+	}
+}
+
+}

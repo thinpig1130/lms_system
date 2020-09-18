@@ -12,6 +12,9 @@ public interface QuestionDao extends Dao{
 	public void registQuestionS(SQuestion vo);
 	public void registAnswer(MAnswer vo);
 	public ArrayList<Question> searchQuestionList(String stuCode);
+	public ArrayList<Question> searchQuestionListByCourse(String coCode);
+	public ArrayList<Question> searchMQuestionListByCourse(String coCode);
+	public ArrayList<Question> searchSQuestionListByCourse(String coCode);
 	public ArrayList<MAnswer> searchMAnswer(String qCode);
 	public String searchSAnswer(String qCode);
 }

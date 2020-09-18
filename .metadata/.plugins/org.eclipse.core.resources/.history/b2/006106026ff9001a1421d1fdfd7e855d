@@ -1,0 +1,13 @@
+package com.itperson.service;
+
+import org.springframework.ui.Model;
+
+public class PracticeTestListService implements Service {
+
+	@Override
+	public void execute(Model model) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

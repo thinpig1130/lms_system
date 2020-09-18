@@ -52,6 +52,9 @@
                         </th>
                       </thead>
                       <tbody>
+                      <!-- 가짜 정보 시작점 -->
+                      
+                      <!--  가짜 정보 끝나는점 -->
                       <c:forEach items="${qnaquestions}" var="qnaquestion">
                         <tr>
                           <td>
@@ -87,8 +90,57 @@
                             ${qnaquestion.count}
                             </center>
                           </td>
-                        </tr>
                         </c:forEach>
+                      <tr>
+                      	<td>
+                      		2
+                      	</td>
+                      	<td>
+                      		건의사항
+                      	</td>
+                      	<td>
+                      		<a href="/user/qnatable_user">
+                      		더 많은 학습이 추가 되었으면 좋겠습니다.
+                      	</td>
+                      	<td>
+                      		<span class="material-icons">
+							question_answer
+							</span>
+						</td>
+						<td>
+							cjscn
+						</td>
+						<td>
+							2020-09-18
+						</td>
+						<td>
+							1
+						</td>
+                      	<!--  -->
+                      	<tr>
+                      	<td>
+                      		1
+                      	</td>
+                      	<td>
+                      		시스템문의
+                      	</td>
+                      	<td>
+                      		<a href="/user/qnatable_user1">
+                      		복습하기에 빨간색,주황색,초록색은 무슨 의미 인가요?
+                      	</td>
+                      	<td>
+							
+						</td>
+						<td>
+							cjscn
+						</td>
+						<td>
+							2020-09-18
+						</td>
+						<td>
+							1
+						</td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
