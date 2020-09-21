@@ -8,13 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.itperson.PracticeTestScoringService;
 import com.itperson.service.CoursesInfoService;
 import com.itperson.service.ManagerQuestionRegistService;
 import com.itperson.service.ManagerQuestionViewService;
 import com.itperson.service.MyCoursesViewService;
 import com.itperson.service.PracticeTestListService;
 import com.itperson.service.PracticeTestRecordService;
+import com.itperson.service.PracticeTestScoringService;
 import com.itperson.service.PracticeTestService;
 import com.itperson.service.ReviewCursorService;
 import com.itperson.service.ReviewListService;

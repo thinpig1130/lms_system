@@ -41,7 +41,7 @@
 	                	<c:if test="${course.plan == 0}" >
 	                	<p class="card-category"> 무계획이 계획 ! </p>
 	                	</c:if>
-	                  	<h3 class="card-title">${course.coName} ${course.progressRate}</h3><br>
+	                  	<h3 class="card-title">${course.coName}</h3><br>
 	                  	학습진행 &nbsp;&nbsp;&nbsp;${course.progressRate} %
 	             		<div class="progress">
 		  					<div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: ${course.progressRate}%" aria-valuenow="${course.progressRate}" aria-valuemin="0" aria-valuemax="100"></div>

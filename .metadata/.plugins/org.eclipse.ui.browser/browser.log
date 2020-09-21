@@ -36,3 +36,9 @@
 9월 17, 2020 14:46:30.92 [22364:18228:0917/144630.923:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
 9월 17, 2020 14:46:42.31 [22364:3116:0917/144642.319:ERROR:device_event_log_impl.cc(208)] [14:46:42.319] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
 9월 17, 2020 14:49:25.14 [22364:3116:0917/144925.147:ERROR:CONSOLE(0)] "TypeError: Cannot read property 'isAnonymousInlineStyleSheet' of null", source:  (0)
+
+9월 21, 2020 09:26:48.25 NEW SESSION
+9월 21, 2020 09:26:48.25 [7740:11896:0921/092648.254:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+9월 21, 2020 09:27:18.22 [7740:17684:0921/092718.221:ERROR:device_event_log_impl.cc(208)] [09:27:18.221] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+9월 21, 2020 13:13:46.88 [7740:18064:0921/131346.884:ERROR:socket_stream.cc(219)] Closing stream with result -2
+9월 21, 2020 13:13:54.70 [7740:18064:0921/131354.701:ERROR:socket_stream.cc(219)] Closing stream with result -2

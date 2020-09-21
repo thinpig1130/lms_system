@@ -71,7 +71,6 @@
   <!--상단 네비게이션 바-->
   <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg bg-primary" color-on-scroll="100" id="sectionsNav">
     <div class="container">
-      <a class="navbar-brand" href="/home">weLEarn &nbsp;&nbsp;&nbsp;  </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="sr-only">Toggle navigation</span>
       <span class="navbar-toggler-icon"></span>
@@ -363,7 +362,7 @@
                     </ol>
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img class="d-block w-100" src="/resources/assets_home/img/main/study1.gif" alt="학습 신청">
+                        <img class="d-block w-100" src="/resources/assets_home/img/main/test1.gif" alt="학습 신청">
                         <div class="carousel-caption d-none d-md-block">
                           <h4>
                           	  모의시작
@@ -371,10 +370,10 @@
                         </div>
                       </div>
                       <div class="carousel-item">
-                        <img class="d-block w-100" src="/resources/assets_home/img/main/study2.gif" alt="학습 계획 작성">
+                        <img class="d-block w-100" src="/resources/assets_home/img/main/test2.gif" alt="학습 계획 작성">
                         <div class="carousel-caption d-none d-md-block">
                           <h4>
-                                                    남은시간 출력
+                              	모의 고사 결과 확인 
                           </h4>
                         </div>
                       </div>
@@ -404,21 +403,30 @@
                     <ol class="carousel-indicators">
                       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img class="d-block w-100" src="/resources/assets_home/img/main/study1.gif" alt="학습 신청">
+                        <img class="d-block w-100" src="/resources/assets_home/img/main/dashboard1.jpg" alt="학습 신청">
                         <div class="carousel-caption d-none d-md-block">
                           <h4>
-                          	 일주일 학습 현황
+                          	기억률 변화
                           </h4>
                         </div>
                       </div>
                       <div class="carousel-item">
-                        <img class="d-block w-100" src="/resources/assets_home/img/main/study2.gif" alt="학습 계획 작성">
+                        <img class="d-block w-100" src="/resources/assets_home/img/main/dashboard2.jpg" alt="학습 계획 작성">
                         <div class="carousel-caption d-none d-md-block">
                           <h4>
-                             	지식 축척 비율                       
+                             	   일주일 학습 현황                
+                          </h4>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="/resources/assets_home/img/main/dashboard3.jpg" alt="학습 계획 작성">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h4>
+                             	성실도 
                           </h4>
                         </div>
                       </div>

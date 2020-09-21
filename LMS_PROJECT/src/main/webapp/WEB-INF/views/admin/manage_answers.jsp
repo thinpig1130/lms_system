@@ -60,6 +60,32 @@
                         </th>
                       </thead>
                       <tbody>
+                      <!-- 가 데이터 시작 -->
+                             <tr>
+                          <td>
+                            3
+                          </td>
+                          <td>
+                            	시스템문의
+                          </td>
+                          <td>
+                          <a href="/user/qnatable_user2">
+                           test</a>
+                          </td>
+                          <td>
+
+                          </td>
+                          <td>
+                            test
+                          </td>
+                          <td>
+                            2020-09-21
+                          </td>
+                          <td>
+                            <center>
+                            0
+                            </center>
+                            <!-- 가 데이터 끝 -->
                         <tr>
                           <td>
                             1
@@ -84,6 +110,7 @@
                             <center>
                             1
                             </center>
+                            
                           </td>
                         </tr>
                       </tbody>
